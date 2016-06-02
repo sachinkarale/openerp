@@ -1,0 +1,328 @@
+
+<openerp>
+    <data>
+        <record id="view_res_partner_filter" model="ir.ui.view">
+            <field name="name">res.partner.select</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_res_partner_filter"/>
+            <field name="arch" type="xml">
+                <filter name="customer" position="replace">
+                    <filter string="Contacts" name="customer" domain="[('customer','=',1)]" help="Customer Partners"/>
+                </filter>
+            </field>
+        </record>
+   <!--     <record model="ir.actions.act_window.view" id="crm.action_crm_tag_tree_view_oppor11">
+            <field name="sequence" eval="0"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="crm.crm_case_tree_view_oppor"/>
+            <field name="act_window_id" ref="crm.crm_case_category_act_oppor11"/>
+        </record>
+        <record model="ir.actions.act_window.view" id="crm.action_crm_tag_kanban_view_oppor11">
+            <field name="sequence" eval="1"/>
+            <field name="view_mode">kanban</field>
+            <field name="view_id" ref="crm.crm_case_kanban_view_leads"/>
+            <field name="act_window_id" ref="crm.crm_case_category_act_oppor11"/>
+        </record>    -->
+
+
+
+<record model="ir.actions.act_window" id="crm.crm_case_category_act_oppor11">
+        <field name="name">Opportunities</field>
+        <field name="res_model">crm.lead</field>
+        <field name="view_mode">kanban,tree,graph,form,calendar</field>
+        <field name="domain">[('type','=','opportunity')]</field>
+        <field name="context">{'stage_type': 'opportunity', 'default_type': 'opportunity', 'default_user_id': uid}</field>
+        <field name="view_id" eval="False"/>
+        <field name="search_view_id" ref="crm.view_crm_case_opportunities_filter"/>
+        <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+          Click to create a new opportunity.
+          </p><p>
+          OpenERP helps you keep track of your sales pipeline to follow
+          up potential sales and better forecast your future revenues.
+          </p><p>
+          You will be able to plan meetings and phone calls from
+          opportunities, convert them into quotations, attach related
+          documents, track all discussions, and much more.
+          </p>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window.view" id="crm.action_crm_tag_kanban_view_oppor11">
+        <field name="sequence" eval="0"/>
+        <field name="view_mode">kanban</field>
+        <field name="view_id" ref="crm_case_kanban_view_leads"/>
+        <field name="act_window_id" ref="crm.crm_case_category_act_oppor11"/>
+    </record>
+
+    <record model="ir.actions.act_window.view" id="crm.action_crm_tag_tree_view_oppor11">
+        <field name="sequence" eval="1"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="crm.crm_case_tree_view_oppor"/>
+        <field name="act_window_id" ref="crm.crm_case_category_act_oppor11"/>
+    </record>
+
+    <record model="ir.actions.act_window.view" id="crm.action_crm_tag_form_view_oppor11">
+        <field name="sequence" eval="2"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="crm.crm_case_form_view_oppor"/>
+        <field name="act_window_id" ref="crm.crm_case_category_act_oppor11"/>
+    </record>
+
+	<menuitem id="product.prod_config_main" name="Products" parent="base.menu_base_config" sequence="70" groups="base.group_sale_manager,syml.group_broker_manager,syml.group_assistants_manager,syml.group_underwriter,syml.admin_check"/>
+<menuitem id="base.menu_product" name="Products" parent="base.menu_base_partner" sequence="9" groups="base.group_sale_manager,syml.group_broker_manager,syml.group_assistants_manager,syml.group_underwriter,syml.admin_check"/>
+<menuitem id="sale.menu_sale_quotations"
+        action="sale.action_quotations" parent="base.menu_sales"
+        sequence="4" groups="base.group_sale_manager,syml.group_broker_manager,syml.group_assistants_manager,syml.group_underwriter,syml.admin_check"/>
+
+<menuitem action="sale.action_orders" id="sale.menu_sale_order" parent="base.menu_sales" sequence="5" groups="base.group_sale_salesman,base.group_sale_manager,base.group_sale_manager,syml.group_broker_manager,syml.group_assistants_manager,syml.group_underwriter,syml.admin_check"/>
+<menuitem action="product.product_uom_categ_form_action" id="product.menu_product_uom_categ_form_action" parent="base.menu_base_config" sequence="25" groups="base.group_no_one,syml.group_broker_manager,syml.group_assistants_manager,syml.group_underwriter,syml.admin_check"/>
+
+
+
+
+
+        <record id="open_view_employee_list_my_inherit" model="ir.actions.act_window">
+            <field name="name">Associates</field>
+            <field name="res_model">hr.employee</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+            <field name="inherit_id" ref="hr.open_view_employee_list_my"/>
+            <field name="search_view_id" ref="hr.view_employee_filter"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                Click to add a new employee.
+                </p>
+                <p>
+                With just a quick glance on the OpenERP employee screen, you
+                can easily find all the information you need for each person;
+                contact data, job position, availability, etc.
+                </p>
+            </field>
+        </record>
+<!--        <menuitem id="hr.menu_hr_main" parent="hr.menu_hr_root" name="Human Resources" sequence="0"/>-->
+        <menuitem action="open_view_employee_list_my_inherit" id="hr.menu_open_view_employee_list_my" sequence="3" parent="hr.menu_hr_main" name="Associates"/>
+
+<!--  changed label Customers to Contacts     -->
+        <record id="action_partner_form" model="ir.actions.act_window">
+            <field name="name">Contacts</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form,kanban,tree</field>
+            <field name="context">{"search_default_customer":1}</field>
+            <field name="search_view_id" ref="base.view_res_partner_filter"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                Click to add a contact in your address book.
+                </p>
+                <p>
+                OpenERP helps you easily track all activities related to
+                a customer; discussions, history of business opportunities,
+                documents, etc.
+                </p>
+            </field>
+        </record>    
+<!--        set default view 'tree'   -->
+        <record id="base.action_partner_tree_view1" model="ir.actions.act_window.view">
+            <field name="sequence" eval="0"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="base.view_partner_tree"/>
+            <field name="act_window_id" ref="action_partner_form"/>
+        </record>
+
+	<record id="mail_incoming_messages" model="ir.ui.menu">
+          <field name="name">Incoming Mail</field>
+          <field name="sequence" eval="16"/>
+          <field name="action" ref="mail.action_view_mail_message"/>
+          <field name="parent_id" ref="mail.mail_feeds"/>
+        </record>
+        
+        <menuitem id="base.menu_partner_form" parent="base.menu_sales" action="action_partner_form"/>
+
+        <menuitem id="Contacts_menu" name="Contacts"/>
+        <menuitem id="Contacts_menu_child" name="Contacts" parent="Contacts_menu"/>
+        <menuitem id="contact_child" action="action_partner_form" parent="Contacts_menu_child"/>
+        
+        <menuitem name="Client Development"
+            id="base.menu_base_partner"
+            groups="base.group_sale_salesman"
+            action="crm.crm_case_category_act_oppor11"
+            sequence="20"/>
+         <menuitem id="base.menu_sales" parent="base.menu_base_partner" name="Client Development" sequence="1" />
+            
+        <record id="base.action_partner_supplier_form" model="ir.actions.act_window">
+            <field name="name">Lenders</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{'search_default_supplier': 1,'default_customer': 0,'default_supplier': 1}</field>
+<!--            <field name="view_id" eval="False"/>
+            <field name="view_type">form</field>
+            <field name="type">ir.actions.act_window</field>        -->
+            <field name="filter" eval="True"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                Click to add a contact in your address book.
+                </p>
+                <p>
+                OpenERP helps you easily track all activities related to
+                a supplier: discussions, history of purchases,
+                documents, etc.
+                </p>
+            </field>
+        </record>
+
+	<record model="ir.actions.act_window.view" id="action_lender_form_view">
+            <field name="sequence" eval="1"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_lender_form"/>
+            <field name="act_window_id" ref="base.action_partner_supplier_form"/>
+        </record>
+        <record model="ir.actions.act_window.view" id="action_tree_view">
+            <field name="sequence" eval="0"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_lender_tree"/>
+            <field name="act_window_id" ref="base.action_partner_supplier_form"/>
+        </record>
+
+       <!--  added menu lender under sales/customer       -->
+        <menuitem id="base.menu_product" name="Products" parent="base.menu_base_partner" sequence="9"/>
+        <menuitem action="product.product_normal_action_sell" id="product.menu_products" parent="base.menu_product" sequence="1"/>
+        <menuitem
+                action="base.action_partner_supplier_form"
+                id="menu_partner_form_lender"
+                parent="base.menu_product"
+                 groups="syml.group_broker,syml.group_assistants,syml.group_broker_manager,syml.group_assistants_manager,syml.group_underwriter,syml.admin_check" />
+        <menuitem
+            name="Agency Development"
+            id="base.menu_crm_case_job_req_main"
+            parent="hr.menu_hr_root"
+            sequence="1" groups="syml.group_broker,syml.group_assistants,syml.group_broker_manager,syml.group_assistants_manager,syml.group_underwriter,syml.admin_check"/>
+       <menuitem id="base.menu_base_config" parent="base.menu_base_partner" name="Configuration" sequence="30" groups="syml.group_broker,syml.group_assistants,syml.group_broker_manager,syml.group_assistants_manager,syml.group_underwriter,syml.admin_check"/>
+            
+        <record model="ir.actions.act_window" id="crm_case_categ0_act_job_inherit">
+            <field name="name">Candidates</field>
+            <field name="res_model">hr.applicant</field>
+            <field name="view_mode">kanban,tree,form,graph,calendar</field>
+            <field name="view_id" eval="False"/>
+            <field name="domain">[('state','!=','done')]</field>
+            <field name="search_view_id" ref="hr_recruitment.view_crm_case_jobs_filter"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                Click to add a new job applicant.
+                </p>
+                <p>
+                OpenERP helps you track applicants in the recruitment
+                process and follow up all operations: meetings, interviews, etc.
+                </p>
+                <p>
+                If you setup the email gateway, applicants and their attached
+                CV are created automatically when an email is sent to
+                jobs@yourcompany.com. If you install the document management
+                modules, all resumes are indexed automatically, so that you can
+                easily search through their content.
+                </p>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="crm_case_categ0_act_job_inherit_referral">
+            <field name="name">Referral Sources</field>
+            <field name="res_model">hr.applicant</field>
+            <field name="view_mode">tree,form,graph,calendar</field>
+            <field name="view_id" eval="False"/>
+            <field name="domain">[('state','=','done')]</field>
+            <field name="search_view_id" ref="hr_recruitment.view_crm_case_jobs_filter"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                Click to add a new job applicant.
+                </p>
+                <p>
+                OpenERP helps you track applicants in the recruitment
+                process and follow up all operations: meetings, interviews, etc.
+                </p>
+                <p>
+                If you setup the email gateway, applicants and their attached
+                CV are created automatically when an email is sent to
+                jobs@yourcompany.com. If you install the document management
+                modules, all resumes are indexed automatically, so that you can
+                easily search through their content.
+                </p>
+            </field>
+        </record>
+     
+	<record model="ir.actions.act_window.view" id="action_hr_sec_tree_view_act_job_ref">
+           <field name="sequence" eval="0"/>
+           <field name="view_mode">tree</field>
+           <field name="view_id" ref="view_applicants_tree_syml"/>
+           <field name="act_window_id" ref="crm_case_categ0_act_job_inherit_referral"/>
+       </record>
+   
+        
+<!--        
+        
+        <act_window
+            context="{'search_default_unreconciled':True, 'search_default_partner_id':[active_id], 'default_partner_id': active_id}"
+            domain="[('account_id.reconcile', '=', True),('account_id.type', 'in', ['receivable', 'payable'])]"
+            id="act_account_partner_account_move_all"
+            name=''
+            res_model="account.move.line"
+            src_model="res.partner"/>
+        
+        <act_window context="{'search_default_partner_id':[active_id], 'default_partner_id': active_id}"
+         id="act_res_partner_2_account_invoice_opened"
+         name=''
+         res_model="account.invoice"
+         src_model="res.partner"/>
+         
+            <act_window
+            id="action_analytic_open"
+            name=''
+            res_model="account.analytic.account"            
+            src_model="res.partner"
+            view_type="form"
+            view_mode="tree,form"/>-->
+        <record id="group_no_one" model="res.groups">
+            <field name="name">No One can See me</field>    
+        </record>
+        <!--<menuitem name="Human Resources"
+            id="hr.menu_hr_root"
+            action = "crm_case_categ0_act_job_inherit"
+            groups="base.group_hr_manager,base.group_hr_user,base.group_user"
+            sequence="90"/>-->
+        <menuitem name="Human Resources"
+            id="hr.menu_hr_root"
+            
+            groups="base.group_hr_manager,base.group_hr_user,base.group_user"
+            sequence="90"/>
+        <menuitem
+            name="Candidates"
+            parent="base.menu_crm_case_job_req_main"
+            id="hr_recruitment.menu_crm_case_categ0_act_job" action="crm_case_categ0_act_job_inherit" sequence="1" groups="syml.group_broker,syml.group_assistants,syml.group_broker_manager,syml.group_assistants_manager,syml.group_underwriter,syml.admin_check"/>
+        <menuitem
+            name="Referral Sources"
+            parent="base.menu_crm_case_job_req_main"
+            id="hr_recruitment.menu_crm_case_categ0_act_job_referral" action="crm_case_categ0_act_job_inherit_referral" sequence="2"/>
+        <menuitem
+            name="Agency Development"
+            id="hr_recruitment.menu_hr_recruitment_recruitment"
+            parent="hr.menu_hr_configuration"
+            sequence="40" groups="syml.group_broker,syml.group_assistants,syml.group_broker_manager,syml.group_assistants_manager,syml.group_underwriter,syml.admin_check"/>
+
+
+        <menuitem action="crm.crm_case_section_act"
+            id="crm.menu_crm_case_section_act" sequence="15"
+            parent="base.menu_base_config" groups="base.group_system"/>
+
+
+        <menuitem id="project_task_syml" name="Task" parent="base.menu_base_partner" sequence="10"/>
+        <menuitem action="project.action_view_task" id="menu_action_view_task_syml" parent="project_task_syml" sequence="5" name="My Task"/>
+        
+        
+
+        <!--<menuitem id="base.menu_base_config" parent="base.menu_base_partner" name="Configuration" sequence="30" groups="group_system"/>-->
+    </data>
+</openerp>

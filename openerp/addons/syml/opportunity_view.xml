@@ -1,0 +1,411 @@
+<!-- Opportunities Form View -->
+
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="crm_crm_case_form_view_oppor">
+            <field name="name">Opportunities</field>
+            <field name="model">crm.lead</field>
+            <field name="priority">20</field>
+            <field name="inherit_id" ref="crm.crm_case_form_view_oppor"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="/form/header" position="replace">
+                        <field name="stage_id" widget="statusbar" clickable="True"/>
+                </xpath>
+
+                <xpath expr="/form/sheet/div[1]" position="inside">
+                        <button string="Send TO MorWEB" type="object" name="send_morweb_request"/>
+                        <table align="right">
+                            <tr>
+                                <td>
+                                    <h4>
+                                        <font color="blue">
+                                            <field name='application_no'/>
+                                        </font>
+                                    </h4>
+                                </td>
+                            </tr>
+                        </table>
+                </xpath>
+
+               <xpath expr="/form/sheet/div[2]" position="replace">
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1><field name="name"/></h1>
+                        </div>
+                </xpath>
+
+                <xpath expr="/form/sheet/group/group[1]" position="attributes">
+                    <attribute name="invisible">"1"</attribute>
+                </xpath>
+
+                <xpath expr="/form/sheet/group" position="attributes">
+                    <attribute name="invisible">"1"</attribute>
+                </xpath>
+
+                <xpath expr="/form/sheet/notebook/page[@string='Internal Notes']" position="attributes">
+                    <attribute name="invisible">"1"</attribute>
+                </xpath>
+                <xpath expr="/form/sheet/notebook/page[@string='Lead']" position="attributes">
+                    <attribute name="invisible">"1"</attribute>
+                </xpath>
+
+                <xpath expr="//form/sheet/notebook/page[@string='Internal Notes']" position="before">
+                    <page string="General">
+                        <group>
+                            <group>
+                                <field name="application_date"/>
+                                <field name="condition_of_financing_date"/>
+<!--                                <field name="broker"/>
+                                <field name="assistant"/>-->
+                            </group>
+                            <group>
+                                <field name="expected_closing_date"/>
+<!--                                <field name="Underwriter"/>
+                                <field name="application_start_time"/>-->
+                            </group>
+                        </group>
+
+                        <group>
+                            <group>
+                                <field name="sales_associate"/>
+                                <field name="assistant"/>
+                                <field name="underwriter"/>
+                            </group>
+                            <group>
+                                <field name="referred_source"/>
+                                <field name="training_associate_referral"/>
+                                <field name="lead_source"/>
+                                <field name="realtor"/>
+                            </group>
+                        </group>
+
+
+                        <group string="Applicants">
+                            <field name="applicant_record_line" nolabel="1">
+
+                                <tree string="Sales Order Lines" editable="bottom">
+                                    <field name="applicant_name"/>
+                                    <field name="applicant_last_name"/>
+                                    <field name="email_personal"/>
+                                    <field name="home"/>
+                                    <field name="beacon_score"/>
+                                    <field name="total_income"/>
+                                    <field name="primary"/>
+                                </tree>
+
+                            </field>
+                        </group>
+
+                        
+                            <group string="Context">
+                                <group>
+
+                                    <field name="desired_mortgage_amount"/>
+                                    <field name="desired_mortgage_type"/>
+                                    <field name="desired_product_type"/>
+                                    <field name="section_id" widget="selection" invisible = "1"/>
+                                    <field name="whatisyourlendinggoal"/>
+                                    <field name="preapprovedimlookingfora" attrs="{'invisible': [('whatisyourlendinggoal','!=', '1')]}"/>
+                                    <field name="approvedimlookingfora" attrs="{'invisible': [('whatisyourlendinggoal','!=', '2')]}"/>
+                                    <field name="refinancelookingfora" attrs="{'invisible': [('whatisyourlendinggoal','!=', '3')]}"/>
+                                    <field name="gds"/>
+                                    <field name="tds"/>
+
+                                </group>
+
+                                <group>
+                                    <field name="desired_amortization"/>
+                                    <field name="desired_term"/>
+                                    <field name="building_funds"/>
+                                    <field name="draws_required"/>
+                                    <field name="lookingto2"    attrs="{'invisible': [('whatisyourlendinggoal','!=', '2')]}"/>
+                                    <field name="lookingto3"   attrs="{'invisible': [('whatisyourlendinggoal','!=', '3')]}"/>
+                                    <field name="ltv"/>
+                                    <field name="renovation_value"/>
+                                </group>
+                                                                         
+                                
+                            </group>
+
+                            <newline/>
+
+                           <group>
+                                <group string="Downpayment">
+                                    <field name="property_value"/>
+                                    <field name="downpayment_amount"/>
+                                </group>
+
+                                <group string="Sources">
+<!--                                    <field name="personal_cash_amount"/>
+                                    <field name="rrsp_amount"/>
+                                    <field name="gifted_amount"/>
+                                    <field name="borrowed_amount"/>
+                                    <field name="sale_of_existing_amount"/>
+                                    <field name="existing_equity_amount"/>
+                                    <field name="sweat_equity_amount"/>
+                                    <field name="secondary_financing_amount"/>
+                                    <field name="other_amount"/>-->
+                                    <field name="down_payment_coming_from"/>
+                                </group>
+                          </group>
+
+                          <group string="Suitability">
+                                <group>
+                                    <field name="job_5_years"/>
+                                    <field name="income_decreased_worried"/>
+                                    <field name="future_family"/>
+                                    <field name="buy_new_vehicle"/>
+                                </group>
+
+                                <group>
+                                    <field name="lifestyle_change"/>
+                                    <field name="financial_risk_taker"/>
+                                    <field name="property_less_then_5_years"/>
+                                </group>
+                            </group>
+                            <newline/>
+
+                            <group string="Recommendations">
+                                <field name="product_ids" nolabel="1">
+
+                                    <tree string="Product Lines" editable="bottom">
+                                        <field name="lender"/>
+                                        <field name="name"/>
+                                        <field name="mortgage_type"/>
+                                        <field name="term"/>
+                                        <field name="maximum_amortization"/>
+                                        <field name="interest_rate"/>
+                                        <field name="cash_back"/>
+                                    </tree>
+
+                                </field>
+                            </group>
+
+                            <newline/>
+
+                            <group string="Deal Notes">
+                                <field name="deal_ids" nolabel="1">
+
+                                    <tree string="Deal Lines" editable="bottom">
+                                        <field name="note_type"/>
+                                        <field name="urgency"/>
+                                        <field name="name"/>
+                                    </tree>
+
+                                </field>
+                            </group>
+                            <newline/>
+                           <group string="Internal Notes">
+                                <field name="internal_note" nolabel="1"/>
+                           </group>
+
+
+                        
+                    </page>
+                    <page string="Property">
+
+                        <group>
+                            <group string="Property Style:">
+                                <field name="property_style"/>
+                                <field name="property_type"/>
+                                <field name="apartment_style"/>
+
+
+                            </group>
+                            <group string="Description:">
+                                <field name="plan"/>
+                                <field name="block"/>
+                                <field name="lot"/>
+                                <field name="mls"/>
+                                <field name="new_home_warranty"/>
+
+                            </group>
+                        </group>
+
+                        <group string="Property Details:">
+                            <group>
+                                <field name="address"/>
+                                <field name="city"/>
+                                <field name="age"/>
+                                <field name="square_footage"/>
+                                <field name="lot_size"/>
+                                <field name="acres"/>
+                                <field name="property_taxes"/>
+                                <field name="min_heat_fee"/>
+                            </group>
+
+                            <group>
+                                <field name="province"/>
+                                <field name="postal_code"/>
+                                <field name="heating"/>
+                                <field name="water"/>
+                                <field name="sewage"/>
+                                <field name="condo_fees"/>
+
+                            </group>
+                        </group>
+
+                        <group string="Additional Buildings:">
+                            <group>
+                                <field name="garage_type"/>
+                                <field name="garage_size"/>
+                            </group>
+                            <group>
+                                <field name="outbuildings_value"/>
+                            </group>
+                        </group>
+
+                        <group string="Occupants:">
+                            <group>
+                                <field name="living_in_property"/>
+                                <field name="renter_pay_heating"/>
+                            </group>
+                            <group>
+                                <field name="monthly_rental_income"/>
+                            </group>
+                        </group>
+
+                        <group string="ASSISTANT Responsibilities">
+                            <group string="Allowed Properties">
+                                <field name="is_country_residential"/>
+                                <field name="is_condo"/>
+                                <field name="is_agricultural_less_then_10_acres"/>
+                                <field name="is_agricultural"/>
+                                <field name="is_commercial"/>
+                                <field name="is_fractional_interests"/>
+                                <field name="is_co_operative_housing"/>
+                                <field name="is_grow_ops"/>
+                                <field name="is_rental_pools"/>
+                                <field name="is_age_restricted"/>
+                                <field name="is_duplex"/>
+                                <field name="is_four_plex"/>
+                                <field name="is_six_plex"/>
+                                <field name="is_eight_plex"/>
+                                <field name="distance_to_major_center"/>
+                                <field name="lender_requires_insurance"/>
+                                <field name="selected_product"/>
+                            </group>
+                            <group string=" ">
+                                
+                                <field name="is_construction_mortgage"/>
+                                <field name="is_life_leased_property"/>
+                                <field name="is_leased_land"/>
+                                <field name="is_raw_land"/>
+                                <field name="is_mobile_homes"/>
+                                <field name="is_modular_homes"/>
+                                <field name="is_floating_homes"/>
+                                <field name="is_boarding_house"/>
+                                <field name="is_rooming_houses"/>
+                                <field name="is_non_conv_construction"/>
+                                <field name="is_cottage_rec_property"/>
+                                <field name="is_rental_property"/>
+                                <field name="is_high_ratio_2nd_home"/>
+                                <field name="is_uninsured_conv_2nd_home"/>
+                                <field name="is_a_small_centre"/>
+                            </group>
+                        </group>
+
+                        <group string="Internal Notes">
+                            <field name="internal_note_property" nolabel="1"/>
+                        </group>
+
+
+                    </page>
+
+                    <page string="Verification">
+                        <label for="task" string="Assistant Tasks"/>
+                        <field name="task" nolabel="1">
+                            <tree editable="bottom">
+                                <field name="done"/>
+                                <field name="name"/>
+                                <field name="urgency"/>
+                                <field name="description"/>
+                            </tree>
+                        </field>
+                        <label for="task" string="Broker Tasks"/>
+                        <field name="task" nolabel="1">
+                            <tree editable="bottom">
+                                <field name="done"/>
+                                <field name="name"/>
+                                <field name="urgency"/>
+                                <field name="description"/>
+                            </tree>
+                        </field>
+                        <newline/>
+                        <label for="internal_notes" string="Internal Notes"/>
+                        <field name="internal_notes"/>
+                    </page>
+
+                    <page string="Final Solution">
+                        <group>
+                            <group string="Lender">
+                                <field name="final_lender"/>
+                                <field name="lender_name"/>
+                                <field name="lender_response"/>
+                                <field name="lender_ref"/>
+                                <field name="morweb_filogix"/>
+                            </group>
+                            <group string="Insurer">
+                                <field name="insurer"/>
+                                <field name="insurerref"/>
+                                <field name="insurerfee"/>
+                            </group>
+                            <group string="Deal Info">
+                                <field name="purchase_price"/>
+                                <field name="downpayment"/>
+                                <field name="closingdate"/>
+                                <field name="renewaldate"/>
+                                <field name="total_mortgage_amount"/>
+                            </group>
+                            <group string="Product">
+                                <field name="rate"/>
+                                <field name="term"/>
+                                <field name="amortization"/>
+                                <field name="monthly_payment"/>
+                                <field name="mortgage_type"/>
+                                <field name="product_type"/>
+                                <field name="cash_back"/>
+                            </group>
+                            <group string="Expected Commission">
+                               <group>
+                                    <field name="base_commission"/>
+                                    <field name="volume_commission"/>
+                               </group>
+
+                               <group>
+                                </group>
+                               <newline/>
+
+                               <group>
+                                    <field name="commitment_fee"/>
+                                    <field name="lender_fee"/>
+                                    <field name="private_fee"/>
+                                </group>
+
+                                <group>
+                                </group>
+
+                                <newline/>
+
+                                <group>
+                                    <field name="verify_product"/>
+                                </group>
+
+                            </group>
+                               
+                            
+                        </group>
+
+                        <group string="Internal Notes">
+                            <field name="internal_notes_final"/>
+                        </group>
+                    </page>
+                        
+                </xpath>
+
+               
+            </field>
+        </record>
+    </data>
+</openerp>

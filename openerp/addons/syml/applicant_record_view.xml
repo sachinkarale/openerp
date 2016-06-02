@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="applicant_form_view" model="ir.ui.view">
+            <field name="name">Applicant Record</field>
+            <field name="model">applicant.record</field>
+            <field name="arch" type="xml">
+                <form string="Applicant Record" version="7.0">
+                    <sheet>
+                                <button string="Opportunity" type="object" name="get_opportunity" class="oe_right"/>
+				<button string="Fetch Response" type="object" name="fetch_equifax_response" class="oe_right"/>
+	                        <button string="Send To Equifax" type="object" name="send_to_equifax" class="oe_right"/>
+                        <group>
+                            <group>
+                                <field name="applicant_name"/>
+                                <field name="applicant_last_name"/>
+                                <field name="email_personal"/>                                                                                                 
+                            </group>
+                        </group>
+                        
+                        <notebook>
+                            <page string="Personal Info" groups="syml.group_broker,syml.group_assistants,syml.group_broker_manager,syml.group_assistants_manager,syml.group_underwriter,syml.admin_check">
+                                <group>
+                                    <group>
+                                        <field name="email_work"/>
+                                        <field name="cell"/>
+                                        <field name="work"/>
+                                        <field name="home"/>
+                                        <field name="best_number"/>
+                                        <field name="relationship_status"/>
+                                        <!--<field name="applicant_id" domain="[('type','=','opportunity')]"/>-->
+                                        <field name="sales_associates"/>
+                                        <field name="consent_dateTime"/>
+                                    </group>
+                                    <group>
+                                        <field name="dob"/>
+                                        <field name="sin"/>
+                                        <field name="passport"/>
+<!--                                        <field name="contact_record"/>-->
+                                        <field name="signature"/>
+                                        <field name="signature_ip"/>                                        
+<!--                                        <field name="identity_attached"/>-->
+                                        <field name="non_resident"/>
+                                        <field name="immigration_date"/>
+                                        <field name="include_in_opportunity"/>    
+                                        <field name="hr_department_id"/>
+                                    </group>
+                                </group>
+                                <label for="address_ids" string="Addresses"/>
+                                <field name="address_ids">
+                                    <tree editable="bottom">
+                                        <field name="name"/>
+                                        <field name="street" string=""/>
+                                        <field name="city"/>
+                                        <field name="province"/>
+                                        <field name="postal_code"/>
+                                        <field name="date"/>                                        
+                                    </tree>
+                                </field>
+                                <label for="opp_rec_ids" string="Opportunity"/>
+                                <field name="opp_rec_ids"  nolabel="1" context="{'form_view_ref':'crm.crm_case_form_view_oppor'}"/>
+
+                            </page>
+                            <page string="Credit/Liabilities" groups="syml.group_broker,syml.group_assistants,syml.group_broker_manager,syml.group_assistants_manager,syml.group_underwriter,syml.admin_check">
+                                <group>
+                                    <group>
+                                        <field name="beacon_9_score"/>
+                                        <field name="beacon_5_score"/>
+                                        <field name="bankruptcy"/>
+                                        <field name="bankruptcy_discharge_date"/>
+                                        <field name="monthly_support_payment"/>                      
+                                    </group>
+                                    <group>
+                                        <field name="crp_3_score"/>
+                                        <field name="ers_2_score"/>
+                                        <field name="total_inquires"/>
+                                        <field name="orderly_debt_payment"/>
+                                        <field name="odp_discharge_date"/>
+                                        <field name="date_time_bureau_obtained"/>
+                                    </group>
+                                </group>
+                                <label for="mortgage" string="Mortgages"/>
+                                <field name="mortgage">
+                                    <tree editable="bottom">
+                                        <field name="name" style="width:400px"/>
+                                        <field name="interest_rate"/>
+                                        <field name="balance"/>
+                                        <field name="monthly_payment"/>
+                                        <field name="type"/>
+                                        <field name="renewal"/>
+                                        <field name="monthly_rent"/>
+                                        <field name="pay_off"/>
+                                        <field name="selling"/>
+                                        <field name="property_id"/>
+                                     </tree>
+                                </field>
+                                <label for="liabilities" string="Liabilities"/>
+                                <field name="liabilities">
+                                    <tree editable="bottom">
+                                        <field name="seq_no"/>                                        
+                                        <field name="name"/>
+					<field name="business"/>
+                                        <field name="status"/>                                       
+                                        <field name="credit_limit"/>
+                                        <field name="credit_balance"/>
+                                        <field name="monthly_payment"/>
+                                        <field name="opened"/>
+                                        <field name="reported"/>
+                                        <field name="dla"/>
+					<field name="type"/>
+                                        <field name="rating"/>
+                                        <field name="pay_off"/>                                        
+                                    </tree>
+                                </field>
+                                <label for="collection" string="Collections"/>
+                                <field name="collection">
+                                    <tree editable="bottom">
+                                        <field name="name"/>
+                                        <field name="amount"/>
+                                        <field name="balance"/>
+                                        <field name="date"/>
+                                        <field name="status"/>
+                                        <field name="pay_off"/>                                        
+                                    </tree>
+                                </field>
+
+                                <label for="late_payments" string="Late Payments"/>
+                                <field name="late_payments">
+                                    <tree editable="bottom">
+                                        <field name="seq_no"/>
+                                        <field name="name"/>
+                                        <!--<field name="status"/>-->
+                                        <field name="date"/>
+                                        <field name="rating"/>
+                                        <field name="days"/>
+                                        <field name="reason"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Assets" groups="syml.group_broker,syml.group_assistants,syml.group_broker_manager,syml.group_assistants_manager,syml.group_underwriter,syml.admin_check">
+                                <group>
+                                    <group>
+                                        <field name="total_asset"/>
+                                    </group>
+                                    <group>
+                                        <field name="total_net_worth"/>
+                                    </group>
+<!--                                    <newline/>-->
+                                </group>
+                                
+                                <label for="properties " string="Properties"/>
+                                <field name="properties">
+                                    <tree editable="bottom">
+                                       
+                                                <field name="name"/>
+                                                <field name="value"/>
+                                                <field name="owed"/>
+                                                <field name="annual_tax"/>
+                                                <field name="mo_condo_fees"/>
+                                                <field name="property_id"/>
+                                                <field name="selling"/>
+                                           
+                                       
+                                    </tree>
+                                </field>
+<!--                                    <newline/>-->
+                                <label for="asset_ids" string="Assets"/>
+                                <newline/>
+                                <group>
+                                    <group>
+                                        <label for="money" string="Money that you normally have in your chequing and savings accounts after payday"/>
+                                    </group>
+                                    <group>
+                                        <field name="money" nolabel="1"/>
+                                    </group>
+                                </group>
+                                <newline/>
+                                <field name='asset_ids'>
+                                    <tree editable="bottom">
+                                        <field name="asset_type"/>
+                                        <field name="name"/>
+                                        <field name="value"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Employment/Income" groups="syml.group_broker,syml.group_assistants,syml.group_broker_manager,syml.group_assistants_manager,syml.group_underwriter,syml.admin_check">
+                                <group>
+                                    <group>
+                                        
+                                        <field name="monthlychildsupport"/>
+                                        <field name="total_employed_income"/>
+                                        <field name="total_self_employed"/>
+                                        <!--<field name="income"/>-->
+                                    </group>
+                                    <group>
+                                        <field name="total_rental_income"/>
+                                        <field name="total_other_income"/>
+                                        <field name="total_income"/>
+                                    </group>
+                                </group>
+                                <label for="incomes" string="Incomes &amp; Employers"/>
+                                <field name="incomes">
+                                    <tree editable="bottom">
+                                       <!-- <field name="name"/>-->
+                                        <field name="income_type"/>
+                                        <field name="business"/>
+                                        <field name="position"/>
+                                        <field name="industry"/>
+                                        <field name="annual_income"/>
+                                        <field name="month"/>
+					<field name="historical"/> 
+                                        <field name="supplementary"/>                                       
+					<field name="property_id"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Credit Report">
+                                <label for="credit_report"/>
+                                <field name="credit_report"/>
+                            </page>
+                            <page string="Documents">
+                        <group>
+                            <field name="document_ids" nolabel="1">
+
+                                    <tree string="Documents" editable="bottom">
+                                       <field name="opportunity_id"/>
+                                        <field name="document_name"/>
+                                        <field name="document_date"/>
+                                        <field name="created_by"/>
+                                        <field name="doc_send"/>
+                                    </tree>
+                            </field>
+                        </group>
+
+
+                    </page>
+
+                        </notebook>
+                    </sheet>
+		    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                        <!--<field name="credit_report"/>-->
+                    </div>
+                </form>
+            </field>
+        </record>
+        <record id="applicant_tree_view" model="ir.ui.view">
+            <field name="name">Applicant Record</field>
+            <field name="model">applicant.record</field>
+            <field name="arch" type="xml">
+                <tree string="Applicant Record">
+                    <field name="applicant_name"/>
+		    <field name="applicant_last_name"/>
+                    <field name="email_personal"/>
+                    <field name="cell"/>
+                    <field name="work"/>
+                    <field name="home"/>
+                    <field name="applicant_id"/>
+		    <button name="%(syml.action_applicant_wizard_form)d" string="view" type="action" icon="STOCK_REDO"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="applicant_action_view" model="ir.actions.act_window">
+            <field name="name">Applicants</field>
+            <field name="res_model">applicant.record</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="applicant_tree_view"/>
+        </record>
+        <menuitem id="applicant_menu" action="applicant_action_view" parent="base.menu_sales" sequence="2"/>
+    </data>
+</openerp>

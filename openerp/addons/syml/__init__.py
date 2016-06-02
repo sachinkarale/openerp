@@ -1,0 +1,24 @@
+import report
+import wizard
+import underwriter
+import visdom_website
+import morweb
+import mail_message
+import ir_attachment
+import crm_lead
+import customer
+import hr_application
+import hr_employee
+import product
+import opportunity
+import crm_cases
+import res_users
+import applicant_record
+import res_company
+import email_template
+import hr_department
+import project
+import schedular
+import fax
+import ir_mail_server
+#####

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+<data>
+
+    <record id="group_assistants" model="res.groups">
+        <field name="name">Assistants</field>
+    </record>
+
+    <record id="group_broker" model="res.groups">
+        <field name="name">Broker</field>
+    </record>
+
+    <record id="group_broker_manager" model="res.groups">
+        <field name="name">Broker Manager</field>
+    </record>
+
+    <record id="group_assistants_manager" model="res.groups">
+        <field name="name">Assistant Manager</field>
+    </record>
+
+    <record id="group_underwriter" model="res.groups">
+        <field name="name">Underwriter</field>
+    </record>
+
+   <!-- <record id="group_comp_app" model="res.groups">
+        <field name="name">Comp App</field>
+    </record>-->
+
+    <record id="business_development_officer" model="res.groups">
+        <field name="name">Business Development Officer</field>
+    </record>
+
+    <record id="business_development_manager" model="res.groups">
+        <field name="name">Business Development Manager</field>
+    </record>
+
+    <record id="admin_check" model="res.groups">
+       <field name="name">Admin</field>
+   </record>
+    <!--<record id="supplier_assistant_rule" model="ir.rule">
+        <field name="name">Lenders</field>
+        <field ref="model_res_partner" name="model_id"/>
+        <field name="domain_force">[('supplier','=',1)]</field>
+        <field name="groups" eval="[(4, ref('group_assistants'))]"/>
+    </record>-->
+        <record id="department_rules_leads" model="ir.rule">
+        <field name="name">Department Leads</field>
+        <field ref="model_crm_lead" name="model_id"/>
+        <field name="domain_force">[('hr_department_id','=',user.hr_department_id.id)]</field>
+        <field name="groups" eval="[(4, ref('group_assistants',)),(4,ref('group_broker'))]"/>
+        <field name="global" eval="False"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+
+
+    <record id="department_rules_applicant" model="ir.rule">
+        <field name="name">Department Applicants</field>
+        <field ref="model_applicant_record" name="model_id"/>
+        <field name="domain_force">[('hr_department_id','=',user.hr_department_id.id)]</field>
+        <field name="groups" eval="[(4, ref('group_assistants',)),(4,ref('group_broker'))]"/>
+        <field name="global" eval="False"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+
+    <record id="buisness_officer_rules" model="ir.rule">
+        <field name="name">Buisness Rules</field>
+        <field ref="model_hr_applicant" name="model_id"/>
+        <field name="domain_force">[('bdo_check','=',[user.id])]</field>
+        <field name="groups" eval="[(4,ref('business_development_officer'))]"/>
+    </record>
+
+
+<!--    <record id="buisness_contact_rules" model="ir.rule">
+        <field name="name">Buisness Contact Rules</field>
+        <field ref="model_res_partner" name="model_id"/>
+        <field name="domain_force">[('bdo_check','=',[user.id])]</field>
+        <field name="groups" eval="[(4,ref('business_development_officer'))]"/>
+    </record>-->
+
+
+
+ </data>
+</openerp>

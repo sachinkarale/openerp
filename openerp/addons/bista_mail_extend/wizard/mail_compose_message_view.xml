@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="email_compose_message_wizard_form_inherit">
+            <field name="name">mail.compose.message.form</field>
+            <field name="model">mail.compose.message</field>
+            <field name="inherit_id" ref="mail.email_compose_message_wizard_form"/>                
+            <field name="arch" type="xml">                                                                
+                <xpath expr="/form/group[1]/div" position="inside">
+		    <field name="email_to"/>
+                    <field name="email_ids" placeholder="All contacts ...." invisible="1"/>                                                 
+                    <field name="email_cc" placeholder="email cc ...."/>
+                </xpath>
+                <!--            to add onchange     --> 
+                <field name="partner_ids" position="replace">
+                    <field name="partner_ids" widget="many2many_tags_email" placeholder="Add contacts to notify..."
+                           on_change="onchange_partner_ids(partner_ids,email_ids)" context="{'force_email':True, 'show_email':True}" invisible="1"/>
+                </field>                
+            </field>
+        </record>
+    </data>
+</openerp>

@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+        <record id="view_partner_form_inherit" model="ir.ui.view">
+            <field name="name">res.partner.form.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="type">form</field>            
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <label for="street" position="before">
+                    <field name="move_date" placeholder="Move into this address"/>
+                </label>
+
+                <field name="parent_id" position="attributes">
+                    <attribute name="invisible">"1"</attribute>
+                </field>
+                    <field name="parent_id" position="before">
+                    <field name="res_company" placeholder="Employer"/>
+                </field>
+                <field name="state_id" position="attributes">
+                    <attribute name="invisible">"1"</attribute>
+                </field>
+<!--                made invisible to Accounting tab from bottom-->
+                <page string="Accounting" position="attributes">
+                    <attribute name="invisible">"1"</attribute>
+                </page>
+                <field name="name" position="after">
+                    <field name="middle_name" placeholder="Middle Name"/>
+                    <field name="last_name" placeholder="Last Name"/>
+                    <field name="spouse" placeholder="Spouse"/>                                                            
+                </field>
+                
+                <field name="parent_id" position="after">
+                    <field name="function" attrs="{'invisible': [('customer','=',False)]}" placeholder="e.g. Sales Director"/> 
+                </field>
+                <xpath expr="//group/group[2]" position="replace">
+                    <group>
+                        <field name="email" class="oe_bold" colors="red" fonts="bold" on_change="onchange_email_validation(email)"/>
+                        <field name="phone" on_change="onchange_phone_validation_phone(phone)" placeholder="e.g. 444-444-4444 " class="oe_bold"/>                        
+                        <field name="mobile" on_change="onchange_phone_validation_mobile(mobile)" placeholder="e.g. 444-444-4444 "/>
+                        <field name="work_phone" on_change="onchange_phone_validation_work_phone(work_phone)" placeholder="e.g. 444-444-4444 "/>                        
+                        <field name="preferred_phone"/>
+<!--                        <field name="phone_validation" attrs="{'invisible': [('phone_check','=', False)]}"/>                        -->
+                        <field name="fax"/>
+                        
+<!--                        <field name="function" placeholder="e.g. Sales Director"
+                                attrs="{'invisible': [('is_company','=', True)]}"/>                                                                       -->                        
+                        <field name="addr_type" attrs="{'invisible':[('customer','!=',True)]}"/>
+                        <field name="email_personal" attrs="{'invisible': [('customer','=',False)]}" on_change="onchange_email_validation(email_personal)"/>
+                        <field name="newclientlead" attrs="{'invisible':[('customer','!=',True)]}" on_change="onchange_check_selection1(newclientlead)"/>
+                        <field name="newhrlead" attrs="{'invisible':[('customer','!=',True)]}" on_change="onchange_check_selection2(newhrlead)"/>
+                        <field name="newduallead" attrs="{'invisible':[('customer','!=',True)]}" on_change="onchange_check_selection3(newduallead)"/>
+                        <field name="bdo_check"/>
+<!--                        <field name="phone_check"/>-->
+                        <group colspan="4" col="4">
+                            <button string="Mail" name="mailto_customer" icon="terp-mail-message-new" type="object"/>
+                            <newline/>
+                            <field name="atmail_contact" />
+                        </group>
+                    </group>
+                </xpath>
+                <xpath expr="//div/div[1]" position="replace">
+                    <label for="name"/>
+                    <field name="is_company" invisible="1"/>
+                </xpath> 
+                <xpath expr="//field[@name='city']" position="replace">
+                    <field name="city" placeholder="City" style="width: 50%%"/>
+                </xpath>
+                <field name="name" position="before">
+                    <field name="name_title" placeholder="salutation"/>   
+                </field>
+                <xpath expr="//field[@name='zip']" position="replace">
+                    <field name="zip" placeholder="postal code" style="width: 40%%"/>
+                </xpath>
+                <xpath expr="//field[@name='country_id']" position="after">
+                    <field name="po_box" placeholder="p/o box"/>                                 
+                </xpath>
+                <field name="title" position="replace"/>    
+                <field name="country_id" position="before">
+                    <field name="province"/>             
+                </field>
+               <!--<field name="website" widget="url" placeholder="e.g. www.openerp.com" position="attributes">
+                    <attribute name="invisible">"1"</attribute>
+                </field>-->
+                <field name="po_box" position="after">
+<!--                    <field name="email_personal" attrs="{'invisible': [('customer','=',False)]}" placeholder="email_work"/>-->
+                    <field name="birthdate" placeholder="DOB"/>
+                    <field name="sin" placeholder="SIN"/>
+                    <field name="referredby" placeholder="Referred By"/>
+                </field>
+                
+<!--          renamed the Internal notes                -->
+          
+                <page string="Internal Notes" position="replace">
+                    <page string="Description Information">
+                        <field name="comment" placeholder="Put Descriptive Information here...."/>
+                    </page>
+                </page> 
+<!-- made invisible to Sales & Purchasees tab         -->
+                <page string="Sales &amp; Purchases" position="attributes">
+                    <attribute name="invisible">"1"</attribute>
+                </page>
+                <xpath expr="//group/group[2]" position="after">      
+                    <group attrs="{'invisible': [('supplier','=',False)]}">
+                        <label for="underwriting_office_street" string="Lender Underwriting Office"/>
+                        <div>
+                            <field name="underwriting_office_street" placeholder="Street..."/>
+                            <field name="underwriting_office_street2"/>
+                            <div class="address_format">
+                                <field name="underwriting_office_city" placeholder="City" style="width: 40%%"/>
+                                <field name="underwriting_office_state_id" class="oe_no_button" placeholder="State" style="width: 37%%" options='{"no_open": True}' on_change="onchange_state(state_id)"/>
+                                <field name="underwriting_office_zip" placeholder="ZIP" style="width: 20%%"/>
+                            </div>
+                            <field name="underwriting_office_country_id" placeholder="Country" class="oe_no_button" options='{"no_open": True}'/>
+                        </div>
+                        <field name="underwriting_office_website" widget="url" placeholder="e.g. www.openerp.com"/>                                              
+                    </group>
+                    <group attrs="{'invisible': [('supplier','=',False)]}">
+                        <field name="underwriting_office_fax"/>
+                        <field name="underwriting_office_email"/>
+                        <field name="underwriting_office_phone"/>
+                        <field name="underwriting_office_mobile"/>
+                        <field name="underwriting_office_work_phone"/>                        
+                    </group>
+                    <group attrs="{'invisible': [('supplier','=',False)]}">
+                        <field name="lender_business_development_manager"/>
+                        <field name="underwriter"/>
+                        <field name="lender_credit_admin"/>
+                    </group>
+                    <group string="Lender Documentation Communication" attrs="{'invisible': [('supplier','=',False)]}">
+                        <field name="underwriting_office_fax"/>
+                        <field name="underwriting_office_email"/>
+                    </group>
+                    <group string="Prefered Method" attrs="{'invisible': [('supplier','=',False)]}">
+                        <field name="underwriting_office_email"/>
+                        <field name="underwriting_office_fax"/>
+                    </group>
+                </xpath>               
+            </field>                                    
+        </record>
+
+        <record id="base.view_partner_tree" model="ir.ui.view">
+            <field name="name">res.partner.tree</field>
+            <field name="model">res.partner</field>
+            <field eval="8" name="priority"/>
+            <field name="arch" type="xml">
+                <tree string="Contacts">
+                    <field name="name" readonly="1"/>
+                    <field name="last_name" readonly="1"/>
+                    <field name="newclientlead" on_change="onchange_check_selection1(newclientlead)"/>
+                    <field name="newhrlead" on_change="onchange_check_selection2(newhrlead)"/>
+                    <field name="newduallead" on_change="onchange_check_selection3(newduallead)"/>
+                    <field name="function" invisible="1"/>
+                    <field name="email" readonly="1"/>
+                    <field name="mobile" readonly="1"/>
+<!--                    <field name="phone"/>-->
+                    <field name="user_id" invisible="1"/>
+                    <field name="is_company" invisible="1"/>
+                    <field name="country" invisible="1"/>
+                    <field name="country_id" invisible="1"/>
+                    <field name="parent_id" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+        
+<record id="view_lender_form" model="ir.ui.view">
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="priority">20</field>
+            <field name="arch" type="xml">
+                <form string="Partners" version="7.0">
+                    <sheet>
+                        <field name="image" widget='image' class="oe_left oe_avatar" options='{"preview_image": "image_medium", "size": [90, 90]}'/>
+                        <div class="oe_title">
+                            <div class="oe_edit_only">
+                                <label for="name"/>
+<!--                                (
+                                <field name="is_company" on_change="onchange_type(is_company)" class="oe_inline" invisible="1"/>
+                                <label for="is_company" string="Is a Company?"/>)-->
+                            </div>
+                            <h1>
+                                <field name="name_title" placeholder="salutation" attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+                                <field name="name" default_focus="1" placeholder="Name" attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+                                <field name="middle_name" placeholder="Middle Name" attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+                                <field name="last_name" placeholder="Last Name" attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+                                <field name="spouse" placeholder="Spouse" attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+                            </h1>
+                            <field name="res_company" placeholder="Employer" attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+                            <field name="parent_id"
+                            placeholder="Company"
+                            on_change="onchange_address(use_parent_address, parent_id)"
+                            domain="[('is_company', '=', True)]" context="{'default_is_company': True}"
+                            attrs="{'invisible': [('is_company','=', True)]}" invisible="1"/>
+                            
+                            <field name="category_id" widget="many2many_tags" placeholder="Tags..." attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+                        </div>
+                        <div class="oe_right oe_button_box" name="buttons"> </div>
+                        <notebook>
+                            <page string="General">
+                                <group>
+                                    <group>
+                                        <field name="email" class="oe_bold" colors="red" fonts="bold" on_change="onchange_email_validation(email)" attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+                                        <field name="phone" on_change="onchange_phone_validation_phone(phone)" placeholder="e.g. 444-444-4444 " class="oe_bold" attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+                                        <field name="mobile" on_change="onchange_phone_validation_mobile(mobile)" placeholder="e.g. 444-444-4444 " attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+                                        <field name="work_phone" on_change="onchange_phone_validation_work_phone(work_phone)" placeholder="e.g. 444-444-4444 " attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+                                        <field name="preferred_phone" attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+        <!--                        <field name="phone_validation" attrs="{'invisible': [('phone_check','=', False)]}"/>                        -->
+                                        <field name="fax" attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+                                        
+                                        <field name="documentation_method" attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+                                        <field name="document_portal" attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+                                        <button string="Mail" name="mailto_customer" icon="terp-mail-message-new" type="object" attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+                                
+<!--                                <field name="phone" placeholder="e.g. +32.81.81.37.00"/>
+                                <field name="mobile"/>
+                                <field name="function" placeholder="e.g. Sales Director"/>
+                                attrs="{'invisible': [('is_company','=', True)]}"/>
+                                <field name="email" widget="email"/>
+                                <field name="fax"/>                                
+                                <field name="title" domain="[('domain', '=', 'contact')]"
+                                options='{"no_open": True}'/>-->
+<!--                                attrs="{'invisible': [('is_company','=', True)]}" />-->
+                                    </group>
+                                    <group>
+                                        <label for="type" attrs="{'invisible': [('parent_id','=', False)]}"/>
+                                        <div attrs="{'invisible': [('parent_id','=', False)]}" name="div_type">
+                                            <field class="oe_inline"
+                                    name="type"/>
+                                            <label for="use_parent_address" class="oe_edit_only"/>
+                                            <field name="use_parent_address" class="oe_edit_only oe_inline"
+                                    on_change="onchange_address(use_parent_address, parent_id)"/>
+                                        </div><field name="login_other_flag" invisible="1"/>
+
+                                        <label for="street" string="Address"/>
+                                        <div>
+                                            <field name="street" placeholder="Street..." attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+                                            <field name="street2" attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+                                            <div class="address_format">
+                                                <field name="city" placeholder="City" style="width: 40%%"/>
+<!--                                        <field name="state_id" class="oe_no_button" placeholder="State" style="width: 37%%" options='{"no_open": True}' on_change="onchange_state(state_id)"/>-->
+                                                <field name="zip" placeholder="ZIP" style="width: 60%%" attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+                                            </div>
+                                            <field name="province" attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+                                            <field name="country_id" placeholder="Country" class="oe_no_button" options='{"no_open": True}' attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+                                            <field name="po_box" placeholder="p/o box" attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+                                            <field name="birthdate" placeholder="DOB" attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+                                            <field name="sin" placeholder="SIN" attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+                                            <field name="referredby" placeholder="Referred By" attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+                                        </div>
+<!--                                <field name="website" widget="url" placeholder="e.g. www.openerp.com"/>-->
+                                    </group>
+                                    <group>
+                                        <label for="underwriting_office_street" string="Lender Underwriting Office"/>
+                                        <div>
+                                            <field name="underwriting_office_street" placeholder="Street..." attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+                                            <field name="underwriting_office_street2" attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+                                            <div class="address_format" >
+                                                <field name="underwriting_office_city" placeholder="City" style="width: 40%%" attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+                                                <field name="underwriting_office_state_id" class="oe_no_button" placeholder="State" style="width: 37%%" options='{"no_open": True}' on_change="onchange_state(state_id)" attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+                                                <field name="underwriting_office_zip" placeholder="ZIP" style="width: 20%%" attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+                                            </div>
+                                            <field name="underwriting_office_country_id" placeholder="Country" class="oe_no_button" options='{"no_open": True}' attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+                                        </div>
+                                        <field name="underwriting_office_website" widget="url" placeholder="e.g. www.openerp.com" attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+                                    </group>
+                                    <group>
+                                        <field name="underwriting_office_fax" attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+                                        <field name="underwriting_office_email" attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+                                        <field name="underwriting_office_phone" attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+                                        <field name="underwriting_office_mobile" attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+                                        <field name="underwriting_office_work_phone" attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+                                    </group>
+                                    <group>
+                                        <field name="lender_business_development_manager" attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+                                        <field name="underwriter" attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+                                        <field name="lender_credit_admin" attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+                                    </group>
+                                    <group string="Lender Documentation Communication">
+                                        <field name="underwriting_office_fax" attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+                                        <field name="underwriting_office_email" attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+                                    </group>
+                                    <group string="Prefered Method">
+                                        <field name="underwriting_office_email" attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+                                        <field name="underwriting_office_fax" attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Sales Volume">
+                                <group>
+                                    <group>
+					<field name="bonus_comp_period" attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+                                        <field name="ytd_volume" attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+                                        <field name="rolling_12Mo_volume" attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+                                        <field name="q1_volume" attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+                                        <field name="q2_volume" attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+                                        <field name="q3_volume" attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+                                        <field name="q4_volume" attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+                                    </group>
+                                    <group>
+                                        <field name="jan_volume" attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+                                        <field name="feb_volume" attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+                                        <field name="mar_volume" attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+                                        <field name="apr_volume" attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+
+                                        <field name="may_volume" attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+                                        <field name="june_volume" attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+                                        <field name="july_volume" attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+                                        <field name="aug_volume" attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+
+                                        <field name="sept_volume" attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+                                        <field name="oct_volume" attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+                                        <field name="nov_volume" attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+                                        <field name="dec_volume" attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+                                    </group>
+                                </group>
+                            </page>
+                        </notebook>
+                        <notebook colspan="4">
+<!--                            attrs="{'invisible': [('is_company','=',False)]}"-->                            
+                            <page string="Description Information">
+                                <field name="comment" placeholder="Put Descriptive Information here...." attrs="{'readonly': [('login_other_flag', '=', True)]}"/>
+                            </page>
+                            
+                        <!-- The History page becomes visible as soon as there is something to display inside -->
+                            <page string="History" name="page_history" invisible="True">
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_lender_tree" model="ir.ui.view">
+            <field name="name">res.partner.tree</field>
+            <field name="model">res.partner</field>
+            <field name="arch" type="xml">
+                <tree string="Lenders">
+                    <field name="name"/>
+                    <field name="login_other_flag" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+    </data>
+</openerp>

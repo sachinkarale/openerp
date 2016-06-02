@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_crm_cases_form" model="ir.ui.view">
+            <field name="name">view.crm.cases.form</field>
+            <field name="model">crm.cases</field>
+            <field name="arch" type="xml">
+                <form string="Partner Titles" version="7.0">                    
+                    <header>
+                        <field name="underwriter_stage" widget="statusbar" clickable="True" class="oe_highlight"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="title"/>
+                            <field name="name"/>
+                            <field name="description"/>
+                            <field name="creadted_by"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_crm_cases_tree" model="ir.ui.view">
+            <field name="name">view.crm.cases.tree</field>
+            <field name="model">crm.cases</field>
+            <field name="arch" type="xml">
+                <tree string="Partner Titles" version="7.0">
+                    <field name="name"/>
+                    <field name="description"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_crm_cases_form" model="ir.actions.act_window">
+            <field name="name">Cases</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">crm.cases</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_crm_cases_tree"/>           
+        </record>
+        <menuitem action="action_crm_cases_form" id="menu_crm_cases" parent="base.menu_sales"  sequence="1"/>               
+    </data>
+</openerp>

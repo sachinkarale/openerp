@@ -1,0 +1,47 @@
+
+<?xml version="1.0"?>
+<openerp>
+    <data noupdate="1">
+        <record model="hr.recruitment.stage" id="stage_job_syml1">
+                <field name="name">Candidate</field>
+                <field name="state">draft</field>
+                <field name="sequence">1</field>
+        </record>
+        <record model="hr.recruitment.stage" id="stage_job_syml2">
+                <field name="name">Contacted</field>
+                <field name="state">open</field>
+                <field name="sequence">2</field>
+        </record>
+        <record model="hr.recruitment.stage" id="stage_job_syml3">
+                <field name="name">Qualified</field>
+                <field name="state">open</field>
+                <field name="sequence">3</field>
+        </record>
+        <record model="hr.recruitment.stage" id="stage_job_syml4">
+                <field name="name">Presentation</field>
+                <field name="state">open</field>
+                <field name="sequence">4</field>
+        </record>
+        
+        <record model="hr.recruitment.stage" id="stage_job_syml_recur5">
+                <field name="name">Address Concerns</field>
+                <field name="state">open</field>
+                <field name="sequence">5</field>
+        </record>
+        <record model="hr.recruitment.stage" id="stage_job_syml6">
+                <field name="name">Awaiting Application</field>
+                <field name="state">open</field>
+                <field name="sequence">6</field>
+        </record>
+        <record model="hr.recruitment.stage" id="stage_job_syml7">
+                <field name="name">Involved</field>
+                <field name="state">done</field>
+                <field name="sequence">7</field>
+        </record>
+        <record model="hr.recruitment.stage" id="stage_job_syml8">
+                <field name="name">Lost</field>
+                <field name="state">cancel</field>
+                <field name="sequence">8</field>
+        </record>
+    </data>
+</openerp>

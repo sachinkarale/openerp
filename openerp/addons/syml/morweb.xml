@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_morweb_send_request_form" model="ir.ui.view">
+            <field name="name">MorWEB Request Form </field>
+            <field name="model">moreweb.request</field>
+            <field name="arch" type="xml">            
+                <form string="morWEB Request" version="7.0">                    
+                    <header>
+                        <button name="send_morweb_request" string="Send Request To morWEB" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </header>
+                    <sheet>
+                        <group colspan="4" col="4">
+                            <field name="partner_id" on_change="onchange_contact(partner_id)" domain="['|',('customer','=',True),('supplier','=',True)]"/>
+                            <field name="title"/>
+                            <field name="name"/>
+                            <field name="last_name"/>
+                            <field name="maritalStatus"/>
+                            <field name="birth_date"/>
+                            <field name="numberOfDependents"/>
+<!--                            <field name="state_field"/>                            -->
+                            <field name="application_no"/>                            
+                        </group> 
+                    
+                        <group colspan="4" col="4">
+<!--                            <field name="opportunity_id"/>
+                            <field name="crm_asset_ids"/>-->
+<!--                            <field name="asset_type"/>
+                            <field name="asset_value"/>
+                            <field name="asset_description"/>-->
+                            <field name="street"/>
+                            <field name="city"/>
+<!--                            <field name="po"/>-->
+                            <field name="email"/>                            
+                            <field name="job_position"/>                            
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_morweb_send_request_tree">
+            <field name="name">view.morweb.send.request.tree</field>
+            <field name="model">moreweb.request</field>
+            <field name="arch" type="xml">
+                <tree string="MoreWEB">
+                    <field name="name"/>
+                    <field name="last_name"/>
+                    <field name="application_no"/>
+                </tree>
+            </field>
+        </record>
+<!--        <record id="action_view_morweb_send_request_form" model="ir.actions.act_window">
+            <field name="name">morWEB Request</field>
+            <field name="res_model">moreweb.request</field>
+            <field name="type">ir.actions.act_window</field>  
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_morweb_send_request_form"/>
+            <field name="context">{}</field>
+            <field name="target">new</field>
+        </record>-->
+        <record model='ir.actions.act_window' id='action_view_morweb_send_request'>
+            <field name='name'>morWEB Request</field>
+            <field name='res_model'>moreweb.request</field>
+            <field name='type'>ir.actions.act_window</field>
+            <field name='view_type'>form</field>
+            <field name='view_id' ref='view_morweb_send_request_tree'/>
+        </record>
+        <menuitem            
+            name="morWEB"
+            action="action_view_morweb_send_request"
+            id="morwebmenu"
+            parent="mail.mail_my_stuff"
+            sequence="2"/>
+
+    </data>
+</openerp>

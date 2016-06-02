@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : applicant_view.xml
+    Created on : March 24, 2014, 5:06 PM
+    Author     : Vijay
+    Description:
+        Purpose of the document follows.
+-->
+
+
+<openerp>
+    <data>
+         <record model="ir.ui.view" id="applicant_wizard_form">
+            <field name="name">applicant.wizard.form</field>
+            <field name="model">applicant.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Applicant" version="7.0">
+                    <separator string="Open in new Tab"/>
+                    <group>
+                        <field name="name" widget="url"/>
+                    </group>
+                    <footer>                        
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer> 
+                </form>
+            </field>
+        </record>
+
+            <record id="action_applicant_wizard_form" model="ir.actions.act_window">
+            <field name="name">Appllicant</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">applicant.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="applicant_wizard_form"/>
+            <field name="target">new</field>
+            <field name="multi">True</field>
+        </record>
+
+
+        <!--<act_window name="applicant new tab"
+                res_model="applicant.wizard"
+                src_model="crm.lead"
+                view_mode="form"
+                multi="True"
+                target="new"
+                key2="client_action_multi"
+                id="applicant_wizard_form"
+                />-->
+    </data>
+
+</openerp>

@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="applicant_form_view" model="ir.ui.view">
+            <field name="name">Applicant Record</field>
+            <field name="model">applicant.record</field>
+            <field name="arch" type="xml">
+                <form string="Applicant Record" version="7.0">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="applicant_name"/>
+                                <field name="applicant_last_name"/>
+                                <field name="email_personal"/>
+                            </group>
+                        </group>
+                        
+                        <notebook>
+                            <page string="Personal Info">
+                                <group>
+                                    <group>
+                                        <field name="email_work"/>
+                                        <field name="cell"/>
+                                        <field name="work"/>
+                                        <field name="home"/>
+                                        <field name="best_number"/>
+                                        <field name="relationship_status"/>
+                                        <field name="opportunity" domain="[('type','=','opportunity')]"/>
+                                        <field name="sales_Associates"/>
+                                        <field name="consent_dateTime"/>
+                                    </group>
+                                    <group>
+                                        <field name="dob"/>
+                                        <field name="sin"/>
+                                        <field name="passport"/>
+<!--                                        <field name="contact_record"/>-->
+                                        <field name="signature"/>
+                                        <field name="signature_ip"/>                                        
+<!--                                        <field name="identity_attached"/>-->
+                                        <field name="non_resident"/>
+                                        <field name="immigration_date"/>
+                                    </group>
+                                </group>
+                                <label for="address_ids" string="Addresses"/>
+                                <field name="address_ids">
+                                    <tree editable="bottom">
+                                        <field name="name"/>
+                                        <field name="street" string=""/>
+                                        <field name="city"/>
+                                        <field name="province"/>
+                                        <field name="postal_code"/>
+                                        <field name="date"/>                                        
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Credit/Liabilities">
+                                <group>
+                                    <group>
+                                        <field name="beacon_score"/>
+                                        <field name="beacon_5_score"/>
+                                        <field name="bankruptcy"/>
+                                        <field name="bankruptcy_discharge_date"/>
+                                        <field name="monthly_support_payment"/>                      
+                                    </group>
+                                    <group>
+                                        <field name="ers_2_score"/>
+                                        <field name="ers_3_score"/>
+                                        <field name="total_inquires"/>
+                                        <field name="orderly_debt_payment"/>
+                                        <field name="odp_discharge_date"/>
+                                        <field name="date_time_bureau_obtained"/>
+                                    </group>
+                                </group>
+                                <label for="mortgage" string="Mortgages"/>
+                                <field name="mortgage">
+                                    <tree editable="bottom">
+                                        <field name="name" style="width:400px"/>
+                                        <field name="interest_rate"/>
+                                        <field name="balance"/>
+                                        <field name="monthly_payment"/>
+                                        <field name="type"/>
+                                        <field name="renewal"/>
+                                        <field name="monthly_rent"/>
+                                        <field name="pay_off"/>
+                                        <field name="selling"/>
+                                        <field name="property_id"/>
+                                     </tree>
+                                </field>
+                                <label for="liabilities" string="Liabilities"/>
+                                <field name="liabilities">
+                                    <tree editable="bottom">
+                                        <field name="name"/>
+                                        <field name="business"/>
+                                        <field name="status"/>
+                                        <field name="type"/>
+                                        <field name="credit_limit"/>
+                                        <field name="credit_balance"/>
+                                        <field name="monthly_payment"/>
+                                        <field name="opened"/>
+                                        <field name="reported"/>
+                                        <field name="dla"/>
+                                        <field name="rating"/>
+                                        <field name="pay_off"/>                                        
+                                    </tree>
+                                </field>
+                                <label for="collection" string="Collections"/>
+                                <field name="collection">
+                                    <tree editable="bottom">
+                                        <field name="name"/>
+                                        <field name="amount"/>
+                                        <field name="balance"/>
+                                        <field name="date"/>
+                                        <field name="status"/>
+                                        <field name="pay_off"/>                                        
+                                    </tree>
+                                </field>
+
+                                <label for="late_payments" string="Late Payments"/>
+                                <field name="late_payments">
+                                    <tree editable="bottom">
+                                        <field name="name"/>
+                                        <!--<field name="status"/>-->
+                                        <field name="date"/>
+                                        <field name="rating"/>
+                                        <field name="days"/>
+                                        <field name="reason"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Assets">
+                                <group>
+                                    <group>
+                                        <field name="total_asset"/>
+                                    </group>
+                                    <group>
+                                        <field name="total_net_worth"/>
+                                    </group>
+<!--                                    <newline/>-->
+                                </group>
+                                
+                                <label for="property_ids" string="Properties"/>
+                                <field name="property_ids">
+                                    <tree editable="bottom">
+                                       
+                                                <field name="name"/>
+                                                <field name="value"/>
+                                                <field name="owed"/>
+                                                <field name="annual_tax"/>
+                                                <field name="mo_condo_fees"/>
+                                                <field name="property_id"/>
+                                                <field name="selling"/>
+                                           
+                                       
+                                    </tree>
+                                </field>
+<!--                                    <newline/>-->
+                                <label for="asset_ids" string="Assets"/>
+                                <newline/>
+                                <group>
+                                    <group>
+                                        <label for="money" string="Money that you normally have in your chequing and savings accounts after payday"/>
+                                    </group>
+                                    <group>
+                                        <field name="money" nolabel="1"/>
+                                    </group>
+                                </group>
+                                <newline/>
+                                <field name='asset_ids'>
+                                    <tree editable="bottom">
+                                        <field name="asset_type"/>
+                                        <field name="name"/>
+                                        <field name="value"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Employment/Income">
+                                <group>
+                                    <group>
+                                        
+                                        <field name="monthlychildsupport"/>
+                                        <field name="total_employed_income"/>
+                                        <field name="total_self_employed"/>
+                                        <!--<field name="income"/>-->
+                                    </group>
+                                    <group>
+                                        <field name="total_rental_income"/>
+                                        <field name="total_other_income"/>
+                                        <field name="total_income"/>
+                                    </group>
+                                </group>
+                                <label for="income_ids" string="Incomes &amp; Employers"/>
+                                <field name="income_ids">
+                                    <tree editable="bottom">
+                                        <field name="name"/>
+                                        <field name="business"/>
+                                        <field name="position"/>
+                                        <field name="industry"/>
+                                        <field name="annual_income"/>
+                                        <field name="month"/>                                        
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="applicant_tree_view" model="ir.ui.view">
+            <field name="name">Applicant Record</field>
+            <field name="model">applicant.record</field>
+            <field name="arch" type="xml">
+                <tree string="Applicant Record">
+                    <field name="applicant_name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="applicant_action_view" model="ir.actions.act_window">
+            <field name="name">Applicants</field>
+            <field name="res_model">applicant.record</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="applicant_tree_view"/>
+        </record>
+        <menuitem id="applicant_menu" action="applicant_action_view" parent="base.menu_sales" sequence="2"/>
+    </data>
+</openerp>

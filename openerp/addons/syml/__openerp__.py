@@ -1,0 +1,47 @@
+{
+    "name" : "syml 12th Dec",
+    "version" : "1.0",
+    "description":"latest code updated on 12th Dec",
+    "author" : "Bista Solutions pvt ",
+    "category" : "crm hr",
+    "depends" : ["crm","product","hr","hr_recruitment","purchase","document","mail","account","project"],
+    "init_xml" : [],
+    'data': [
+              'hr_recruitment_stage_data.xml',
+              'crm_stage_data.xml',
+    ],
+    "update_xml" : [
+                    'security/assistants_group.xml',
+                    'security/ir.model.access.csv',
+                    'wizard/leads_view.xml',
+		    'wizard/applicant_view.xml' ,
+#                    'morweb.xml',
+		    'customer_view.xml',
+                    'crm_lead_view.xml',
+                    
+                    'menu.xml',
+                    'product_view.xml',
+                    'hr_department.xml',
+                    'hr_application_view.xml',
+                    'hr_employee_view.xml',
+                    
+                    'opportunity_view.xml',
+#                    'crm_cases_view.xml',
+                    'document_search_view.xml',
+                    'res_users_view.xml',
+                    'email_template.xml',
+#                    'underwriting_app.xml',
+                    #'visdom_website_view.xml',
+                    'applicant_record_view.xml',
+                    'res_company_view.xml',
+		    'product_choice_report.xml',
+                    'project_stage_data_view.xml',
+                    'project_task_view.xml',
+                    'schedular_view.xml',
+                    'mail_message_view.xml',
+		    'fax/fax_view.xml',
+                    
+                    ],
+    "active": False,
+    "installable": True
+}

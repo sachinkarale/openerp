@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+        <!-- mail.message form: short view !-->
+        <record model="ir.ui.view" id="view_message_form_syml">
+            <field name="name">mail.message.form</field>
+            <field name="model">mail.message</field>
+            <field name="priority">20</field>
+            <field name="inherit_id" ref="mail.view_message_form"/>
+            <field name="arch" type="xml">
+                <field name="notified_partner_ids" position="after">
+                    <field name="opportunity_id"/>
+                </field>
+                <xpath expr="/form/sheet/group" position ="after">
+                    <group string="Attachment">
+                                <field name="attachment_ids" nolabel="1">
+                                    <tree string="Attachments" editable="top">
+                                        <button type="object" name="select_attach" icon="terp-camera_test"
+                                         />
+                                        <field name="attach" />
+                                        <field name="name" readonly="1"/>
+                                        <field name="datas_fname" readonly="1"/>
+                                        <field name="type" readonly="1"/>
+                                        <field name="company_id" groups="base.group_multi_company" readonly="1"/>
+                                        <field name="create_uid" readonly="1" />
+                                        <field name="create_date" readonly="1" />
+					<field name="document_link" widget="url" readonly="1"/>
+                                        <button type="object" name="redirect_url" icon="terp-stage"
+                                         />
+                                    </tree>
+                                </field>
+                         </group>
+               
+            </xpath>
+            <xpath expr="/form/sheet/group[1]" position ="before">
+                <button type="object" name="attach_to_opportunity"
+                                        string="Attach to Opportunity" invisible="1"/>
+            </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>

@@ -1,0 +1,323 @@
+<?xml version="1.0" ?>
+<openerp>
+    <data>
+
+       <menuitem id="menu_send_fax_form" sequence="10" name="Fax"
+                  />
+
+       <menuitem id="sub_menu_send_fax_form" sequence="1" name="Fax" parent="menu_send_fax_form"
+         />
+
+       <!-- Form For Fax sending-->
+<!--        <record id="view_send_fax_tree" model="ir.ui.view">
+            <field name="name">send.fax.tree</field>
+            <field name="model">send.fax</field>
+            <field eval="8" name="priority"/>
+            <field name="arch" type="xml">
+                <tree string="Fax Sending Form">
+                    <field name="partner_id"/>
+                    <field name="fax" />
+                    <field name="state" />
+                </tree>
+            </field>
+        </record>-->
+
+        <record id="view_send_fax_form" model="ir.ui.view">
+            <field name="name">send.fax.form</field>
+            <field name="model">send.fax</field>
+            <field eval="8" name="priority"/>
+            <field name="arch" type="xml">
+                <form string="Fax Sending Form" version="7.0">
+                    <header>
+                        <button name="send_fax" string="Send Fax" type="object" class="oe_highlight"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,done"/>
+                    </header>
+                    <sheet>
+                        <group colspan="4" col="4">
+                            <group>
+                                <field name="partner_id" on_change="onchange_partner_id(partner_id)" domain="[('type','=','opportunity')]"/>
+                                <field name="show_fax" />
+<!--                                <field name="body_fax" />-->
+<!--                                 <field name="body_fax" nolabel="1"/>-->
+
+                            </group>
+                            <group>
+<!--                                <field name="body_fax" nolabel="1"/>-->
+<!--                                <field name="fax" />-->
+<!--                                <field name="opp_id" />-->
+<!--                                <field name="opp_fax_ids" />-->
+
+                            </group>
+                            
+                        </group>
+                        <group>
+                                <field name="body_fax" nolabel="1"/>
+
+                         </group>
+                        <separator string="Attachments" />
+                        <field name="send_attachment_ids" nolabel="1" colspan="4" attrs="{'readonly':[('state','=','done')]}">
+                            <tree string="Attachments" editable="top"  >
+                                <field name="datas" filename="name"/>
+                                <field name="name" />
+
+                            </tree>
+                       </field>
+                       <h3>Note : - You can add up to 10 documents or up to 18MB </h3>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_send_fax_form" model="ir.actions.act_window">
+            <field name="name">Fax OUT</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">send.fax</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to Send Fax .
+              </p><p>
+                OpenERP helps you easily track all activities related to
+                Fax.
+              </p>
+            </field>
+        </record>
+
+        <menuitem id="send_fax_form" action="action_send_fax_form" sequence="1" parent="sub_menu_send_fax_form"
+                  />
+
+        
+        <!-- Form For Fax sending-->
+        <record id="view_incoming_fax_tree" model="ir.ui.view">
+            <field name="name">incoming.fax.tree</field>
+            <field name="model">incoming.fax</field>
+            <field eval="8" name="priority"/>
+            <field name="arch" type="xml">
+                <tree string="Incoming Fax" create="false" edit="false" >
+                    <field name="name" select="1"/>
+                    <field name="fax" select="1"/>
+                    <field name="caller_id" select="1"/>
+                    <field name="date" select="1"/>
+                </tree>
+            </field>
+        </record>
+
+<!--        <record id="view_incoming_fax_form" model="ir.ui.view">
+            <field name="name">incoming.fax.form</field>
+            <field name="model">incoming.fax</field>
+            <field eval="8" name="priority"/>
+            <field name="arch" type="xml">
+                <form string="Fax Sending Form" version="7.0" create="false" >
+                    <header>
+                        
+                    </header>
+                    <sheet>
+                        <group colspan="4" col="4">
+                            <group>
+                                <field name="name" />
+                                <field name="email_from" />
+                                <field name="date" />
+                                <field name="fax" />
+                                
+                                <field name="author" />
+                                <field name="email_to" />
+                            </group>
+                            <group>
+                                <field name="event_id"/>
+                                <field name="caller_id" />
+                                <field name="email_cc" />
+                                <field name="reply_to" />
+                                <field name="message_id" />
+                                
+                            </group>
+                        </group>
+                        <group string="Attachment">
+                            <field name="fax_attachment_ids" nolabel="1">
+                                <tree string="Attachments" editable="top">
+                                    <button type="object" name="select_attach" icon="terp-camera_test"
+                                           />
+                                    <field name="attach" />
+                                    <field name="name" readonly="1"/>
+                                    <field name="datas_fname" readonly="1"/>
+                                    <field name="type" readonly="1"/>
+                                    <field name="company_id"  readonly="1"/>
+                                    <field name="create_uid" readonly="1" />
+                                    <field name="create_date" readonly="1" />
+                                 </tree>
+                            </field>
+                         </group>
+                        <field name="body" colspan="4" widget="html"/>
+                    </sheet>
+                </form>
+            </field>
+        </record>-->
+
+        <record id="action_incoming_fax_form" model="ir.actions.act_window">
+            <field name="name">Fax IN</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">incoming.fax</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to Send Fax .
+              </p><p>
+                OpenERP helps you easily track all activities related to
+                Fax.
+              </p>
+            </field>
+        </record>
+
+        <menuitem id="incoming_fax_form" action="action_incoming_fax_form" sequence="3" parent="sub_menu_send_fax_form"
+                  />
+
+
+        <!-- Form For Fax Outgoing History -->
+        <record id="view_outgoing_fax_tree" model="ir.ui.view">
+            <field name="name">outgoing.fax.tree</field>
+            <field name="model">outgoing.fax</field>
+            <field eval="8" name="priority"/>
+            <field name="arch" type="xml">
+                <tree string="Outgoing Fax" create="false" edit="false">
+                    <field name="name" invisible="1"/>
+                    <field name="partner_id" select="1"/>
+                    <field name="fax" select="1"/>
+                    <field name="date" select="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_outgoing_fax_form" model="ir.ui.view">
+            <field name="name">outgoing.fax.form</field>
+            <field name="model">outgoing.fax</field>
+            <field eval="8" name="priority"/>
+            <field name="arch" type="xml">
+                <form string="Sent Fax" version="7.0" create="false" edit="false">
+                    <header>
+                    </header>
+                    <sheet>
+                        <group colspan="4" col="4">
+                            <group>
+                                <field name="partner_id" />
+                                <field name="fax" />
+                            </group>
+                                <field name="date" />
+                            <group>
+                            </group>
+                        </group>
+<!--                        <field name="body" colspan="4" widget="html"/>-->
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_outgoing_fax_form" model="ir.actions.act_window">
+            <field name="name">Sent Fax</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">outgoing.fax</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to see Outgoing Fax .
+              </p><p>
+                OpenERP helps you easily track all activities related to
+                Fax.
+              </p>
+            </field>
+        </record>
+
+        <menuitem id="outgoing_fax_form" action="action_outgoing_fax_form" sequence="4" parent="sub_menu_send_fax_form"
+                  />
+
+        <!-- Form For Fax sending-->
+        <record id="view_sent_fax_response_tree" model="ir.ui.view">
+            <field name="name">sent.fax.response.tree</field>
+            <field name="model">sent.fax.response</field>
+            <field eval="8" name="priority"/>
+            <field name="arch" type="xml">
+                <tree string="Incoming Fax" create="false" edit="false">
+                    <field name="name" select="1"/>
+                    <field name="fax" select="1"/>
+                    <field name="status" select="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_sent_fax_response_form" model="ir.ui.view">
+            <field name="name">sent.fax.response</field>
+            <field name="model">sent.fax.response</field>
+            <field eval="8" name="priority"/>
+            <field name="arch" type="xml">
+                <form string="Fax Sending Form" version="7.0" create="false" edit="false">
+                    <header>
+                    </header>
+                    <sheet>
+                        <group colspan="4" col="4">
+                            <group>
+                                <field name="name" />
+<!--                                <field name="email_from" />
+                                <field name="date" />-->
+<!--                                <field name="author" />-->
+<!--                                <field name="email_to" />-->
+                            </group>
+                            <group>
+                                <field name="fax" select="1"/>
+                                <field name="status" select="1"/>
+<!--                                <field name="email_cc" />
+                                <field name="reply_to" />-->
+<!--                                <field name="message_id" />-->
+                            </group>
+                        </group>
+                        <field name="body" colspan="4" widget="html"/>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_sent_fax_response_form" model="ir.actions.act_window">
+            <field name="name">Sent Fax Status</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sent.fax.response</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to See Response of Sent Fax .
+              </p><p>
+                OpenERP helps you easily track all activities related to
+                Fax.
+              </p>
+            </field>
+        </record>
+
+       <menuitem id="sent_fax_response_form" action="action_sent_fax_response_form" sequence="5" parent="sub_menu_send_fax_form"
+                  />
+
+
+<!--        <record id="action_sent_fax_form" model="ir.actions.act_window">
+            <field name="name">Sent Fax</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">mail.mail</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{}</field>
+            <field name="domain">[('custom_type','=','fax')]</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to Send Fax .
+              </p><p>
+                OpenERP helps you easily track all activities related to
+                Fax.
+              </p>
+            </field>
+        </record>
+       
+        <menuitem id="sent_fax_form" action="action_sent_fax_form" sequence="5" parent="sub_menu_send_fax_form"
+                  groups="bista_iugroup.group_record_user,bista_iugroup.group_record_manager,bista_iugroup.group_iu_cust_service" />-->
+
+        
+    </data>
+</openerp>

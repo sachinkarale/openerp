@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="create_leads_wizard_form">
+            <field name="name">create.lead._wizard.form</field>
+            <field name="model">create.leads</field>
+            <field name="arch" type="xml">
+                <form string="Create Leads" version="7.0">
+                    <separator string="Selected Contact(s)"/>
+                    <group>
+                        <field name="lead_ids" nolabel="1" readonly="1"/>
+                    </group>
+                    <footer>
+                        <button name="leads" String="Create" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        
+        <act_window name="Create Leads"
+                res_model="create.leads"
+                src_model="res.partner"
+                view_mode="form"
+                multi="True"
+                target="new"
+                key2="client_action_multi"
+                id="action_partner_create_leads"
+                />
+    </data>
+</openerp>

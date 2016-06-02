@@ -1,0 +1,320 @@
+<?xml version="1.0"?>
+<document filename="Product Choice.pdf">
+    <template title="Product Choice" author="OpenERP S.A.(mortgageApp@bistasolutions.com)" allowSplitting="20">
+        <pageTemplate id="first">
+            <frame id="first" x1="15.0" y1="42.0" width="539" height="758"/>
+        </pageTemplate>
+    </template>
+    <stylesheet>
+        <blockTableStyle id="Standard_Outline">
+            <blockAlignment value="LEFT"/>
+            <blockValign value="TOP"/>
+        </blockTableStyle>
+        <blockTableStyle id="Table1">
+            <blockAlignment value="LEFT"/>
+            <blockValign value="TOP"/>
+        </blockTableStyle>
+        <blockTableStyle id="Table2">
+            <blockAlignment value="LEFT"/>
+            <blockValign value="TOP"/>
+            <lineStyle kind="LINEBEFORE" colorName="#e6e6e6" start="0,0" stop="0,-1"/>
+            <lineStyle kind="LINEABOVE" colorName="#e6e6e6" start="0,0" stop="0,0"/>
+            <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="0,-1" stop="0,-1"/>
+            <lineStyle kind="LINEBEFORE" colorName="#e6e6e6" start="1,0" stop="1,-1"/>
+            <lineStyle kind="LINEABOVE" colorName="#e6e6e6" start="1,0" stop="1,0"/>
+            <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="1,-1" stop="1,-1"/>
+            <lineStyle kind="LINEBEFORE" colorName="#e6e6e6" start="2,0" stop="2,-1"/>
+            <lineStyle kind="LINEABOVE" colorName="#e6e6e6" start="2,0" stop="2,0"/>
+            <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="2,-1" stop="2,-1"/>
+            <lineStyle kind="LINEBEFORE" colorName="#e6e6e6" start="3,0" stop="3,-1"/>
+            <lineStyle kind="LINEAFTER" colorName="#e6e6e6" start="3,0" stop="3,-1"/>
+            <lineStyle kind="LINEABOVE" colorName="#e6e6e6" start="3,0" stop="3,0"/>
+            <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="3,-1" stop="3,-1"/>
+        </blockTableStyle>
+        <blockTableStyle id="Table3">
+            <blockAlignment value="LEFT"/>
+            <blockValign value="TOP"/>
+            <lineStyle kind="LINEBEFORE" colorName="#e6e6e6" start="0,0" stop="0,-1"/>
+            <lineStyle kind="LINEABOVE" colorName="#e6e6e6" start="0,0" stop="0,0"/>
+            <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="0,-1" stop="0,-1"/>
+            <lineStyle kind="LINEBEFORE" colorName="#e6e6e6" start="1,0" stop="1,-1"/>
+            <lineStyle kind="LINEABOVE" colorName="#e6e6e6" start="1,0" stop="1,0"/>
+            <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="1,-1" stop="1,-1"/>
+            <lineStyle kind="LINEBEFORE" colorName="#e6e6e6" start="2,0" stop="2,-1"/>
+            <lineStyle kind="LINEABOVE" colorName="#e6e6e6" start="2,0" stop="2,0"/>
+            <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="2,-1" stop="2,-1"/>
+            <lineStyle kind="LINEBEFORE" colorName="#e6e6e6" start="3,0" stop="3,-1"/>
+            <lineStyle kind="LINEAFTER" colorName="#e6e6e6" start="3,0" stop="3,-1"/>
+            <lineStyle kind="LINEABOVE" colorName="#e6e6e6" start="3,0" stop="3,0"/>
+            <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="3,-1" stop="3,-1"/>
+        </blockTableStyle>
+        <blockTableStyle id="Table4">
+            <blockAlignment value="LEFT"/>
+            <blockValign value="TOP"/>
+            <lineStyle kind="LINEBELOW" colorName="#000000" start="0,-1" stop="0,-1"/>
+            <lineStyle kind="LINEBELOW" colorName="#000000" start="1,-1" stop="1,-1"/>
+            <lineStyle kind="LINEBELOW" colorName="#000000" start="2,-1" stop="2,-1"/>
+            <lineStyle kind="LINEBELOW" colorName="#000000" start="3,-1" stop="3,-1"/>
+            <lineStyle kind="LINEBELOW" colorName="#000000" start="4,-1" stop="4,-1"/>
+            <lineStyle kind="LINEBELOW" colorName="#000000" start="5,-1" stop="5,-1"/>
+        </blockTableStyle>
+        <blockTableStyle id="Table5">
+            <blockAlignment value="LEFT"/>
+            <blockValign value="TOP"/>
+            <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="0,-1" stop="0,-1"/>
+            <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="1,-1" stop="1,-1"/>
+            <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="2,-1" stop="2,-1"/>
+            <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="3,-1" stop="3,-1"/>
+            <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="4,-1" stop="4,-1"/>
+            <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="5,-1" stop="5,-1"/>
+            <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="6,-1" stop="6,-1"/>
+        </blockTableStyle>
+        <blockTableStyle id="Table6">
+            <blockAlignment value="LEFT"/>
+            <blockValign value="TOP"/>
+            <lineStyle kind="LINEABOVE" colorName="#ffffff" start="0,0" stop="0,0"/>
+            <lineStyle kind="LINEABOVE" colorName="#000000" start="1,0" stop="1,0"/>
+            <lineStyle kind="LINEABOVE" colorName="#000000" start="2,0" stop="2,0"/>
+            <lineStyle kind="LINEBEFORE" colorName="#ffffff" start="0,1" stop="0,-1"/>
+            <lineStyle kind="LINEBELOW" colorName="#ffffff" start="0,-1" stop="0,-1"/>
+            <lineStyle kind="LINEBEFORE" colorName="#ffffff" start="0,2" stop="0,-1"/>
+            <lineStyle kind="LINEBELOW" colorName="#ffffff" start="0,-1" stop="0,-1"/>
+            <lineStyle kind="LINEABOVE" colorName="#000000" start="1,2" stop="1,2"/>
+            <lineStyle kind="LINEABOVE" colorName="#000000" start="2,2" stop="2,2"/>
+        </blockTableStyle>
+        <blockTableStyle id="Table7">
+            <blockAlignment value="LEFT"/>
+            <blockValign value="TOP"/>
+        </blockTableStyle>
+        <initialize>
+            <paraStyle name="all" alignment="justify"/>
+        </initialize>
+        <paraStyle name="Standard" fontName="Helvetica"/>
+        <paraStyle name="Text body" fontName="Helvetica" spaceBefore="0.0" spaceAfter="6.0"/>
+        <paraStyle name="Heading" fontName="Helvetica" fontSize="8.0" leading="10" spaceBefore="12.0" spaceAfter="6.0"/>
+        <paraStyle name="List" fontName="Helvetica" spaceBefore="0.0" spaceAfter="6.0"/>
+        <paraStyle name="Table Contents" fontName="Helvetica"/>
+        <paraStyle name="Table Heading" fontName="Helvetica" alignment="CENTER"/>
+        <paraStyle name="Caption" fontName="Helvetica" fontSize="12.0" leading="15" spaceBefore="6.0" spaceAfter="6.0"/>
+        <paraStyle name="Index" fontName="Helvetica"/>
+        <paraStyle name="terp_header" fontName="Helvetica-Bold" fontSize="15.0" leading="19" alignment="LEFT" spaceBefore="12.0" spaceAfter="6.0"/>
+        <paraStyle name="terp_default_8" fontName="Helvetica" fontSize="8.0" leading="10" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+        <paraStyle name="terp_default_Bold_8" fontName="Helvetica-Bold" fontSize="8.0" leading="10" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+        <paraStyle name="terp_default_Bold_9" fontName="Helvetica-Bold" fontSize="9.0" leading="11" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+        <paraStyle name="terp_default_Bold_new" fontName="Helvetica-Bold" fontSize="9.0" leading="13" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+        <paraStyle name="terp_default_9" fontName="Helvetica" fontSize="9.0" leading="11" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+        <paraStyle name="terp_tblheader_General" fontName="Helvetica-Bold" fontSize="8.0" leading="10" alignment="LEFT" spaceBefore="6.0" spaceAfter="6.0"/>
+        <paraStyle name="terp_tblheader_General_Centre" fontName="Helvetica-Bold" fontSize="8.0" leading="10" alignment="CENTER" spaceBefore="6.0" spaceAfter="6.0"/>
+        <paraStyle name="terp_default_Centre_8" fontName="Helvetica" fontSize="8.0" leading="10" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0"/>
+        <paraStyle name="terp_tblheader_Details" fontName="Helvetica-Bold" fontSize="9.0" leading="11" alignment="LEFT" spaceBefore="6.0" spaceAfter="6.0"/>
+        <paraStyle name="Footer" fontName="Helvetica"/>
+        <paraStyle name="Horizontal Line" fontName="Helvetica" fontSize="6.0" leading="8" spaceBefore="0.0" spaceAfter="14.0"/>
+        <paraStyle name="Heading 9" fontName="Helvetica-Bold" fontSize="75%" leading="NaN" spaceBefore="12.0" spaceAfter="6.0"/>
+        <paraStyle name="terp_tblheader_General_Right" fontName="Helvetica-Bold" fontSize="8.0  " leading="10" alignment="RIGHT" spaceBefore="6.0" spaceAfter="6.0"/>
+        <paraStye name="terp_tblheader_Details_Centre" fontName="Helvetica-Bold" fontSize="9.0" leading="11" alignment="CENTER" spaceBefore="6.0" spaceAfter="6.0"/>
+        <paraStyle name="terp_tblheader_Details_Right" fontName="Helvetica-Bold" fontSize="9.0" leading="11" alignment="RIGHT" spaceBefore="6.0" spaceAfter="6.0"/>
+        <paraStyle name="terp_default_Right_8" fontName="Helvetica" fontSize="8.0" leading="10" alignment="RIGHT" spaceBefore="0.0" spaceAfter="0.0"/>
+        <paraStyle name="terp_header_Right" fontName="Helvetica-Bold" fontSize="15.0" leading="19" alignment="LEFT" spaceBefore="12.0" spaceAfter="6.0"/>
+        <paraStyle name="terp_header_Centre" fontName="Helvetica-Bold" fontSize="15.0" leading="19" alignment="CENTER" spaceBefore="12.0" spaceAfter="6.0"/>
+        <paraStyle name="terp_default_address" fontName="Helvetica" fontSize="10.0" leading="13" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+        <paraStyle name="terp_default_Centre_9" fontName="Helvetica" fontSize="9.0" leading="11" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0"/>
+        <paraStyle name="terp_default_Right_9" fontName="Helvetica" fontSize="9.0" leading="11" alignment="RIGHT" spaceBefore="0.0" spaceAfter="0.0"/>
+        <paraStyle name="terp_default_1" fontName="Helvetica" fontSize="2.0" leading="3" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+        <paraStyle name="terp_default_Right_9_Bold" fontName="Helvetica-Bold" fontSize="9.0" leading="11" alignment="RIGHT" spaceBefore="0.0" spaceAfter="0.0"/>
+        <paraStyle name="terp_default_Italic" rightIndent="0.0" leftIndent="20.0" fontName="Helvetica-Oblique" fontSize="8.0" leading="10" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+        <paraStyle name="Preformatted Text" fontName="Helvetica" fontSize="10.0" leading="13" spaceBefore="0.0" spaceAfter="0.0"/>
+        <paraStyle name="terp_default_Centre_9_Bold" fontName="Helvetica-Bold" fontSize="9.0" leading="11" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0"/>
+        <images/>
+    </stylesheet>
+    <story>
+        <pto>
+            <para style="terp_default_8">[[repeatIn(objects,'o')]]</para>
+            
+            <para style="terp_default_8">
+                <font color="white"> </font>
+            </para>
+            <blockTable colWidths="240.0,300.0" style="Table1">
+                <tr>
+                   <td>
+                <para style="terp_default_Bold_9">Property:</para>
+                <section>
+                    <para style="terp_default_1">[[repeatIn(o.applicant_record_line,'line')]]</para>
+                    <para style="terp_default_9">[[ get_add(line) ]] </para>
+                </section>
+                </td>
+                <td>
+                <para style="terp_default_Bold_9">Mortgage Amount: <font face="Courier">[[ (o.current_mortgage_amount) or '' ]]</font></para>
+                <!--<para style="terp_default_Centre_9">[[ (o.current_mortgage_amount) or '' ]]</para>-->
+                </td>
+                </tr>
+                <tr>
+                   <td>
+                <!--<para style="terp_default_Bold_9">Property:</para>-->
+                <para style="terp_default_8">
+                <font color="white"> </font>
+            </para>
+                </td>
+                <td>
+                <para style="terp_default_Bold_9">Down Payment: <font face="Courier">[[ (o.down_payment_amount) or '' ]]</font></para>
+                <!--<para style="terp_default_Centre_9">[[ (o.down_payment_amount) or '' ]]</para>-->
+                </td>
+                </tr>
+                <tr>
+                    <td>
+                <para style="terp_default_Bold_9">Amortization: <font face="Courier">[[ (o.desired_amortization) or '' ]]</font></para>
+                <!--<para style="terp_default_Centre_9">[[ (o.desired_amortization) or '' ]]</para>-->
+                </td>
+                <td>
+                <para style="terp_default_Bold_9">Insurance:</para>
+                </td>
+                </tr>
+            </blockTable>
+            <para style="terp_default_8">
+                <font color="white"> </font>
+            </para>
+            <para style="terp_default_8">
+                <font color="white"> </font>
+            </para>
+
+            <blockTable colWidths="540.0" style="Table1">
+                <tr>
+                    <td>
+                <para style="terp_default_Bold_new">Needs Considerations </para>
+                <para style="terp_default_9">You indicated the following considerations in your Original application:</para>
+
+                <para style="terp_default_9">- You easily imagine yourself in the same job 5 Years from Now: [[ suitability_func(o.job_5_years)]]</para>
+                <para style="terp_default_9">- If your income Decreased by a few hundred a month you would worry significantly: [[ suitability_func(o.income_decreased_worried) ]]</para>
+                <para style="terp_default_9">- How likely is it that you may have a larger family in the next 5 years: [[ suitability_func(o.future_family) ]]</para>
+                <para style="terp_default_9">- How likely is it that your are considering a new vehicle in 6-12 months: [[ suitability_func(o.buy_new_vehicle) ]]</para>
+                <para style="terp_default_9">- How likely is it that your Lifestyle may change along with your storage need: [[ suitability_func(o.buy_new_vehicle) ]]</para>
+                <para style="terp_default_9">- You consider yourself a Financial Risk Taker:  [[ suitability_func(o.financial_risk_taker) ]]</para>
+                <para style="terp_default_9">- How likely is it that you may be selling this property within the next 5 years: [[ suitability_func(o.property_less_then_5_years) ]]</para>
+                </td>
+                </tr>
+            </blockTable>
+
+            <para style="terp_default_8">
+                <font color="white"> </font>
+            </para>
+            <para style="terp_default_Bold_9">Suitability Notes</para>
+            <blockTable>
+                <tr>
+                    <td>
+                <section>
+                    <para style="terp_default_9">[[ suitalibilty_notes(o) ]]</para>
+                </section>
+                </td>
+                </tr>
+            </blockTable>
+             <para style="terp_default_8">
+                <font color="white"> </font>
+            </para>
+            <para style="terp_default_Bold_9">Rate &amp; Payment Considerations</para>
+            <blockTable>
+                <tr>
+                    <td>
+                    <para style="terp_default_9">Generic text describing payment considerations and rate considerations...Payment amount is not including taxes:</para>
+                </td>
+                </tr>
+                <tr>
+                <td>
+                <para style="terp_default_9">Many people when they make mortgage decisions think only of interest rate and go great lengths to try to save 0.1% in rate.However, a difference of 0.1% in rate means a difference in payments on your  [[o.current_mortgage_amount or '']] Mortgage of </para>
+                <para style="terp_default_9">[[((deal.marketing_field == 'LowerPayment1') or removeParentNode('para')) and '' ]] [[deal.name]]</para>
+                <para style="terp_default_9">/month White rate in important, other factors such as payout penalties can end up costing
+many Thousands of dollars, while saving $6 per month is a relatively minor consideration. Nevertheless, we have analyzed your needs across</para>
+                <para style="terp_default_9">Mortgage Products to select the best product in each category that your property qualifies for.</para>
+                </td>
+                </tr>
+            </blockTable>
+
+            <para style="terp_default_8">
+                <font color="white"> </font>
+            </para>
+
+            <para style="terp_default_Bold_9">Please Note:</para>
+            <blockTable>
+                <tr>
+                    <td>
+                        <section>
+                            
+                            <para style="terp_default_9">[[ borderline_notes(o) ]]</para>
+                        </section>
+                    </td>
+                </tr>
+             </blockTable>
+            
+            <para style="terp_default_Bold_9">Your Original Selection</para>
+                <section>
+                    <para style="terp_default_8">[[ name_convention_desired(o) ]]</para>
+                  </section>
+                
+        
+            <para style="terp_default_8">
+                <font color="white"> </font>
+            </para>
+
+
+            <para style="terp_default_Bold_9">Fixed Option</para>
+                <para style="terp_default_9">[[ name_convention_fixed(o) ]]</para>
+            
+            <para style="terp_default_8">
+                <font color="white"> </font>
+            </para>
+
+
+            <para style="terp_default_Bold_9">Variable Option</para>
+            <section>
+                 <para style="terp_default_9">[[ name_convention_variable(o) ]]</para>
+            </section>
+            <para style="terp_default_8">
+                <font color="white"> </font>
+            </para>
+
+
+            <para style="terp_default_Bold_9">Variable v.s.Fixed Option</para>
+            
+               <para style="terp_default_9">[[ name_convention_varvsfixed(o) ]]</para>
+            
+            <para style="terp_default_8">
+                <font color="white"> </font>
+            </para>
+
+
+            <para style="terp_default_Bold_9">Recommendation</para>
+            <para style="terp_default_9">[[ name_convention_recommendation(o) ]]</para>
+            <para style="terp_default_8">
+                <font color="white"> </font>
+            </para>
+
+
+            <para style="terp_default_Bold_9">Payment Flexibility (Recommended Option)</para>
+            <para style="terp_default_9">[[ name_convention_paymentoption(o) ]]</para>
+            <para style="terp_default_8">
+                <font color="white"> </font>
+            </para>
+
+
+            <para style="terp_default_Bold_9">Risk Considerations</para>
+            <para style="terp_default_9"> Text talking about risk
+The future direction of interest rates is always a question when considering mortgage decisions.
+If it is expected rates will fall ... a variable product is preferred
+If rate are likely to rise, a fixed product is preferred. The additional risk few people consider involve payout penalties. If
+you sell your house prior to the end of the term and need to break your mortgage, the lender will charge payout penalties.
+These vary significantly from lender to lender.
+If it is likely you will be selling your house before the term is finished, you may want to seriously consider a variable
+mortgage
+Based Upon the Above considerations, what type and term of product do you wish to select?
+</para>
+
+            <para style="terp_default_8">
+                <font color="white"> </font>
+            </para>
+
+
+            <para style="terp_default_Bold_9">Please Understand</para>
+<para style="terp_default_9"> This is not a final commitment from a lender. It is simply a proposal outlining your options as the presently exist.
+    In the event that rates rise or fall prior to the final Lender commitment, the final terms of the mortgage you end up with may be different than the terms in this proposal document.
+</para>
+        </pto>
+    </story>
+</document>

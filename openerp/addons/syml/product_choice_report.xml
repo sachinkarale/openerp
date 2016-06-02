@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <report 
+                auto="False"
+                id="report_crm_lead"
+                menu="True"
+                model="crm.lead"
+                multi="True"
+                name="crm.lead4"
+                string="Product Choice"
+                rml="syml/report/product_choice.rml"
+         />
+         <report
+                auto="False"
+                id="report_appl_snap"
+                menu="True"
+                model="crm.lead"
+                multi="True"
+                name="appl.snap3"
+                string="Applicant Snapshot"
+                rml="syml/report/applicant_snapshot.rml"
+         />
+    </data>
+</openerp>

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+        <!-- mail.message form: short view !-->
+        <record model="ir.ui.view" id="view_message_form">
+            <field name="name">mail.message.form</field>
+            <field name="model">mail.message</field>
+            <field name="priority">20</field>
+            <field name="inherit_id" ref="mail.view_message_form" />
+            <field name="arch" type="xml">
+                <field name="notified_partner_ids" position="after">
+                    <field name="email_to"/>
+                    <field name="email_cc"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</openerp>

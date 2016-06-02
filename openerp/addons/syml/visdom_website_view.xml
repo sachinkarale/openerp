@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="visdom_form_view" model="ir.ui.view">
+            <field name="name">Visdom Form</field>
+            <field name="model">visdom.form</field>
+            <field name="arch" type="xml">
+                <form string="Visdom Form" version="7.0">
+                    <sheet>
+                        <group>
+                            <group string="Legal Matters">
+                                <field name="name"/>
+<!--                                <field name="W2DrpRelationship"/>-->
+                                <field name="appsign"/>
+                                <field name="coappsign"/>
+                            </group>
+<!--                            <group string="Leading Goal">
+                                <field name="W3Goal"/>
+                                <field name="W3Goal1Look"/>                            
+                                <field name="W3Goal2Look"/>
+                                <field name="W3Goal3Look"/>
+                                <field name="W3Goal2Funds"/>
+                                <field name="W3Goal2Building"/>
+                                <field name="W3Goal3Renewing"/>
+                            </group>-->
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="visdom_tree_view" model="ir.ui.view">
+            <field name="name">visdom</field>
+            <field name="model">visdom.form</field>
+            <field name="arch" type="xml">
+                <tree string="forms">
+                    <field name="name"/>
+<!--                    <field name="W3Goal1Look"/>
+                    <field name="W3Goal2Look"/>
+                    <field name="W3Goal3Look"/>
+                    <field name="W3Goal2Funds"/>
+                    <field name="W3Goal2Building"/>
+                    <field name="W3Goal3Renewing"/>-->
+                </tree>
+            </field>
+        </record>
+
+        <record id="visdom_action_view" model="ir.actions.act_window">
+            <field name="name">visdom</field>
+            <field name="res_model">visdom.form</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="visdom_tree_view"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                Click to create a visdom form.. 
+                </p>
+            </field>
+        </record>
+        <menuitem id="visdom_menu" action="visdom_action_view" parent="syml.Contacts_menu_child"/>
+    </data>
+</openerp>

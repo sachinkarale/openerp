@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_network_audit_log,network_audit.log,model_network_audit_log,,1,1,1,0
+access_network_audit_log_line,network_audit.log.line,model_network_audit_log_line,,1,1,1,0
+access_res_users_log,res_users_log,base.model_res_users,,1,1,0,0

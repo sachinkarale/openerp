@@ -1,0 +1,172 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="hr_recruitment.crm_case_form_view_job">
+        <field name="name">Jobs - Recruitment Form</field>
+        <field name="model">hr.applicant</field>
+        <field name="arch" type="xml">
+          <form string="Jobs - Recruitment Form" version="7.0">
+            <header>
+                
+                    <field name="stage_id" widget="statusbar" clickable="True"/>
+                    <field name="emp_id" invisible="1"/>
+                
+            </header>
+            <sheet>
+                <div class="oe_right oe_button_box">
+                    <button name="action_makeMeeting" type="object"
+                        string="Schedule Meeting" help="Schedule interview with this applicant"/>
+                    <button name="%(survey.action_view_survey_question_message)d" type="action"
+                        string="Start Interview" help="Answer related job question"
+                        context="{'survey_id': survey, 'response_id': [response], 'response_no':0 ,'active' : response, 'object' : 'hr.applicant'}"
+                        attrs="{'invisible':[('survey','=',False)]}"/>
+                    <button name="action_print_survey" type="object"
+                        string="Print Interview" help="Print interview report"
+                        attrs="{'invisible':[('survey','=',False)]}"/>
+                </div>
+                <div class="oe_title">
+                    <label for="name" class="oe_edit_only"/>
+                    <h1><field name="name"/></h1>
+                    <label for="partner_id" class="oe_edit_only"/>
+                    <h2>
+                        <!--<field name="partner_name" class="oe_inline"/>-->
+                        <field name="partner_id"
+                                on_change="onchange_partner_id(partner_id)" string="Candidate Name"/>
+                     </h2>
+
+                       <label for="email_from" class="oe_edit_only"/>
+                        <h2>
+                         <field name="email_from" widget="email"/>
+                    </h2>
+                </div>
+                <group>
+                    <group>
+                        
+                        <field name="company"/>
+                        <field name="partner_phone" string="Work"/>
+                        <field name="partner_mobile"/>
+                        <field name="type_id" placeholder="Degree" invisible="1"/>
+                        <field name="bdo_associate"/>
+                        <field name="bdo_check" invisible="1"/>
+                        <field name="referred_by"/>
+                        <field name="signature" attrs="{'invisible':[('state','!=','done')]}"/>
+                        <field name="sign_ip" attrs="{'invisible':[('state','!=','done')]}"/>
+                        <field name="role" attrs="{'invisible':[('state','!=','done')]}"/>
+                        <!--<field name="source_id"/>-->
+                    </group>
+                    <group>
+                        <field name="candidate_street"/>
+                        <field name="candidate_street2"/>
+                        <field name="candidate_city"/>
+                        <field name="candidate_state_id" string="Province"/>
+                        <field name="candidate_zip" string="Postal Code"/>
+                        <field name="agreement_date" attrs="{'invisible':[('state','!=','done')]}"/>
+                        <field name="received_update" attrs="{'invisible':[('state','!=','done')]}"/>
+                    </group>
+                    <group invisible="1">  
+                        <field name="user_id"/>
+                        <label for="title_action"/>
+                        <div>
+                            <field name="date_action"/>
+                            <field name="title_action" class="oe_inline" placeholder="e.g. Call for interview"/>
+                        </div>
+                        <field name="priority"/>
+                        <field name="state" invisible="1"/>
+                        <field name="source_id"/>
+                        
+                    </group>
+                    <group string="Job" invisible="1">
+                        <field name="survey" invisible="1"/>
+                        <field name="response" invisible="1"/>
+                        <field name="job_id" on_change="onchange_job(job_id)"/>
+                        <field name="department_id" on_change="onchange_department_id(department_id)"/>
+                        <label for="availability"/>
+                        <div>
+                            <field name="availability" class="oe_inline"/> <label string="Day(s)" class="oe_inline"/>
+                        </div>
+                    </group>
+                    <group string="Contract" invisible="1">
+                        <label for="salary_expected"/>
+                        <div>
+                            <field name="salary_expected" class="oe_inline"/>
+                            <span class="oe_inline" attrs="{'invisible':[('salary_expected_extra','=',False)]}"> + </span>
+                            <field name="salary_expected_extra" class="oe_inline" placeholder="Extra advantages..."/>
+                        </div>
+                        <label for="salary_proposed"/>
+                        <div>
+                            <field name="salary_proposed" class="oe_inline"/>
+                            <span class="oe_inline" attrs="{'invisible':[('salary_proposed_extra','=',False)]}"> + </span>
+                            <field name="salary_proposed_extra" class="oe_inline" placeholder="Extra advantages..."/>
+                        </div>
+                    </group>
+                </group>
+                <group string="Qualifying Info">
+                    <group>
+                        <field name="year"/>
+                        <field name="job_id" on_change="onchange_job(job_id)" string="Working With"/>
+                        <field name="avg_house_price"/>
+                        <field name="year_in_industry"/>
+                        <field name="rental_properties"/>
+                    </group>
+                    <group>
+                        <field name="current_broker"/>
+                        <field name="what_they_enjoy_about_it" string="Enjoy What?"/>
+                        <field name="what_they_wish_to_alter" string="Alter What?"/>
+                        <field name="is_anyone_else_in_decision" string="Decision Influencers?"/>
+                        <field name="goals_hopes_dreams" string="Top 3 Goals"/>
+                    </group>
+                </group>
+
+                <group invisible="1">
+                    <field name="categ_ids" widget="many2many_tags"/>
+                </group>
+                <group string="Opportunities" attrs="{'invisible':[('state','!=','done')]}">
+                    <field name="opp_hrapp_ids" nolabel="1" domain="[('referred_source','=',id)]">
+                        <tree editable="bottom">
+                             <field name="create_date"/>
+                             <field name="name" string="Opportunity"/>
+                             <field name="app_rec_ids"/>
+                             <field name="address"/>
+                             <field name="city"/>
+                             <field name="stage_id"/>
+                             <field name="section_id" invisible="context.get('invisible_section', True)"/>
+                        </tree>
+                    </field>
+                </group>
+                <separator string="Application Summary"/>
+                <field name="description" placeholder="Feedback of interviews..."/>
+            </sheet>
+            <div class="oe_chatter">
+                <field name="message_follower_ids" widget="mail_followers"/>
+                <field name="message_ids" widget="mail_thread"/>
+            </div>
+          </form>
+        </field>
+    </record>
+            
+        <record model="ir.ui.view" id="hr_recruitment_stage_tree_inherit">
+            <field name="name">hr.recruitment.stage.tree.inherit</field>
+            <field name="model">hr.recruitment.stage</field>            
+            <field name="inherit_id" ref="hr_recruitment.hr_recruitment_stage_tree"/>            
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='sequence']" position="replace">
+                    <field name="sequence"/>
+                </xpath>            
+            </field>
+        </record>
+
+	<record id="view_applicants_tree_syml" model="ir.ui.view">
+        <field name="name">applicants.status.tree</field>
+        <field name="model">hr.applicant</field>
+        <field name="arch" type="xml">
+            <tree  string="Applicants Status">
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="bdo_associate"/>
+                <field name="referred_by"/>
+            </tree>
+        </field>
+    </record>
+
+    </data>
+</openerp>

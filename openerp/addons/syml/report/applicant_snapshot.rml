@@ -1,0 +1,920 @@
+<?xml version="1.0"?>
+<document filename="Applicant.pdf">
+  <template title="Applicant Snapshot" author="OpenERP S.A.(sales@openerp.com)" allowSplitting="20">
+    <pageTemplate id="first">
+      <frame id="first" x1="15.0" y1="42.0" width="539" height="758"/>
+    </pageTemplate>
+  </template>
+  <stylesheet>
+    <blockTableStyle id="Standard_Outline">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+    </blockTableStyle>
+    <blockTableStyle id="Table1">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+    </blockTableStyle>
+    <blockTableStyle id="Table2">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+      <lineStyle kind="LINEBEFORE" colorName="#e6e6e6" start="0,0" stop="0,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#e6e6e6" start="0,0" stop="0,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="0,-1" stop="0,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#e6e6e6" start="1,0" stop="1,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#e6e6e6" start="1,0" stop="1,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="1,-1" stop="1,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#e6e6e6" start="2,0" stop="2,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#e6e6e6" start="2,0" stop="2,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="2,-1" stop="2,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#e6e6e6" start="3,0" stop="3,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#e6e6e6" start="3,0" stop="3,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#e6e6e6" start="3,0" stop="3,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="3,-1" stop="3,-1"/>
+    </blockTableStyle>
+    <blockTableStyle id="Table3">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+      <lineStyle kind="LINEBEFORE" colorName="#e6e6e6" start="0,0" stop="0,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#e6e6e6" start="0,0" stop="0,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="0,-1" stop="0,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#e6e6e6" start="1,0" stop="1,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#e6e6e6" start="1,0" stop="1,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="1,-1" stop="1,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#e6e6e6" start="2,0" stop="2,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#e6e6e6" start="2,0" stop="2,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="2,-1" stop="2,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#e6e6e6" start="3,0" stop="3,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#e6e6e6" start="3,0" stop="3,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#e6e6e6" start="3,0" stop="3,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="3,-1" stop="3,-1"/>
+    </blockTableStyle>
+    <blockTableStyle id="Table4">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="0,-1" stop="0,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="1,-1" stop="1,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="2,-1" stop="2,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="3,-1" stop="3,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="4,-1" stop="4,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="5,-1" stop="5,-1"/>
+    </blockTableStyle>
+    <blockTableStyle id="Table5">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="0,-1" stop="0,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="1,-1" stop="1,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="2,-1" stop="2,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="3,-1" stop="3,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="4,-1" stop="4,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="5,-1" stop="5,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="6,-1" stop="6,-1"/>
+    </blockTableStyle>
+    <blockTableStyle id="Table6">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+      <lineStyle kind="LINEABOVE" colorName="#ffffff" start="0,0" stop="0,0"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="1,0" stop="1,0"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="2,0" stop="2,0"/>
+      <lineStyle kind="LINEBEFORE" colorName="#ffffff" start="0,1" stop="0,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#ffffff" start="0,-1" stop="0,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#ffffff" start="0,2" stop="0,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#ffffff" start="0,-1" stop="0,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="1,2" stop="1,2"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="2,2" stop="2,2"/>
+    </blockTableStyle>
+    <blockTableStyle id="Table7">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+    </blockTableStyle>
+    <blockTableStyle id="Table_Invoice_General_Header">
+            <blockAlignment value="LEFT"/>
+            <blockValign value="TOP"/>
+            <lineStyle kind="LINEBEFORE" colorName="#000000" start="0,0" stop="0,-1" thickness="0.1"/>
+            <lineStyle kind="LINEABOVE" colorName="#000000" start="0,0" stop="0,0" thickness="0.1"/>
+            <lineStyle kind="LINEBELOW" colorName="#000000" start="0,-1" stop="0,-1" thickness="0.1"/>
+            <lineStyle kind="LINEAFTER" colorName="#e6e6e6" start="0,0" stop="0,-1"/>
+            <lineStyle kind="LINEBEFORE" colorName="#000000" start="1,0" stop="1,-1" thickness="0.1"/>
+            <lineStyle kind="LINEABOVE" colorName="#000000" start="1,0" stop="1,0" thickness="0.1"/>
+            <lineStyle kind="LINEBELOW" colorName="#000000" start="1,-1" stop="1,-1" thickness="0.1"/>
+            <lineStyle kind="LINEBEFORE" colorName="#000000" start="2,0" stop="2,-1" thickness="0.1"/>
+            <lineStyle kind="LINEAFTER" colorName="#000000" start="2,0" stop="2,-1" thickness="0.1"/>
+            <lineStyle kind="LINEABOVE" colorName="#000000" start="2,0" stop="2,0" thickness="0.1"/>
+            <lineStyle kind="LINEBELOW" colorName="#000000" start="2,-1" stop="2,-1" thickness="0.1"/>
+            <lineStyle kind="LINEBEFORE" colorName="#000000" start="3,0" stop="3,-1" thickness="0.1"/>
+            <lineStyle kind="LINEAFTER" colorName="#000000" start="3,0" stop="3,-1" thickness="0.1"/>
+            <lineStyle kind="LINEABOVE" colorName="#000000" start="3,0" stop="3,0" thickness="0.1"/>
+            <lineStyle kind="LINEBELOW" colorName="#000000" start="3,-1" stop="3,-1" thickness="0.1"/>
+            <lineStyle kind="LINEBEFORE" colorName="#000000" start="4,0" stop="4,-1" thickness="0.1"/>
+            <lineStyle kind="LINEAFTER" colorName="#000000" start="4,0" stop="4,-1" thickness="0.1"/>
+            <lineStyle kind="LINEABOVE" colorName="#000000" start="4,0" stop="4,0" thickness="0.1"/>
+            <lineStyle kind="LINEBELOW" colorName="#000000" start="4,-1" stop="4,-1" thickness="0.1"/>
+            <lineStyle kind="LINEBEFORE" colorName="#000000" start="5,0" stop="5,-1" thickness="0.1"/>
+            <lineStyle kind="LINEAFTER" colorName="#000000" start="5,0" stop="5,-1" thickness="0.1"/>
+            <lineStyle kind="LINEABOVE" colorName="#000000" start="5,0" stop="5,0" thickness="0.1"/>
+            <lineStyle kind="LINEBELOW" colorName="#000000" start="5,-1" stop="5,-1" thickness="0.1"/>
+            <lineStyle kind="LINEBEFORE" colorName="#000000" start="6,0" stop="6,-1" thickness="0.1"/>
+            <lineStyle kind="LINEAFTER" colorName="#000000" start="6,0" stop="6,-1" thickness="0.1"/>
+            <lineStyle kind="LINEABOVE" colorName="#000000" start="6,0" stop="6,0" thickness="0.1"/>
+            <lineStyle kind="LINEBELOW" colorName="#000000" start="6,-1" stop="6,-1" thickness="0.1"/>
+            <lineStyle kind="LINEBEFORE" colorName="#000000" start="7,0" stop="7,-1" thickness="0.1"/>
+            <lineStyle kind="LINEAFTER" colorName="#000000" start="7,0" stop="7,-1" thickness="0.1"/>
+            <lineStyle kind="LINEABOVE" colorName="#000000" start="7,0" stop="7,0" thickness="0.1"/>
+            <lineStyle kind="LINEBELOW" colorName="#000000" start="7,-1" stop="7,-1" thickness="0.1"/>
+            <lineStyle kind="LINEBEFORE" colorName="#000000" start="8,0" stop="8,-1" thickness="0.1"/>
+            <lineStyle kind="LINEAFTER" colorName="#000000" start="8,0" stop="8,-1" thickness="0.1"/>
+            <lineStyle kind="LINEABOVE" colorName="#000000" start="8,0" stop="8,0" thickness="0.1"/>
+            <lineStyle kind="LINEBELOW" colorName="#000000" start="8,-1" stop="8,-1" thickness="0.1"/>
+            <lineStyle kind="LINEBEFORE" colorName="#000000" start="9,0" stop="9,-1" thickness="0.1"/>
+            <lineStyle kind="LINEAFTER" colorName="#000000" start="9,0" stop="9,-1" thickness="0.1"/>
+            <lineStyle kind="LINEABOVE" colorName="#000000" start="9,0" stop="9,0" thickness="0.1"/>
+            <lineStyle kind="LINEBELOW" colorName="#000000" start="9,-1" stop="9,-1" thickness="0.1"/>
+            <lineStyle kind="LINEBEFORE" colorName="#000000" start="10,0" stop="10,-1" thickness="0.1"/>
+            <lineStyle kind="LINEAFTER" colorName="#000000" start="10,0" stop="10,-1" thickness="0.1"/>
+            <lineStyle kind="LINEABOVE" colorName="#000000" start="10,0" stop="10,0" thickness="0.1"/>
+            <lineStyle kind="LINEBELOW" colorName="#000000" start="10,-1" stop="10,-1" thickness="0.1"/>
+            <lineStyle kind="LINEBEFORE" colorName="#000000" start="11,0" stop="11,-1" thickness="0.1"/>
+            <lineStyle kind="LINEAFTER" colorName="#000000" start="11,0" stop="11,-1" thickness="0.1"/>
+            <lineStyle kind="LINEABOVE" colorName="#000000" start="11,0" stop="11,0" thickness="0.1"/>
+            <lineStyle kind="LINEBELOW" colorName="#000000" start="11,-1" stop="11,-1" thickness="0.1"/>
+        </blockTableStyle>
+    <blockTableStyle id="Table_General_Detail_Content">
+            <blockAlignment value="LEFT"/>
+            <blockValign value="TOP"/>
+            <lineStyle kind="LINEBEFORE" colorName="#000000" start="0,0" stop="0,-1" thickness="0.1"/>
+            <lineStyle kind="LINEABOVE" colorName="#000000" start="0,0" stop="0,0" thickness="0.1"/>
+            <lineStyle kind="LINEBELOW" colorName="#000000" start="0,-1" stop="0,-1" thickness="0.1"/>
+            <lineStyle kind="LINEBEFORE" colorName="#000000" start="1,0" stop="1,-1" thickness="0.1"/>
+            <lineStyle kind="LINEABOVE" colorName="#000000" start="1,0" stop="1,0" thickness="0.1"/>
+            <lineStyle kind="LINEBELOW" colorName="#000000" start="1,-1" stop="1,-1" thickness="0.1"/>
+            <lineStyle kind="LINEBEFORE" colorName="#000000" start="2,0" stop="2,-1" thickness="0.1"/>
+            <lineStyle kind="LINEAFTER" colorName="#000000" start="2,0" stop="2,-1" thickness="0.1"/>
+            <lineStyle kind="LINEABOVE" colorName="#000000" start="2,0" stop="2,0" thickness="0.1"/>
+            <lineStyle kind="LINEBELOW" colorName="#000000" start="2,-1" stop="2,-1" thickness="0.1"/>
+            <lineStyle kind="LINEBEFORE" colorName="#000000" start="3,0" stop="3,-1" thickness="0.1"/>
+            <lineStyle kind="LINEAFTER" colorName="#000000" start="3,0" stop="3,-1" thickness="0.1"/>
+            <lineStyle kind="LINEABOVE" colorName="#000000" start="3,0" stop="3,0" thickness="0.1"/>
+            <lineStyle kind="LINEBELOW" colorName="#000000" start="3,-1" stop="3,-1" thickness="0.1"/>
+            <lineStyle kind="LINEBEFORE" colorName="#000000" start="4,0" stop="4,-1" thickness="0.1"/>
+            <lineStyle kind="LINEAFTER" colorName="#000000" start="4,0" stop="4,-1" thickness="0.1"/>
+            <lineStyle kind="LINEABOVE" colorName="#000000" start="4,0" stop="4,0" thickness="0.1"/>
+            <lineStyle kind="LINEBELOW" colorName="#000000" start="4,-1" stop="4,-1" thickness="0.1"/>
+            <lineStyle kind="LINEBEFORE" colorName="#000000" start="5,0" stop="5,-1" thickness="0.1"/>
+            <lineStyle kind="LINEAFTER" colorName="#000000" start="5,0" stop="5,-1" thickness="0.1"/>
+            <lineStyle kind="LINEABOVE" colorName="#000000" start="5,0" stop="5,0" thickness="0.1"/>
+            <lineStyle kind="LINEBELOW" colorName="#000000" start="5,-1" stop="5,-1" thickness="0.1"/>
+            <lineStyle kind="LINEBEFORE" colorName="#000000" start="6,0" stop="6,-1" thickness="0.1"/>
+            <lineStyle kind="LINEAFTER" colorName="#000000" start="6,0" stop="6,-1" thickness="0.1"/>
+            <lineStyle kind="LINEABOVE" colorName="#000000" start="6,0" stop="6,0" thickness="0.1"/>
+            <lineStyle kind="LINEBELOW" colorName="#000000" start="6,-1" stop="6,-1" thickness="0.1"/>
+            <lineStyle kind="LINEBEFORE" colorName="#000000" start="7,0" stop="7,-1" thickness="0.1"/>
+            <lineStyle kind="LINEAFTER" colorName="#000000" start="7,0" stop="7,-1" thickness="0.1"/>
+            <lineStyle kind="LINEABOVE" colorName="#000000" start="7,0" stop="7,0" thickness="0.1"/>
+            <lineStyle kind="LINEBELOW" colorName="#000000" start="7,-1" stop="7,-1" thickness="0.1"/>
+            <lineStyle kind="LINEBEFORE" colorName="#000000" start="8,0" stop="8,-1" thickness="0.1"/>
+            <lineStyle kind="LINEAFTER" colorName="#000000" start="8,0" stop="8,-1" thickness="0.1"/>
+            <lineStyle kind="LINEABOVE" colorName="#000000" start="8,0" stop="8,0" thickness="0.1"/>
+            <lineStyle kind="LINEBELOW" colorName="#000000" start="8,-1" stop="8,-1" thickness="0.1"/>
+            <lineStyle kind="LINEBEFORE" colorName="#000000" start="9,0" stop="9,-1" thickness="0.1"/>
+            <lineStyle kind="LINEAFTER" colorName="#000000" start="9,0" stop="9,-1" thickness="0.1"/>
+            <lineStyle kind="LINEABOVE" colorName="#000000" start="9,0" stop="9,0" thickness="0.1"/>
+            <lineStyle kind="LINEBELOW" colorName="#000000" start="9,-1" stop="9,-1" thickness="0.1"/>
+            <lineStyle kind="LINEBEFORE" colorName="#000000" start="10,0" stop="10,-1" thickness="0.1"/>
+            <lineStyle kind="LINEAFTER" colorName="#000000" start="10,0" stop="10,-1" thickness="0.1"/>
+            <lineStyle kind="LINEABOVE" colorName="#000000" start="10,0" stop="10,0" thickness="0.1"/>
+            <lineStyle kind="LINEBELOW" colorName="#000000" start="10,-1" stop="10,-1" thickness="0.1"/>
+            <lineStyle kind="LINEBEFORE" colorName="#000000" start="11,0" stop="11,-1" thickness="0.1"/>
+            <lineStyle kind="LINEAFTER" colorName="#000000" start="11,0" stop="11,-1" thickness="0.1"/>
+            <lineStyle kind="LINEABOVE" colorName="#000000" start="11,0" stop="11,0" thickness="0.1"/>
+            <lineStyle kind="LINEBELOW" colorName="#000000" start="11,-1" stop="11,-1" thickness="0.1"/>
+        </blockTableStyle>
+    <initialize>
+      <paraStyle name="all" alignment="justify"/>
+    </initialize>
+    <paraStyle name="Standard" fontName="Helvetica"/>
+    <paraStyle name="Text body" fontName="Helvetica" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="Heading" fontName="Helvetica" fontSize="8.0" leading="10" spaceBefore="12.0" spaceAfter="6.0"/>
+    <paraStyle name="List" fontName="Helvetica" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="Table Contents" fontName="Helvetica"/>
+    <paraStyle name="Table Heading" fontName="Helvetica" alignment="CENTER"/>
+    <paraStyle name="Caption" fontName="Helvetica" fontSize="12.0" leading="15" spaceBefore="6.0" spaceAfter="6.0"/>
+    <paraStyle name="Index" fontName="Helvetica"/>
+    <paraStyle name="terp_header" fontName="Helvetica-Bold" fontSize="15.0" leading="19" alignment="LEFT" spaceBefore="12.0" spaceAfter="6.0"/>
+    <paraStyle name="terp_default_8" fontName="Helvetica" fontSize="8.0" leading="10" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_default_Bold_8" fontName="Helvetica-Bold" fontSize="8.0" leading="10" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_default_Bold_9" fontName="Helvetica-Bold" fontSize="9.0" leading="11" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_default_9" fontName="Helvetica" fontSize="9.0" leading="11" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_tblheader_General" fontName="Helvetica-Bold" fontSize="8.0" leading="10" alignment="LEFT" spaceBefore="6.0" spaceAfter="6.0"/>
+    <paraStyle name="terp_tblheader_General_Centre" fontName="Helvetica-Bold" fontSize="8.0" leading="10" alignment="CENTER" spaceBefore="6.0" spaceAfter="6.0"/>
+    <paraStyle name="terp_default_Centre_8" fontName="Helvetica" fontSize="8.0" leading="10" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_tblheader_Details" fontName="Helvetica-Bold" fontSize="9.0" leading="11" alignment="LEFT" spaceBefore="6.0" spaceAfter="6.0"/>
+    <paraStyle name="Footer" fontName="Helvetica"/>
+    <paraStyle name="Horizontal Line" fontName="Helvetica" fontSize="6.0" leading="8" spaceBefore="0.0" spaceAfter="14.0"/>
+    <paraStyle name="Heading 9" fontName="Helvetica-Bold" fontSize="75%" leading="NaN" spaceBefore="12.0" spaceAfter="6.0"/>
+    <paraStyle name="terp_tblheader_General_Right" fontName="Helvetica-Bold" fontSize="8.0" leading="10" alignment="RIGHT" spaceBefore="6.0" spaceAfter="6.0"/>
+    <paraStyle name="terp_tblheader_Details_Centre" fontName="Helvetica-Bold" fontSize="9.0" leading="11" alignment="CENTER" spaceBefore="6.0" spaceAfter="6.0"/>
+    <paraStyle name="terp_tblheader_Details_Right" fontName="Helvetica-Bold" fontSize="9.0" leading="11" alignment="RIGHT" spaceBefore="6.0" spaceAfter="6.0"/>
+    <paraStyle name="terp_default_Right_8" fontName="Helvetica" fontSize="8.0" leading="10" alignment="RIGHT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_header_Right" fontName="Helvetica-Bold" fontSize="15.0" leading="19" alignment="LEFT" spaceBefore="12.0" spaceAfter="6.0"/>
+    <paraStyle name="terp_header_Centre" fontName="Helvetica-Bold" fontSize="15.0" leading="19" alignment="CENTER" spaceBefore="12.0" spaceAfter="6.0"/>
+    <paraStyle name="terp_default_address" fontName="Helvetica" fontSize="10.0" leading="13" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_default_Centre_9" fontName="Helvetica" fontSize="9.0" leading="11" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_default_Right_9" fontName="Helvetica" fontSize="9.0" leading="11" alignment="RIGHT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_default_1" fontName="Helvetica" fontSize="2.0" leading="3" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_default_Right_9_Bold" fontName="Helvetica-Bold" fontSize="9.0" leading="11" alignment="RIGHT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_default_Italic" rightIndent="0.0" leftIndent="20.0" fontName="Helvetica-Oblique" fontSize="8.0" leading="10" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="Preformatted Text" fontName="Helvetica" fontSize="10.0" leading="13" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_default_Centre_9_Bold" fontName="Helvetica-Bold" fontSize="9.0" leading="11" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0"/>
+    <images/>
+  </stylesheet>
+  <story>
+  <pto>
+  <para style="terp_default_8">[[repeatIn(objects,'o')]]</para>
+  <!--<para style="terp_default_8">[[ setLang(o.partner_id.lang) ]]</para>-->
+  <pto_header>
+    
+  </pto_header>
+    <blockTable colWidths="240.0,300.0" style="Table1">
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+       </blockTable>
+    <para style="terp_default_8"></para>
+    <section>
+    <para style="terp_default_1">[[repeatIn(o.app_rec_ids,'line')]]</para>
+    <para style="terp_default_8">Applicant First Name: [[ line.applicant_name ]]</para>
+    <para style="terp_default_8">Applicant Second Name: [[ line.applicant_last_name]]</para>
+    <para style="terp_default_8">Applicant Email: [[ line.email_personal]]</para>
+        <blockTable colWidths="240.0,300.0" style="Table1">
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+       </blockTable>
+        <para style="terp_default_Bold_9">Personal Info</para>
+        <blockTable colWidths="240.0,300.0" style="Table1">
+            <tr>
+                <td> <para style="terp_default_8"> Email Work :[[line.email_work]] </para></td>
+                <td> <para style="terp_default_8"> Date of Work :[[line.dob]] </para></td>
+
+            </tr>
+            <tr>
+                <td> <para style="terp_default_8"> Cell :[[line.cell]]</para> </td>
+                <td> <para style="terp_default_8"> Social Insurance :[[line.sin]] </para></td>
+
+            </tr>
+            <tr>
+                <td> <para style="terp_default_8"> Work:[[line.work]]</para></td>
+                <td> <para style="terp_default_8"> Passport(non_res) :[[line.passport]]</para> </td>
+
+            </tr>
+            <tr>
+                <td> <para style="terp_default_8"> Home: [[line.home]] </para></td>
+                <td> <para style="terp_default_8"> Signature: [[line.signature]] </para></td>
+
+            </tr>
+            <tr>
+                <td> <para style="terp_default_8"> Best Number: [[line.best_number]]</para> </td>
+                <td> <para style="terp_default_8"> Signature IP: [[line.signature]] </para></td>
+
+            </tr>
+            <tr>
+                <td> <para style="terp_default_8"> Relationship Status: [[line.relationship_status]]</para> </td>
+                <td> <para style="terp_default_8"> Non-Resident : [[line.non_resident]] </para></td>
+
+            </tr>
+            <tr>
+                <td> <para style="terp_default_8"> Sales Associtate: [[line.sales_associates]]</para> </td>
+                <td> <para style="terp_default_8"> Immigration Date: [[line.immigration_date]] </para></td>
+
+            </tr>
+             <tr>
+                <td> <para style="terp_default_8"> Date Consent Obtained : [[line.consent_dateTime]]</para> </td>
+                <td> <para style="terp_default_8"> </para></td>
+
+            </tr>
+            <tr>
+                <td> <para style="terp_default_8"></para> </td>
+                <td> <para style="terp_default_8"> Include in Opportunity : [[line.include_in_opportunity]] </para></td>
+
+            </tr>
+            <tr>
+                <td> <para style="terp_default_8"></para> </td>
+                <td> <para style="terp_default_8"> Team : [[line.hr_department_id.name]] </para></td>
+
+            </tr>
+        </blockTable>
+        <blockTable colWidths="240.0,300.0" style="Table1">
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+       </blockTable>
+        <para style="terp_default_9">[[_get_address(line)]] </para>
+    <para style="terp_default_8">
+      <font color="white"> </font>
+    </para>
+    <para style="terp_default_8">
+      <font color="white"> </font>
+    </para>
+	<blockTable colWidths="240.0,300.0" style="Table1">
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+       </blockTable>
+        <para style="terp_default_Bold_9">Credits/Liabilities</para>
+        <blockTable colWidths="240.0,300.0" style="Table1">
+            <tr>
+                <td> <para style="terp_default_8"> Beacon9 Score :[[line.beacon_9_score]] </para></td>
+                <td> <para style="terp_default_8"> CRP 3 Score :[[line.crp_3_score]] </para></td>
+
+            </tr>
+            <tr>
+                <td> <para style="terp_default_8"> Beacon5 Score :[[line.beacon_5_score]] </para></td>
+                <td> <para style="terp_default_8"> ER 2 Score :[[line.ers_2_score]] </para></td>
+
+            </tr>
+            <tr>
+                <td> <para style="terp_default_8"> Bankruptcy :[[line.bankruptcy]] </para></td>
+                <td> <para style="terp_default_8"> Total Inquires :[[line.total_inquires]] </para></td>
+
+            </tr>
+            <tr>
+                <td> <para style="terp_default_8"> Bankruptcy Discharge Date :[[line.bankruptcy_discharge_date]] </para></td>
+                <td> <para style="terp_default_8"> Orderly Debt Payment :[[line.orderly_debt_payment]] </para></td>
+
+            </tr>
+            <tr>
+                <td> <para style="terp_default_8"> Monthly Support Payments :[[line.monthly_support_payment]] </para></td>
+                <td> <para style="terp_default_8"> ODP Discharge Date :[[line.odp_discharge_date]] </para></td>
+
+            </tr>
+            <tr>
+                <td> <para style="terp_default_8">  </para></td>
+                <td> <para style="terp_default_8"> Date Bureau Obtained :[[line.date_time_bureau_obtained]] </para></td>
+
+            </tr>
+        </blockTable>
+        <para style="terp_default_8">
+          <font color="white"> </font>
+        </para>
+        <para style="terp_default_8">
+          <font color="white"> </font>
+        </para>
+	<blockTable colWidths="240.0,300.0" style="Table1">
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+       </blockTable>
+        <para style="terp_default_Bold_8">Mortgages</para>
+        <blockTable colWidths="80,50,50,50,50,50,50,50,50,50" style="Table_Invoice_General_Header">
+            <tr>
+                <td> <para style="terp_default_Bold_8">Lender</para></td>
+
+                <td><para style="terp_default_Bold_8">Interest Rate </para></td>
+
+                <td><para style="terp_default_Bold_8">Balance </para></td>
+
+                <td><para style="terp_default_Bold_8">Monthly Payment  </para></td>
+
+                <td><para style="terp_default_Bold_8">Mortgage Type  </para></td>
+
+                <td><para style="terp_default_Bold_8">Renewal </para></td>
+
+                <td><para style="terp_default_Bold_8">Monthly Rent  </para></td>
+
+                <td><para style="terp_default_Bold_8">Pay Off </para></td>
+
+                <td><para style="terp_default_Bold_8">Selling  </para></td>
+
+                <td><para style="terp_default_Bold_8">Property ID </para></td>
+            </tr>
+        </blockTable>
+        <section>
+            <para style="terp_default_1">[[repeatIn(line.mortgage,'mort')]]</para>
+            <blockTable colWidths="80,50,50,50,50,50,50,50,50,50" style="Table_General_Detail_Content">
+            <tr>
+               <td> <para style="terp_default_8">[[mort.name]] </para></td>
+           
+                <td><para style="terp_default_8">[[mort.interest_rate]] </para></td>
+           
+                <td><para style="terp_default_8">[[mort.balance]] </para></td>
+            
+                <td><para style="terp_default_8">[[mort.monthly_payment]] </para></td>
+             
+                <td><para style="terp_default_8">[[mort.type]] </para></td>
+             
+                <td><para style="terp_default_8">[[mort.renewal]] </para></td>
+             
+                <td><para style="terp_default_8">[[mort.monthly_rent]] </para></td>
+            
+                <td><para style="terp_default_8">[[mort.pay_off]] </para></td>
+            
+                <td><para style="terp_default_8">[[mort.selling]] </para></td>
+            
+                <td><para style="terp_default_8">[[mort.property_id]] </para></td>
+            </tr>
+            </blockTable>
+             
+        </section>
+
+        <para style="terp_default_8">
+          <font color="white"> </font>
+        </para>
+        <para style="terp_default_8">
+          <font color="white"> </font>
+        </para>
+        <para style="terp_default_8">
+          <font color="white"> </font>
+        </para>
+        <para style="terp_default_8">
+          <font color="white"> </font>
+        </para>
+        <para style="terp_default_8">
+          <font color="white"> </font>
+        </para>
+        <para style="terp_default_8">
+          <font color="white"> </font>
+        </para>
+	<blockTable colWidths="240.0,300.0" style="Table1">
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+       </blockTable>
+        <!--Tab 2-->
+        <para style="terp_default_Bold_8">Liabilities</para>
+        <blockTable colWidths="30,50,40,50,50,50,50,50,50,50,30,30" style="Table_Invoice_General_Header">
+            <tr>
+                <td> <para style="terp_default_Bold_8">Client</para></td>
+
+                <td><para style="terp_default_Bold_8">Business </para></td>
+
+                <td><para style="terp_default_Bold_8">Status </para></td>
+
+                <td><para style="terp_default_Bold_8">Credit Limit </para></td>
+
+                <td><para style="terp_default_Bold_8">Credit Balance</para></td>
+
+                <td><para style="terp_default_Bold_8">Monthly Payment</para></td>
+
+                <td><para style="terp_default_Bold_8">Opened</para></td>
+
+                <td><para style="terp_default_Bold_8">Reported</para></td>
+
+                <td><para style="terp_default_Bold_8">DLA</para></td>
+
+                <td><para style="terp_default_Bold_8">Type </para></td>
+
+                <td><para style="terp_default_Bold_8">Rating</para></td>
+
+                <td><para style="terp_default_Bold_8">Pay Off</para></td>
+            </tr>
+        </blockTable>
+        <section>
+            <para style="terp_default_1">[[repeatIn(line.liabilities,'liab')]]</para>
+            <blockTable colWidths="30,50,40,50,50,50,50,50,50,50,30,30" style="Table_General_Detail_Content">
+            <tr>
+               <td> <para style="terp_default_8">[[liab.name]] </para></td>
+
+                <td><para style="terp_default_8">[[liab.business]] </para></td>
+
+                <td><para style="terp_default_8">[[liab.status]] </para></td>
+
+                <td><para style="terp_default_8">[[liab.credit_limit]] </para></td>
+
+                <td><para style="terp_default_8">[[liab.credit_balance]] </para></td>
+
+                <td><para style="terp_default_8">[[liab.monthly_payment]] </para></td>
+
+                <td><para style="terp_default_8">[[liab.opened]] </para></td>
+
+                <td><para style="terp_default_8">[[liab.reported]] </para></td>
+
+                <td><para style="terp_default_8">[[liab.dla]] </para></td>
+
+                <td><para style="terp_default_8">[[liab.type]] </para></td>
+
+                <td><para style="terp_default_8">[[liab.rating]] </para></td>
+
+                <td><para style="terp_default_8">[[liab.pay_off]] </para></td>
+            </tr>
+            </blockTable>
+
+        </section>
+        <para style="terp_default_8">
+          <font color="white"> </font>
+        </para>
+        <para style="terp_default_8">
+          <font color="white"> </font>
+        </para>
+        <para style="terp_default_8">
+          <font color="white"> </font>
+        </para>
+        <para style="terp_default_8">
+          <font color="white"> </font>
+        </para>
+        <para style="terp_default_8">
+          <font color="white"> </font>
+        </para>
+        <para style="terp_default_8">
+          <font color="white"> </font>
+        </para>
+	<blockTable colWidths="240.0,300.0" style="Table1">
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+       </blockTable>
+        <para style="terp_default_Bold_8">Collections</para>
+         <blockTable colWidths="90,90,90,90,80,90" style="Table_Invoice_General_Header">
+            <tr>
+                <td> <para style="terp_default_Bold_8">Business</para></td>
+
+                <td><para style="terp_default_Bold_8">Amount</para></td>
+
+                <td><para style="terp_default_Bold_8">Balance </para></td>
+
+                <td><para style="terp_default_Bold_8">Date </para></td>
+
+                <td><para style="terp_default_Bold_8">Status</para></td>
+
+                <td><para style="terp_default_Bold_8">Pay Off</para></td>
+               
+            </tr>
+        </blockTable>
+         <section>
+            <para style="terp_default_1">[[repeatIn(line.collection,'coll')]]</para>
+            <blockTable colWidths="90,90,90,90,80,90" style="Table_General_Detail_Content">
+            <tr>
+               <td> <para style="terp_default_8">[[coll.name]] </para></td>
+
+                <td><para style="terp_default_8">[[coll.amount]] </para></td>
+
+                <td><para style="terp_default_8">[[coll.balance]] </para></td>
+
+                <td><para style="terp_default_8">[[coll.date]] </para></td>
+
+                <td><para style="terp_default_8">[[coll.status]] </para></td>
+
+                <td><para style="terp_default_8">[[coll.pay_off]] </para></td>
+
+               
+            </tr>
+            </blockTable>
+
+        </section>
+	<blockTable colWidths="240.0,300.0" style="Table1">
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+       </blockTable>
+        <para style="terp_default_8">
+          <font color="white"> </font>
+        </para>
+        <para style="terp_default_8">
+          <font color="white"> </font>
+        </para>
+        <para style="terp_default_8">
+          <font color="white"> </font>
+        </para>
+        <para style="terp_default_8">
+          <font color="white"> </font>
+        </para>
+        <para style="terp_default_8">
+          <font color="white"> </font>
+        </para>
+        <para style="terp_default_8">
+          <font color="white"> </font>
+        </para>
+        <para style="terp_default_Bold_8">Late Payments</para>
+        <blockTable colWidths="120,100,100,100,120" style="Table_Invoice_General_Header">
+            <tr>
+                <td> <para style="terp_default_Bold_8">Business</para></td>
+
+                <td><para style="terp_default_Bold_8">Date Late</para></td>
+
+                <td><para style="terp_default_Bold_8">Rating</para></td>
+
+                <td><para style="terp_default_Bold_8">Days</para></td>
+
+                <td><para style="terp_default_Bold_8">Reason</para></td>
+
+
+
+            </tr>
+        </blockTable>
+        <section>
+            <para style="terp_default_1">[[repeatIn(line.late_payments,'coll')]]</para>
+            <blockTable colWidths="120,100,100,100,120" style="Table_General_Detail_Content">
+            <tr>
+               <td> <para style="terp_default_8">[[coll.name]] </para></td>
+
+                <td><para style="terp_default_8">[[coll.date]] </para></td>
+
+                <td><para style="terp_default_8">[[coll.rating]] </para></td>
+
+                <td><para style="terp_default_8">[[coll.days]] </para></td>
+
+                <td><para style="terp_default_8">[[coll.reason]] </para></td>
+
+               
+
+
+            </tr>
+            </blockTable>
+
+        </section>
+
+        <!--Tab 3-->
+<blockTable colWidths="240.0,300.0" style="Table1">
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+       </blockTable>
+    <para style="terp_default_8">
+      <font color="white"> </font>
+    </para>
+    <para style="terp_default_8">
+      <font color="white"> </font>
+    </para>
+    <para style="terp_default_8">
+          <font color="white"> </font>
+        </para>
+        <para style="terp_default_8">
+          <font color="white"> </font>
+        </para>
+        <para style="terp_default_8">
+          <font color="white"> </font>
+        </para>
+        <para style="terp_default_8">
+          <font color="white"> </font>
+        </para>
+        <para style="terp_default_Bold_9">Assests</para>
+        <para style="terp_default_8">Total Assests : [[line.total_asset]]</para>
+        <para style="terp_default_8">Net Worth : [[line.total_net_worth]]</para>
+
+        <para style="terp_default_8">
+          <font color="white"> </font>
+        </para>
+        <para style="terp_default_8">
+          <font color="white"> </font>
+        </para>
+	<blockTable colWidths="240.0,300.0" style="Table1">
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+       </blockTable>
+        <para style="terp_default_Bold_8">Properties</para>
+        <blockTable colWidths="90,70,70,70,70,70,70" style="Table_Invoice_General_Header">
+            <tr>
+                <td> <para style="terp_default_Bold_8">Address</para></td>
+
+                <td><para style="terp_default_Bold_8">Value</para></td>
+
+                <td><para style="terp_default_Bold_8">Owed </para></td>
+
+                <td><para style="terp_default_Bold_8">Annual Taxes </para></td>
+
+                <td><para style="terp_default_Bold_8">Mo Condo Fees</para></td>
+
+                <td><para style="terp_default_Bold_8">PropertyID</para></td>
+                
+                <td><para style="terp_default_Bold_8">Selling</para></td>
+
+            </tr>
+        </blockTable>
+        <section>
+            <para style="terp_default_1">[[repeatIn(line.properties,'prop')]]</para>
+            <blockTable colWidths="90,70,70,70,70,70,70" style="Table_General_Detail_Content">
+            <tr>
+               <td> <para style="terp_default_8">[[prop.name]] </para></td>
+
+                <td><para style="terp_default_8">[[prop.value]] </para></td>
+
+                <td><para style="terp_default_8">[[prop.owed]] </para></td>
+
+                <td><para style="terp_default_8">[[prop.annual_tax]] </para></td>
+
+                <td><para style="terp_default_8">[[prop.mo_condo_fees]] </para></td>
+
+                <td><para style="terp_default_8">[[prop.properties_id]] </para></td>
+
+                <td><para style="terp_default_8">[[prop.selling]] </para></td>
+
+
+            </tr>
+            </blockTable>
+
+
+
+        </section>
+	<blockTable colWidths="240.0,300.0" style="Table1">
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+       </blockTable>
+        <para style="terp_default_8">
+          <font color="white"> </font>
+        </para>
+        <para style="terp_default_8">
+          <font color="white"> </font>
+        </para>
+        <para style="terp_default_8">
+          <font color="white"> </font>
+        </para>
+        <para style="terp_default_8">
+          <font color="white"> </font>
+        </para>
+        <para style="terp_default_8">
+          <font color="white"> </font>
+        </para>
+        <para style="terp_default_8">
+          <font color="white"> </font>
+        </para>
+        <para style="terp_default_Bold_8">Assests</para>
+	<blockTable colWidths="240.0,300.0" style="Table1">
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+       </blockTable>
+        <para style="terp_default_8">
+          <font color="white"> </font>
+        </para>
+        <para style="terp_default_8">
+          <font color="white"> </font>
+        </para>
+        <para style="terp_default_8">Money that you normally have in your chequing and savings accounts after payday [[line.money]]</para>
+	<blockTable colWidths="240.0,300.0" style="Table1">
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+       </blockTable>
+        <para style="terp_default_8">
+          <font color="white"> </font>
+        </para>
+        <para style="terp_default_8">
+          <font color="white"> </font>
+        </para>
+        <blockTable colWidths="150,150,200" style="Table_Invoice_General_Header">
+            <tr>
+                <td> <para style="terp_default_Bold_8">Type</para></td>
+
+                <td><para style="terp_default_Bold_8">Description</para></td>
+
+                <td><para style="terp_default_Bold_8">Value</para></td>
+
+               
+
+            </tr>
+        </blockTable>
+         <section>
+            <para style="terp_default_1">[[repeatIn(line.asset_ids,'asst')]]</para>
+            <blockTable colWidths="150,150,200" style="Table_General_Detail_Content">
+            <tr>
+               <td> <para style="terp_default_8">[[asst.asset_type]] </para></td>
+
+                <td><para style="terp_default_8">[[asst.name]] </para></td>
+
+                <td><para style="terp_default_8">[[asst.value]] </para></td>
+
+            </tr>
+            </blockTable>
+
+        </section>
+	
+
+        <!--Tab4-->
+	<blockTable colWidths="240.0,300.0" style="Table1">
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+       </blockTable>
+        <para style="terp_default_8">
+          <font color="white"> </font>
+        </para>
+        <para style="terp_default_8">
+          <font color="white"> </font>
+        </para>
+        <para style="terp_default_8">
+          <font color="white"> </font>
+        </para>
+        <para style="terp_default_8">
+          <font color="white"> </font>
+        </para>
+        <para style="terp_default_Bold_9">Employment/Income</para>
+	<blockTable colWidths="240.0,300.0" style="Table1">
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+       </blockTable>
+        <para style="terp_default_8">
+          <font color="white"> </font>
+        </para>
+        <para style="terp_default_8">
+          <font color="white"> </font>
+        </para>
+        <para style="terp_default_8">
+          <font color="white"> </font>
+        </para>
+        <para style="terp_default_8">
+          <font color="white"> </font>
+        </para>
+
+        <blockTable colWidths="240.0,300.0" style="Table1">
+            <tr>
+                <td> <para style="terp_default_8">Monthly Child/Spousal Support :[[line.monthlychildsupport]] </para></td>
+                <td> <para style="terp_default_8"> Total Rental Income :[[line.total_rental_income]] </para></td>
+
+            </tr>
+            <tr>
+                <td> <para style="terp_default_8">Total Employed Income:[[line.total_employed_income]]</para> </td>
+                <td> <para style="terp_default_8">Total Other Income:[[line.total_other_income]] </para></td>
+
+            </tr>
+            <tr>
+                <td> <para style="terp_default_8">Total Self Employed: [[line.total_self_employed]]</para> </td>
+                <td> <para style="terp_default_8"> Total Income : [[line.total_income]] </para></td>
+
+            </tr>
+        </blockTable>
+	<blockTable colWidths="240.0,300.0" style="Table1">
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+       </blockTable>
+        <para style="terp_default_8">
+          <font color="white"> </font>
+        </para>
+        <para style="terp_default_8">
+          <font color="white"> </font>
+        </para>
+        <blockTable colWidths="50,50,50,50,50,50,80,80,50" style="Table_Invoice_General_Header">
+            <tr>
+                <td> <para style="terp_default_Bold_8">Type</para></td>
+
+                <td><para style="terp_default_Bold_8">Business </para></td>
+
+                <td><para style="terp_default_Bold_8">Job Title </para></td>
+
+                <td><para style="terp_default_Bold_8">Industry </para></td>
+
+                <td><para style="terp_default_Bold_8">Annual Income</para></td>
+
+                <td><para style="terp_default_Bold_8">Months</para></td>
+
+                <td><para style="terp_default_Bold_8">Historical</para></td>
+
+                <td><para style="terp_default_Bold_8">Supplementary</para></td>
+
+                <td><para style="terp_default_Bold_8">PropertyID</para></td>
+
+                
+            </tr>
+        </blockTable>
+
+        <section>
+            <para style="terp_default_1">[[repeatIn(line.incomes,'inc')]]</para>
+            <blockTable colWidths="50,50,50,50,50,50,80,80,50" style="Table_General_Detail_Content">
+            <tr>
+               <td> <para style="terp_default_8">[[inc.income_type]] </para></td>
+
+                <td><para style="terp_default_8">[[inc.business]] </para></td>
+
+                <td><para style="terp_default_8">[[inc.position]] </para></td>
+
+                <td><para style="terp_default_8">[[inc.industry]] </para></td>
+
+                <td><para style="terp_default_8">[[inc.annual_income]] </para></td>
+
+                <td><para style="terp_default_8">[[inc.month]] </para></td>
+
+                <td><para style="terp_default_8">[[inc.historical]] </para></td>
+
+                <td><para style="terp_default_8">[[inc.supplementary]] </para></td>
+
+                <td><para style="terp_default_8">[[inc.property_id]] </para></td>
+
+                
+            </tr>
+            </blockTable>
+
+        </section>
+        <nextFrame/>
+            
+ </section>
+    
+  </pto>
+  </story>
+</document>

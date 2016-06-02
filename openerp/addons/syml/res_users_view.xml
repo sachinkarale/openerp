@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        
+        <record id="view_users_form_inherit" model="ir.ui.view">
+            <field name="name">res.users.form.inherit</field>
+            <field name="model">res.users</field>
+            <field name="type">form</field> 
+            <field name="inherit_id" ref="base.view_users_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='tz']" position="before">
+                    <field name="hr_department_id" required="1"/>
+                    <field name="designation" required="1"/>
+                </xpath>
+                <notebook position="inside">
+                    <page string="Atmail Credential">
+                        <group>
+                            <group colspan="2" string="Atmail">
+                                <field name='atmail_name'/>
+                                <field name='atmail_usr_name'/>
+                                <field name='atmail_passwrd' password="True"/>
+                            </group>
+                        </group>
+                    </page>
+                </notebook>
+            </field>           
+        </record>
+    </data>
+</openerp>

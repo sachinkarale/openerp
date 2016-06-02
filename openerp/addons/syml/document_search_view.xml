@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>       
+        <record model="ir.ui.view" id="view_document_file_tree">
+            <field name="name">ir.attachment</field>
+            <field name="model">ir.attachment</field>
+            <field name="priority" eval="1"/>
+            <field name="inherit_id" ref="document.view_document_file_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="email"/>
+                </xpath>
+            </field>
+        </record>
+        
+        <record id="document.view_attach_filter_inherit2" model="ir.ui.view">
+            <field name="name">IR Attachment2</field>
+            <field name="model">ir.attachment</field>
+            <field name="inherit_id" ref="base.view_attachment_search"/>
+            <field name="arch" type="xml">
+                <filter string="Owner" position="replace">
+                    <filter string="Email" icon="terp-partner" domain="[]" context="{'group_by':'email'}"/>
+                    <filter string="Owner" icon="terp-personal" domain="[]" context="{'group_by':'user_id'}"/>
+                    <filter string="Partner" icon="terp-partner" domain="[]" context="{'group_by':'partner_id'}"/>
+                    <filter string="Directory" icon="terp-folder-green" domain="[]" context="{'group_by':'parent_id'}"/>                    
+                </filter>
+            </field>
+        </record>
+        <record id="view_attachment_form_inherit" model="ir.ui.view">
+            <field name="model">ir.attachment</field>
+            <field name="inherit_id" ref="base.view_attachment_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="email"/>
+                </xpath>
+            </field>
+        </record>
+        <record id="view_attachment_search_inherit" model="ir.ui.view">
+            <field name="name">IR Attachment1</field>
+            <field name="model">ir.attachment</field>
+            <field name="inherit_id" ref="base.view_attachment_search"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="replace">
+                    <field name="name" filter_domain="['|','|', ('email','ilike',self), ('name','ilike',self), ('datas_fname','ilike',self)]" string="Attachments"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>

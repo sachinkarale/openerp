@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_underwriter_form" model="ir.ui.view">
+            <field name="name">view.underwriter.form</field>
+            <field name="model">under.writer</field>
+            <field name="arch" type="xml">
+                <form string="Partner Titles" version="7.0">
+                    <sheet>
+                        <group>
+                            <group col="4">
+                                <field name="lender_name"/>
+                                <field name="phone"/>
+                                <field name="email"/>
+                                <field name="related_product"/>
+                                <field name="co-applicants"/>
+                                <field name="guarantors"/>
+                                <field name="spousal_consent"/>                        
+                            </group>                   
+                         <group string="Product Type">
+                            <field name="purchase"/>
+                            <field name="purchase_plus_improvements"/>
+                            <field name="refinance"/>
+                            <field name="equity_take_out"/>
+                            <field name="Switch_Transfer"/>
+                            <field name="Port"/>
+                            <field name="portability_plus"/>
+                            <field name="line_of_credit"/>
+                            <field name="line_of_credit"/>
+                            <field name="CashBack"/>
+                            <field name="non_income_qualifier"/>
+                            <field name="non_resident"/>
+                            <field name="blanket_mortgage"/>
+                            <field name="vendor_take_back"/>                                             
+                        </group>
+                        <group>
+                            <field name="charge_on_title"/>                           
+                            <field name="1stmortgage"/>
+                            <field name="2ndmortgage"/>
+                            <field name="3rdmortgage"/>
+                            <field name="4thmortgage"/>
+                            <field name="4thmortgage"/>
+                            <field name="bridge"/>
+                            <field name="private_mortgage"/>
+                            <field name="insured"/>
+                        </group>
+                        <group string="Property Criteria">                        
+                            <field name="residential"/>
+                            <field name="agricultural"/>
+                            <field name="commercial"/>                            
+                            <field name="maximum_acreage_valued "/>
+                            <field name="condo"/>
+                        </group>
+                        <group string="Restricted Properties">                        
+                            <field name="fractional_interests"/>
+                            <field name="co-operative_housing"/>
+                            <field name="grow_ops"/>
+                            <field name="rental_pools"/>
+                            <field name="life_leased_properties"/>
+                            <field name="leased_land"/>
+                            <field name="mobile_homes"/>
+                            <field name="modular_homes"/>
+                            <field name="floating_homes"/>
+                            <field name="boarding_houses"/>
+                            <field name="rooming_houses"/>
+                            <field name="non_conventional_construction"/>                                                      
+                            <field name="age_restricted_properties"/>                            
+        		    <field name="house"/>                            
+                            <field name="minimum_loan_amount"/>
+                            <field name="maximum_loan_amount"/>
+                            <field name="Bankruptcy"/>
+                            <field name="allowable_gds"/>
+                            <field name="beacon_tds_split"/>                            
+                            <field name="allowable_tds_below_split"/>
+                            <field name="allowable_tds_above_split"/>                            
+                            <field name="High_Ratio_Second_Home"/>
+                            <field name="Cottage_Properties"/>
+                            <field name="Non_Resident_Borrowers"/>
+                            <field name="Non_Permanent_Resident_Borrowers"/>
+                            <field name="limit"/>    			
+                            <field name="stated_income"/>
+                            <field name="Accept_Self_Employed"/>                            
+                            <field name="Power_of_Attorney"/>
+                         </group>
+	                <group>                         
+                            <field name="allowable_major_urban_centre"/>
+                            <field name="allowable_urban_centre"/>
+                            <field name="allowable_non_urban_recreational"/>
+                            <field name="allowable_small_communities"/>
+                            <field name="threshold"/>
+                            <field name="below_threshold"/>
+                            <field name="above_threshold"/>
+                            <field name="rental_threshold"/>
+                            <field name="below"/>
+                            <field name="above"/>
+                            <field name="Major_Urban_Centres"/>
+                            <field name="Urban_Centre"/>
+                            <field name="Non_Urban_Centres"/>
+                            <field name="Small_Communities"/>
+                            <field name="Title_Insurance"/>
+                            <field name="New_Immigrants"/>
+                            <field name="Canadian_Military_Personnel"/>
+                           <field name="In_House_Registratio_Program"/>
+                        </group>     
+                        </group>                        
+                    </sheet>
+                </form>    
+            </field>                    
+        </record>
+            
+        <record id="view_underwriter_tree" model="ir.ui.view">
+            <field name="name">view.underwriter.form</field>
+            <field name="model">under.writer</field>
+            <field name="arch" type="xml">
+                <tree string="UNderwriter" version="7.0">                      
+                    <field name="lender_name"/>
+                    <field name="phone"/>
+                    <field name="email"/>
+                    <field name="related_product"/>
+                    <field name="co-applicants"/>
+                    <field name="guarantors"/>
+                    <field name="spousal_consent"/>                                                                    
+                </tree>    
+            </field>                    
+        </record>
+            
+        <record id="action_underwriter_form" model="ir.actions.act_window">
+            <field name="name">Underwriter</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">under.writer</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_underwriter_form"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                Click to define a new sale shop.
+                </p>
+                <p>
+                Each quotation or sale order must be linked to a shop. The
+                shop also defines the warehouse from which the products will be
+                delivered for each particular sales.
+                </p>
+            </field>
+        </record>
+        <menuitem id="under_writer" action="action_underwriter_form" name="Underwriter" />
+<!--            <menuitem action="action_underwriter_form" id="menu_underwriter" parent="under_writer"/>        -->
+    </data>
+</openerp>

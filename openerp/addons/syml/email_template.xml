@@ -1,0 +1,3180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+<!--
+    Document   : email_template.xml
+    Created on : 5 April, 2013, 7:44 PM
+    Author     : vijay
+    Description:
+        Purpose of the document follows.
+-->
+
+    <data>
+<!--        noupdate="1"-->
+                            <!--Email template  for crm lead-->
+        <record id="email_template_edi_crm_lead" model="email.template">
+            <field name="name">pending lead</field>
+            <field name="email_from">${object.user_id.email or ''}</field>
+            <field name="subject">Lead Notification</field>
+            <field name="email_to">${object.partner_id.email}</field>
+            <field name="email_recipients">${object.partner_id.id}</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="body_html"><![CDATA[
+                <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: rgb(255, 255, 255); ">
+
+                <p>Hello ${object.partner_id.name and ' ' or ''}${object.partner_id.name or ''},</p>
+
+
+                <!--<p>Here is login details for <strong>${object.name}</strong> </p>-->
+                <p> Here is your pending lead notification and login details for <strong>${object.name}</strong>
+                <p>
+                       User Name:&nbsp;<strong>${object.webform_uname} </strong><br/>
+                       Password:&nbsp;<strong>${object.webform_pwd} </strong><br/>
+
+                </p>
+
+
+                
+                <p>
+                       % if object.opp_info_start_date:
+                          <b style="height:20px;">Your lead will be valid till date:</b>
+                           <strong>${object.opp_info_start_date} </strong><br/>
+                        % endif
+                </p>
+
+                <div style="width: 375px; margin: 0px; padding: 0px; background-color: #0000FF; border-top-left-radius: 5px 5px; border-top-right-radius: 5px 5px; background-repeat: repeat no-repeat;">
+
+		<!--<a style="display:block; width: 150px; height:20px; margin-left: 120px; color: #FFF; font-family: 'Lucida Grande', Helvetica, Arial, sans-serif; font-size: 13px; font-weight: bold; text-align: center; text-decoration: none !important; line-height: 1; padding: 5px 0px 0px 0px; background-color: #0000FF; border-radius: 5px 5px; background-repeat: repeat no-repeat;"
+                               href="${object.company_id.visdom_url}?resid=${object.partner_id.id}&crm_lead=${object.id}&action=accept">Visdom Website</a> -->
+
+
+
+               <!--<a style="display:block; width: 150px; height:20px; margin-left: 50px; color: #FFF; font-family: 'Lucida Grande', Helvetica, Arial, sans-serif; font-size: 13px; font-weight: bold; text-align: center; text-decoration: none !important; line-height: 1; padding: 5px 0px 0px 0px; background-color: #0000FF; border-radius: 5px 5px; background-repeat: repeat no-repeat;"
+                               href="http://192.168.1.2/visdom/index.php?option=com_mortgageapplication&view=mortgageapplication&crm_lead=${object.id}&action=%22accept%22&resid=${object.partner_id.id}">Mortgage Application Form</a>-->
+  
+
+	<a style="display:block; width: 150px; height:20px; margin-left: 50px; color: #FFF; font-family: 'Lucida Grande', Helvetica, Arial, sans-serif; font-size: 13px; font-weight: bold; text-align: center; text-decoration: none !important; line-height: 1; padding: 5px 0px 0px 0px; background-color: #0000FF; border-radius: 5px 5px; background-repeat: repeat no-repeat;"
+                               href="http://198.72.106.11/visdom/index.php?option=com_mortgageapplication&view=mortgageapplication&crm_lead=${object.id}&action=%22accept%22&resid=${object.partner_id.id}">Mortgage Application Form</a>
+
+                </div>
+
+                <p></p>
+
+
+                <br/><br/>
+                % if object.company_id.rml_header1:
+                            <strong>${object.company_id.rml_header1} </strong><br/>
+                        % endif
+                <br/>
+                <p>If you have any question, do not hesitate to contact us.
+                % if object.company_id.email:
+                            <div>
+                                      ${object.company_id.email or ''}
+                            </div>
+                        %endif
+                </p>
+                    <p>Thank you for choosing <strong>${object.company_id.name or 'us'}! </strong></p>
+                <div style="width: 347px; margin: 0px; padding: 5px 14px; line-height: 16px; background-color: #F2F2F2;">
+                        <span style="color: #222; margin-bottom: 5px; display: block; ">
+                        % if object.company_id.street:
+                            ${object.company_id.street}<br/>
+                        % endif
+                        % if object.company_id.street2:
+                            ${object.company_id.street2}<br/>
+                        % endif
+                        % if object.company_id.city or object.company_id.zip:
+                            ${object.company_id.zip} ${object.company_id.city}<br/>
+                        % endif
+                        % if object.company_id.country_id:
+                            ${object.company_id.state_id and ('%s, ' % object.company_id.state_id.name) or ''} ${object.company_id.country_id.name or ''}<br/>
+                        % endif
+                        </span>
+                        % if object.company_id.phone:
+                            <div style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+                                Phone:&nbsp; ${object.company_id.phone}
+                            </div>
+                        % endif
+                        % if object.company_id.website:
+                            <div>
+                                Web :&nbsp;<a href="${object.company_id.website}">${object.company_id.website}</a>
+                            </div>
+                        %endif
+                        <p></p>
+                    </div>
+
+                </div>
+                <p>Best Regards,</p>
+<br/>
+<p>Visdom Mortgage Solutions<br/>
+ ${object.hr_department_id.mail_server.smtp_user or ''}
+
+ <p>CONFIDENTIALITY: This e-mail message (including attachments, if any) is confidential and is intended only for the addressee.
+ Any unauthorized use or disclosure is strictly prohibited. Disclosure of this e-mail to anyone other than the intended addressee does not constitute waiver of privilege. If you have received this communication in error, please notify us immediately and delete this.
+ Thank you for your cooperation.  This message has not been encrypted.  Special arrangements can be made for encryption upon request. If you no longer wish to receive e-mail messages from Visdom Mortgage Solutions , please contact the sender.</p>
+
+<p>Visit our website at www.visdom.ca  for information about our company and the services we provide.
+You can subscribe to Visdom Mortgage Solutions free electronic communications, or unsubscribe at any time.</p>
+            ]]>
+            </field>
+        </record>
+
+        <record id="email_template_edi_customer" model="email.template">
+            <field name="name">Customer Mail</field>
+            <field name="email_from">${object.user_id.email or ''}</field>
+            <field name="subject">SymlSystems-SYS</field>
+            <field name="email_to">${object.id}</field>
+            <field name="email_recipients">${object.id or ''}</field>
+            <field name="model_id" ref="base.model_res_partner"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="body_html"><![CDATA[
+        <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 18px; color: rgb(34, 34, 34); background-color: rgb(255, 255, 255); ">
+
+        <p>
+            hello, you are getting mail from symlsystems
+        </p>
+            ]]>
+            </field>
+        </record>
+
+
+                                                <!--Email template  for opportunity-->
+        <record id="email_template_edi_opprtunity" model="email.template">
+            <field name="name">Opportunity Notification Mail</field>
+            <field name="email_from">${object.user_id.email or ''}</field>
+            <field name="subject">Opportunity notification</field>
+<!--            <field name="email_to">${object.partner_id.email_from}</field>-->
+            <field name="email_recipients">${object.partner_id.id}</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="body_html"><![CDATA[
+        <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: rgb(255, 255, 255); ">
+
+        <p>Dear  <strong>${object.partner_id.name and ' ' or ''}${object.partner_id.name or ''}</strong>,</p>
+        <p>Thank you for contacting us.</p>
+        <p>Please see the login details & instructions below:</p>
+        <p>Here is your ${object.state in ('draft', 'sent') and 'quotation' or 'confirmation'} from ${object.company_id.name}: </p>
+        <p style="border-left: 1px solid #8e0000; margin-left: 30px;">
+               &nbsp;&nbsp;<strong>REFERENCES</strong><br />
+               &nbsp;&nbsp;Opportunity name: <strong>${object.name}</strong><br />
+               &nbsp;&nbsp;Applicant name: <strong>${object.partner_id.name}</strong><br />
+               &nbsp;&nbsp;Applicant e_mail: <strong>${object.email_from}</strong><br />
+
+
+               &nbsp;&nbsp;Your contact: <a href="mailto:${object.email_from or ''}?subject=Opportunity%20${object.name}">${object.user_id.name}</a>
+    </p>
+     <p>If you have any question, do not hesitate to contact us.</p>
+    <p>Thank you for choosing ${object.company_id.name or 'us'}!</p>
+    <br/>
+    <br/>
+
+    <div style="width: 375px; margin: 0px; padding: 0px; background-color: #0000FF; border-top-left-radius: 5px 5px; border-top-right-radius: 5px 5px; background-repeat: repeat no-repeat;">
+        <h3 style="margin: 0px; padding: 2px 14px; font-size: 12px; color: #FFF;">
+            <strong style="text-transform:uppercase;">${object.company_id.name}</strong></h3>
+    </div>
+    <div style="width: 347px; margin: 0px; padding: 5px 14px; line-height: 16px; background-color: #F2F2F2;">
+        <span style="color: #222; margin-bottom: 5px; display: block; ">
+        % if object.company_id.street:
+            ${object.company_id.street}<br/>
+        % endif
+        % if object.company_id.street2:
+            ${object.company_id.street2}<br/>
+        % endif
+        % if object.company_id.city or object.company_id.zip:
+            ${object.company_id.zip} ${object.company_id.city}<br/>
+        % endif
+        % if object.company_id.country_id:
+            ${object.company_id.state_id and ('%s, ' % object.company_id.state_id.name) or ''} ${object.company_id.country_id.name or ''}<br/>
+        % endif
+        </span>
+        % if object.company_id.phone:
+            <div style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+                Phone:&nbsp; ${object.company_id.phone}
+            </div>
+        % endif
+        % if object.company_id.website:
+            <div>
+                Web :&nbsp;<a href="${object.company_id.website}">${object.company_id.website}</a>
+            </div>
+        %endif
+        <p></p>
+
+
+
+
+
+
+
+        <br/><br/><br/><br/><br/></div>
+        <p>Best Regards,</p>
+<br/>
+<p>Visdom Mortgage Solutions<br/>
+ ${object.hr_department_id.mail_server.smtp_user or ''}
+
+ <p>CONFIDENTIALITY: This e-mail message (including attachments, if any) is confidential and is intended only for the addressee.
+ Any unauthorized use or disclosure is strictly prohibited. Disclosure of this e-mail to anyone other than the intended addressee does not constitute waiver of privilege. If you have received this communication in error, please notify us immediately and delete this.
+ Thank you for your cooperation.  This message has not been encrypted.  Special arrangements can be made for encryption upon request. If you no longer wish to receive e-mail messages from Visdom Mortgage Solutions , please contact the sender.</p>
+
+<p>Visit our website at www.visdom.ca  for information about our company and the services we provide.
+You can subscribe to Visdom Mortgage Solutions free electronic communications, or unsubscribe at any time.</p>
+            ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="mail.email_compose_message_wizard_form">
+            <field name="name">mail.compose.message.form</field>
+            <field name="model">mail.compose.message</field>
+            <field name="arch" type="xml">
+                <form string="Compose Email" version="7.0">
+                    <group>
+                        <!-- truly invisible fields for control and options -->
+                        <field name="composition_mode" invisible="1"/>
+                        <field name="model" invisible="1"/>
+                        <field name="res_id" invisible="1"/>
+                        <field name="parent_id" invisible="1"/>
+                        <!-- visible wizard -->
+                        <label for="partner_ids" string="Recipients"
+                             invisible="context.get('mail_compose_log', False)"/>
+                        <div groups="base.group_user" invisible="context.get('mail_compose_log', False)">
+                            <span attrs="{'invisible':['|', ('model', '=', False), ('composition_mode', '!=', 'mass_mail')]}">
+<!--                                Followers of selected items and-->
+                            </span>
+                            <span attrs="{'invisible':['|', ('model', '=', False), ('composition_mode', '=', 'mass_mail')]}">
+<!--                                Followers of-->
+                                <field name="record_name" readonly="1" class="oe_inline"
+                                    attrs="{'invisible':[('model', '=', False)]}"/>
+<!--                                and -->
+                            </span>
+                            <field name="partner_ids" widget="many2many_tags_email" placeholder="Add contacts to notify..."
+                                context="{'force_email':True, 'show_email':True}"/>
+                        </div>
+                        <field name="subject" placeholder="Subject..."/>
+                    </group>
+                    <field name="body"/>
+                    <field name="attachment_ids" widget="many2many_binary"/>
+                    <footer>
+                        <button string="Send" name="send_mail" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="email_template_relator_referal_received" model="email.template">
+            <field name="name">Relator Referral</field>
+            <field name="email_from">${object.hr_department_id.mail_server.smtp_user or ''}</field>
+            <field name="subject">We have received your referral from ${object.partner_id.name or ''} ${object.partner_id.last_name or ''}</field>
+            <field name="email_to">${object.referred_source.email_from}</field>
+            <field name="email_recipients"></field>
+            <field name="model_id" ref="model_crm_lead"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="body_html"><![CDATA[
+                <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: rgb(255, 255, 255); ">
+
+                <p>Good Day ${object.referred_source.name},</p>
+
+<p>On behalf of Visdom Mortgage Solutions,THANK YOU
+for your referral to ${object.partner_id.name or ''} ${object.partner_id.last_name or ''} . We have sent a link to
+${object.partner_id.name or ''} ${object.partner_id.last_name or ''}
+to our online web application to begin the process of securing financing.
+We will advise you when we have received their application.</p>
+
+<p>In the event we do not get an application within 24 hours, we will follow up
+with ${object.partner_id.name or ''} via a phone call. If for some reason this timing should be
+different please reply to this message with an appropriate time to contact
+${object.partner_id.name}.</p>
+
+<p>Again, Thank you very much for the referral and we look forward to assisting your clients.</p>
+
+<p>Best Regards,</p>
+<br/>
+<p>Visdom Mortgage Solutions<br/>
+ ${object.hr_department_id.mail_server.smtp_user or ''}
+
+ <p>CONFIDENTIALITY: This e-mail message (including attachments, if any) is confidential and is intended only for the addressee.
+ Any unauthorized use or disclosure is strictly prohibited. Disclosure of this e-mail to anyone other than the intended addressee does not constitute waiver of privilege. If you have received this communication in error, please notify us immediately and delete this.
+ Thank you for your cooperation.  This message has not been encrypted.  Special arrangements can be made for encryption upon request. If you no longer wish to receive e-mail messages from Visdom Mortgage Solutions , please contact the sender.
+
+Visit our website at www.visdom.ca  for information about our company and the services we provide.
+You can subscribe to Visdom Mortgage Solutions free electronic communications, or unsubscribe at any time.</p>
+            ]]>
+            </field>
+        </record>
+
+
+        <record id="email_template_relator_expired_referal" model="email.template">
+            <field name="name">Expired Referral</field>
+            <field name="email_from">${object.hr_department_id.mail_server.smtp_user or ''}</field>
+            <field name="email_to">${object.referred_source.email_from or ''}</field>
+            <field name="subject"> <![CDATA[  Financing for 
+	%if object.type=='lead':
+            ${object.partner_id.name or ''}
+        %else:
+	    ${object.app_rec_ids[0].applicant_name or ''}
+            %for each  in object.app_rec_ids:
+
+              % if loop.index == 2:
+                 and ${each.applicant_name or ''}
+              % endif
+
+             %endfor
+	%endif
+             ]]> </field>
+	   
+            <field name="email_recipients"></field>
+            <field name="model_id" ref="model_crm_lead"/>
+           <!-- <field name="auto_delete" eval="True"/>-->
+            <field name="body_html"><![CDATA[
+                <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: rgb(255, 255, 255); ">
+
+               <p> Good Day ${object.referred_source.partner_id.name or ''}, </p>
+<p>Thank you very much for your referral.  As previously communicated, we have
+sent
+% if object.type=='lead':
+    ${object.partner_id.name or ''}
+% else: 
+	${object.app_rec_ids[0].applicant_name or ''}
+            %for each  in object.app_rec_ids:
+
+              % if loop.index == 2:
+                 and ${object.app_rec_ids[1].applicant_name or ''}
+              % endif
+
+             %endfor
+% endif
+a link to our online mortgage application a few weeks ago.  Since that
+time we have followed up with 
+% if object.type=='lead':
+    ${object.partner_id.name or ''}
+% else:
+	${object.app_rec_ids[0].applicant_name or ''}
+            %for each  in object.app_rec_ids:
+
+              % if loop.index == 2:
+                 and ${object.app_rec_ids[1].applicant_name or ''}
+              % endif
+
+             %endfor
+% endif
+a few times and
+they have not moved forward with the application process. As a result, this
+referral opportunity has now expired in our systems and the password protected
+link is no longer valid.  In the event, you believe they still wish to move
+forward with a mortgage application, please reply to this message to let us know
+we should extend the opportunity and provide them with a new secure web link.</p>
+<p>If you do have any questions, please feel free to contact our office at ${object.hr_department_id.mail_server.smtp_user or ''} . Thank you again for the referral and have a great day!</p>
+<p>Best Regards,</p>
+<p>Visdom Mortgage Solutions<br/>
+ ${object.hr_department_id.mail_server.smtp_user or ''}
+
+ <p>CONFIDENTIALITY: This e-mail message (including attachments, if any) is confidential and is intended only for the addressee.
+            Any unauthorized use or disclosure is strictly prohibited. Disclosure of this e-mail to anyone other than the intended addressee does not constitute waiver of privilege.
+            If you have received this communication in error, please notify us immediately and delete this. Thank you for your cooperation.  This message has not been encrypted.
+            Special arrangements can be made for encryption upon request. If you no longer wish to receive e-mail messages from Visdom Mortgage Solutions , please contact the sender.</p><br/>
+
+           <p>Visit our website at www.visdom.ca  for information about our company and the services we provide.
+           You can subscribe to Visdom Mortgage Solutions free electronic communications, or unsubscribe at any time</p>
+
+            ]]>
+            </field>
+        </record>
+
+<!-- Incomplete need more information on this.-->
+        <record id="email_template_broker_lead_followup" model="email.template">
+            <field name="name">Lead Followup</field>
+            <field name="email_from">${object.user_id.email or ''}</field>
+            <field name="subject">Financing for ${object.partner_id.name}</field>
+            <field name="email_to">${object.referral_source.email_from}</field>
+            <field name="email_recipients"></field>
+            <field name="model_id" ref="model_crm_lead"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="body_html"><![CDATA[
+                <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: rgb(255, 255, 255); ">
+
+               <p> Good Day ${object.referral_source.partner_id.name}, </p>
+<p>Thank you very much for your referral ${object.referral_source.partner_id.name}.  As previously communicated, we have sent ${object.referral_source.partner_id.name} a link to our online mortgage application a few weeks ago.  Since that time we have followed up with <Lead.referral_source.firstname> a few times and they have not moved forward with the application process. As a result, this referral opportunity has now expired in our systems and the password protected link to ${object.referral_source.partner_id.name} is no longer valid.  In the event, you believe ${object.referral_source.partner_id.name} still wishes to move forward with a mortgage application, please reply to this message to let us know we should extend the opportunity and provide ${object.referral_source.partner_id.name} with a new secure web link.</p><br/>
+<p>If you do have any questions, please feel free to contact our office at <department email> . Thank you again for the referral and have a great day!</p><br/><br/>
+<p>Best Regards,</p>
+<p>Visdom Mortgage Solutions<br/>
+ <p>${object.hr_department_id.mail_server.smtp_user or ''}</p>
+
+<p>CONFIDENTIALITY: This e-mail message (including attachments, if any) is confidential and is intended only for the addressee.
+ Any unauthorized use or disclosure is strictly prohibited. Disclosure of this e-mail to anyone other than the intended addressee does not constitute waiver of privilege. If you have received this communication in error, please notify us immediately and delete this.
+ Thank you for your cooperation.  This message has not been encrypted.  Special arrangements can be made for encryption upon request. If you no longer wish to receive e-mail messages from Visdom Mortgage Solutions , please contact the sender.
+
+Visit our website at www.visdom.ca  for information about our company and the services we provide.
+You can subscribe to Visdom Mortgage Solutions free electronic communications, or unsubscribe at any time.</p>
+
+            ]]>
+            </field>
+        </record>
+
+
+
+        <record id="email_template_mortgage_referral" model="email.template">
+            <field name="name">Welcome to Visdom</field>
+            <field name="email_from">${object.hr_department_id.mail_server.smtp_user or ''}</field>
+            <field name="subject">Your Next Steps with Visdom Mortgage Solutions</field>
+            <field name="email_to">${object.email_from}</field>
+            <field name="email_recipients"></field>
+            <field name="model_id" ref="model_crm_lead"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="body_html"><![CDATA[
+                <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: rgb(255, 255, 255); ">
+
+               <p>Hello ${object.partner_id.name} </p>
+<p>We are contacting you because ${object.referred_source.partner_id.name or ''}
+${object.referred_source.partner_id.last_name or ''} let us know you are exploring
+mortgage options. Finding the best financing can be a time and effort consuming
+challenge because there are thousands of different mortgage products available
+in Canada.  Many people go to a bank however, this effectively limits their
+"shopping options" to only that bank’s mortgages.  Others try a Mortgage Broker,
+but again, the options are often limited to the 2-4 lenders the broker knows well
+(even though they have access to more).</p>
+
+<p>Alternatively, at Visdom Mortgage Solutions, your Mortgage Application is
+underwritten by our Proprietary Mortgage Platform across 100s to 1000s of
+potential mortgage products. The result is a simple, clean, understandable 
+proposal for our customers which contains only the best mortgages in Canada 
+that suit your goals of reducing cost, managing risk and providing flexibility. 
+This process helps you decrease borrowing costs and better achieve your lifestyle 
+and financial goals.</p>
+
+<p>In order to begin the process, please click on the link below.  It will take
+you to a secure, protected Mortgage Application which only takes most people
+5 - 10 minutes to complete.  Your  access link is provided below.</p>
+
+<p><a style="display:block; width: 150px; height:20px; margin-left: 50px; color: #FFF; font-family: 'Lucida Grande', Helvetica, Arial, sans-serif; font-size: 13px; font-weight: bold; text-align: center; text-decoration: none !important; line-height: 1; padding: 5px 0px 0px 0px; background-color: #0000FF; border-radius: 5px 5px; background-repeat: repeat no-repeat;"
+                               href="http://webserv.visdom.ca/index.php?option=com_mortgageapplication&view=mortgageapplication&crm_lead=${object.id}&action=%22accept%22&resid=${object.partner_id.id}">Mortgage Application Form</a></p>
+<!--<p><a style="display:block; width: 150px; height:20px; margin-left: 50px; color: #FFF; font-family: 'Lucida Grande', Helvetica, Arial, sans-serif; font-size: 13px; font-weight: bold; text-align: center; text-decoration: none !important; line-height: 1; padding: 5px 0px 0px 0px; background-color: #8E0000; border-radius: 5px 5px; background-repeat: repeat no-repeat;"
+                               href="http://192.168.1.89/visdom/index.php?option=com_mortgageapplication&view=mortgageapplication&crm_lead=${object.id}&action=%22accept%22&resid=${object.partner_id.id}">Mortgage Application Form</a></p>-->
+
+
+<br/>
+<p>Your application access credentials will be valid until: ${object.welcum_email_date}.</p>
+<p>Thank you for choosing Visdom!  If you have any questions, please do not
+hesitate to contact our broker team.</p>
+<p>Touch Dial:<b>  1-855-699-2400;</b> ${object.hr_department_id.extension} <br/>
+Manual Dial:  <b>1-855-699-2400 </b>  extension: ${object.hr_department_id.extension} <br/></p>
+
+<p>Best Regards,</p>
+<p>Visdom Mortgage Solutions<br/>
+ ${object.hr_department_id.mail_server.smtp_user or ''}
+
+ <p>CONFIDENTIALITY: This e-mail message (including attachments, if any) is confidential and is intended only for the addressee.
+            Any unauthorized use or disclosure is strictly prohibited. Disclosure of this e-mail to anyone other than the intended addressee does not constitute waiver of privilege.
+            If you have received this communication in error, please notify us immediately and delete this. Thank you for your cooperation.  This message has not been encrypted.
+            Special arrangements can be made for encryption upon request. If you no longer wish to receive e-mail messages from Visdom Mortgage Solutions , please contact the sender.</p><br/>
+
+           <p>Visit our website at www.visdom.ca  for information about our company and the services we provide.
+           You can subscribe to Visdom Mortgage Solutions free electronic communications, or unsubscribe at any time</p>
+
+            ]]>
+            </field>
+        </record>
+
+
+        <record id="email_template_applicant_personal" model="email.template">
+            <field name="name">Applicant Personal</field>
+            <field name="email_from">${object.hr_department_id.mail_server.smtp_user or ''}</field>
+            <field name="subject">Signed Mortgage Disclosure</field>
+<!--            <field name="email_to">${object.partner_id.email}</field>-->
+            <field name="email_to">${object.email_personal}</field>
+            <field name="email_recipients"></field>
+            <field name="model_id" ref="model_applicant_record"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="body_html"><![CDATA[
+                <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: rgb(255, 255, 255); ">
+                <p>Hello ${object.applicant_name or ''},</p>
+               <p>When you submitted your mortgage application with us,
+               we indicated we would provide you a copy of the credit consent
+               form which you read.  This email contains your copy of that consent.
+               Canadian Regulatory Bodies also require Mortgage Brokerages to
+               communicate some additional information to you.  This information
+               includes: the specific nature of our relationship to you, our
+               service expectations, and compensation information.   Please
+               refer to the those disclosures below.  If you have any questions,
+               please do not hesitate to contact our broker team.</p>
+                <p>Touch Dial:<b>  1-855-699-2400;</b> ${object.hr_department_id.extension} <br/>
+                Manual Dial:  <b>1-855-699-2400 </b>  extension: ${object.hr_department_id.extension} <br/></p>
+              <p>Sincerely,</p>
+
+        <p>
+
+        Visdom Mortgage Solutions Inc.<br/>
+        ${object.hr_department_id.mail_server.smtp_user or ''} <br/>
+        www.visdom.ca<br/>
+
+        <p>Please find below your copy of the credit consent disclosures as well
+        as Relationship and Compensation Disclosures.</p>
+
+        <p><b><u>Consent:</u></b><br/>
+        The undersigned applicant(s): agree and covenant with Visdom Mortgages 
+        Solutions (VMS) in the following manner:</p>
+        
+        <ol>
+            <li>You acknowledge and affirm that the information you have given 
+            in the mortgage application or any other service offered is true and
+            complete and that you have not withheld or misrepresented any 
+            information. The information provided by you will be relied upon to 
+            be accurate in order for the lenders or any other persons we may 
+            submit to on your behalf to determine credit worthiness.</li>
+            <li>You give consent and authorization to collect and use personal
+            information for the following purposes:
+            <ul type="disc">
+                <li>to determine the suitability of the products and services for you</li>
+                <li>to determine your eligibility of the various products and services</li>
+                <li>to establish,manage and offer products and services that need your needs</li>
+                <li>to provide on-going service(s)</li>
+                <li>to meet our legal and regulatory requirements</li>
+            </ul></li>
+            <li>You will be responsible for any and all fees related to property
+            appraisal, legal, registration fee and other costs or expenses incurred
+            by you in connection with this transaction</li>
+            <li>You authorize Visdom Mortgage Solutions (VMS) to disclose to any
+            lender, credit bureau, insurer, insurance agent, financial advisor,
+            or any other personal involved in a transaction such as personal and
+            financial information concerning you as we consider appropriate. You
+            also authorize any person whom we contact in this regard to provide
+            such information to us.</li>
+            <li>We will ask you for your Social Insurance Number to use in
+            verifying and reporting credit information to credit bureaus and
+            credit reporting agencies. You may refuse to consent to its use or
+            disclosure for these purposes.</li>
+
+        </ol>
+        <p><b><u>Relationship and Compensation Disclosure:</u></b><br/>
+        To better assist our borrowers in understanding the relationship and
+        compensation with Mortgage Brokerages, we have outlined the following
+        information for your review.</p>
+        <p>For a variety of reasons, a mortgage professional may not always be
+        able to obtain the lowest rate or best terms in the marketplace for a
+        particular borrower. It can be dependent upon the terms of the purchase
+        contract, type of property, property value, borrowers employment status,
+        borrowers financial position, and credit history are examples of some
+        factors that may affect rates or terms.</p>
+
+        <p>The mortgage brokerage and its representative’s role and obligations
+        to the borrower and the lender will vary depending on the nature of the
+        service relationship between the mortgage brokerage as well as the lender
+        or borrower. This is not intended to be an all inclusive list however in
+        general terms it best describes the mortgage brokerage's role and
+        resulting obligations to you. You are strongly encouraged to discuss
+        this document with your mortgage brokerage representative and ask any
+        questions you may have.</p>
+
+        <p>A mortgage broker can be described as the mastermind between a borrower
+        and a lender with the goal of originating a mortgage loan. Typically,
+        a mortgage broker draws from a pool of various lenders to find the right
+        match; however, it is important to know that some mortgage brokers only
+        do business with one lender.</p>
+
+        <p>We, as a Mortgage Brokerage, will act as an INTERMEDIARY between the
+        borrower and the lender(s) who have authorized us to offer their mortgage
+        products to borrowers who are seeking a mortgage. Some of our duties to
+        the borrower are to be honest, exercise reasonable care and skill, gather
+        your intended property and financial information to determine the lending
+        options available to you, disclose and explain appropriate options for
+        your consideration, completed and submit documentation to the lender,
+        and keep you informed of the progress of your application.  Some of our
+        duties to the lender are to be honest, exercise reasonable care and skill,
+        complete and submit documentation to the lender, disclose what steps were
+        taken to verify information and documentation as part of the application
+        process, and keep the lender informed of the progress of the application.
+        The products this brokerage will offer will be from Multiple Lenders.</p>
+
+        <p>The brokerage and its brokers will be compensated for this mortgage
+        transaction by way of commission/income or fee paid directly by the lender
+        and, as well,  may also receive monies or non-monetary benefits from the
+        lender which can include additional commission of income based on volume
+        of business with a particular lender.</p>
+
+        <p>As outlined above, there is a variety of options in obtaining a
+        mortgage, however if,  for some reason the brokerage must charge you
+        a fee to arrange your mortgage there may be no refund. When obtaining
+        a mortgage there can be additional fees that you might be required to
+        pay such as: property appraisal, default mortgage insurance, title
+        insurance, legal fees, etc. </p>
+
+
+        <p>The brokerage will be paying a referral fee when this mortgage is placed.</p>
+       
+
+        <p>CONFIDENTIALITY: This e-mail message (including attachments, if any) is confidential and is intended only for the addressee.
+            Any unauthorized use or disclosure is strictly prohibited. Disclosure of this e-mail to anyone other than the intended addressee does not constitute waiver of privilege.
+            If you have received this communication in error, please notify us immediately and delete this. Thank you for your cooperation.  This message has not been encrypted.
+            Special arrangements can be made for encryption upon request. If you no longer wish to receive e-mail messages from Visdom Mortgage Solutions , please contact the sender.</p>
+
+           <p>Visit our website at www.visdom.ca  for information about our company and the services we provide.
+           You can subscribe to Visdom Mortgage Solutions free electronic communications, or unsubscribe at any time</p>
+
+            ]]>
+            </field>
+        </record>
+
+
+
+
+        <record id="email_template_ref_product_notify" model="email.template">
+            <field name="name">Referral Product Notification</field>
+            <field name="email_from">${object.hr_department_id.mail_server.smtp_user or ''}</field>
+            <field name="email_to">${object.referred_source.email_from or ''}</field>
+            <field name="subject"><![CDATA[
+            ${object.app_rec_ids[0].applicant_name or ''}
+            %for each  in object.app_rec_ids:
+
+              % if loop.index == 2:
+                 and ${object.app_rec_ids[1].applicant_name or ''}
+              % endif
+
+             %endfor
+              ]]> have selected a lender and product 
+             </field>
+            
+            <field name="email_recipients"></field>
+            <field name="model_id" ref="model_crm_lead"/>
+            <!--<field name="auto_delete" eval="True"/>-->
+            <field name="body_html"><![CDATA[
+        <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: rgb(255, 255, 255); ">
+
+        <p>
+        Good Day   ${object.referred_source.name or ''}! </p>
+        <p>This message is to let you know a product has been selected by
+        %for each  in object.app_rec_ids:
+
+              % if loop.index == 1:
+                 ${object.app_rec_ids[0].applicant_name or ''}
+              %else:
+                  and ${each.applicant_name or ''}
+              % endif
+
+          % endfor
+
+        
+        .  We are now sending the application to
+        ${object.selected_product.lender.name or ''}.  The lender will review their application plus
+        supporting documents and shortly provide to us a response.  The time this takes varies
+        between lenders from 1 - 4 business days. </p>
+        <p>As soon as we hear from them, we will contact
+        you to review their response.  We are <b>CONFIDENT</b> this lender
+        will finance 
+        %for each  in object.app_rec_ids:
+
+              % if loop.index == 1:
+                 ${object.app_rec_ids[0].applicant_name or ''}
+              %else:
+                  and ${each.applicant_name or ''}
+              % endif
+
+          % endfor
+
+        
+        's goals (according to their
+        underwriting guidelines), However, occasionally they might request extra documentation.
+        We will keep you informed as soon as we hear back from them. </p>
+        <br/>
+        Thank you and have a great day.<br/><br/>
+        Best Regards,<br/>
+        <p>
+
+        Visdom Mortgage Solutions <br/>
+        ${object.hr_department_id.mail_server.smtp_user or ''} <br/>
+        www.visdom.ca<br/>
+        </p>
+
+        <p>CONFIDENTIALITY: This e-mail message (including attachments, if any) is confidential and is intended only for the addressee.
+            Any unauthorized use or disclosure is strictly prohibited. Disclosure of this e-mail to anyone other than the intended addressee does not constitute waiver of privilege.
+            If you have received this communication in error, please notify us immediately and delete this. Thank you for your cooperation.  This message has not been encrypted.
+            Special arrangements can be made for encryption upon request. If you no longer wish to receive e-mail messages from Visdom Mortgage Solutions , please contact the sender.</p>
+
+           <p>Visit our website at www.visdom.ca  for information about our company and the services we provide.
+           You can subscribe to Visdom Mortgage Solutions free electronic communications, or unsubscribe at any time</p>
+
+            ]]>
+            </field>
+        </record>
+
+
+     <record id="email_template_product_confirm" model="email.template">
+            <field name="name">Product Confirmation</field>
+            <field name="email_from">${object.hr_department_id.mail_server.smtp_user or ''}</field>
+            <field name="subject">Product Selection</field>
+            <field name="email_to">${object.app_rec_ids[0].email_personal or ''}</field>
+            <field name="email_recipients"></field>
+            <field name="email_cc">${object.app_rec_ids[1].email_personal or ''}</field>
+            <field name="model_id" ref="model_crm_lead"/>
+            <!--<field name="auto_delete" eval="True"/>-->
+            <field name="body_html"><![CDATA[
+        <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: rgb(255, 255, 255); ">
+        <p>
+        Good Day ${object.app_rec_ids[0].applicant_name or ''}
+	%for each  in object.app_rec_ids:
+
+              % if loop.index == 2:
+                 and ${object.app_rec_ids[1].applicant_name or ''}
+              % endif
+
+             %endfor
+	,</p>
+        <p>This message is confirmation of the mortgage product you have selected.<br/><br/>
+        Lender:&nbsp;&nbsp; &nbsp; ${object.selected_product.lender.name  or ''}<br/>
+        Product: &nbsp;&nbsp; &nbsp;${object.selected_product.name or ''}<br/>
+        %if object.selected_product.mortgage_type == '1':
+
+            Mortgage Type: &nbsp;&nbsp; &nbsp;  LOC <br/>
+        %elif object.selected_product.mortgage_type == '2' :
+            Mortgage Type: &nbsp;&nbsp; &nbsp; Variable <br/>
+        %elif object.selected_product.mortgage_type == '3' :
+            Mortgage Type: &nbsp;&nbsp; &nbsp; Fixed <br/>
+        %elif object.selected_product.mortgage_type == '4' :
+            Mortgage Type: &nbsp;&nbsp; &nbsp; Cashback <br/>
+        %elif object.selected_product.mortgage_type == '5' :
+           Mortgage Type:&nbsp;&nbsp; &nbsp;  Combined<br/>
+        %else:
+           Mortgage Type: ''<br/>
+        
+        %endif
+
+        
+        %if object.selected_product.term == '1':
+
+            Term: &nbsp;&nbsp; &nbsp; 6 Months <br/>
+        %elif object.selected_product.term == '2' :
+            Term: &nbsp;&nbsp; &nbsp; 1 Year <br/>
+        %elif object.selected_product.term == '3' :
+            Term: &nbsp;&nbsp; &nbsp; 2 Year <br/>
+        %elif object.selected_product.term == '4' :
+            Term: &nbsp;&nbsp; &nbsp; 3 Year <br/>
+        %elif object.selected_product.term == '5' :
+            Term:&nbsp;&nbsp; &nbsp; 4 Year <br/>
+        %elif object.selected_product.term == '6' :
+            Term:&nbsp;&nbsp; &nbsp; 5 Year <br/>
+        %elif object.selected_product.term == '7' :
+            Term:&nbsp;&nbsp; &nbsp; 6 Year <br/>
+        %elif object.selected_product.term == '8' :
+            Term:&nbsp;&nbsp; &nbsp; 7 Year <br/>
+        %elif object.selected_product.term == '9' :
+            Term:&nbsp;&nbsp; &nbsp; 8 Year <br/>
+        %elif object.selected_product.term == '10' :
+            Term:&nbsp;&nbsp; &nbsp; 9 Year <br/>
+        %elif object.selected_product.term == '11' :
+            Term:&nbsp;&nbsp; &nbsp; 10 Year <br/>
+        %else:
+            Term: '' <br/>
+        %endif
+        Amortization:&nbsp;&nbsp; &nbsp; ${object.selected_product.maximum_amortization or ''}<br/>
+        Anticipated Interest Rate:&nbsp;&nbsp; &nbsp; ${object.selected_product.interest_rate or ''}<br/>
+        Anticipated Monthly Payment:
+
+        %for rec_id in object.recommendations_ids:
+
+            % if object.selected_product.name == rec_id.product.name:
+                ${rec_id.mortgage_payment}
+
+            % endif
+
+        %endfor
+
+        </p>
+        <p>We are sending your application to ${object.selected_product.lender.name or ''}
+        within the next 60 minutes.  They will review your application plus supporting
+        documents and shortly provide to us a response.  The time this takes varies between
+        lenders from 1 - 4 business days.  As soon as we hear from them, we will contact
+        you to review their response.  We are <b>CONFIDENT</b> this lender
+        will finance your goals (according to their underwriting guidelines), However, occasionally they
+        might request extra documentation.  We will keep you informed as soon as we hear back from them.
+        Thank you and have a great day. </p>
+        <p>Best Regards,</p>
+
+        <p>Visdom Mortgage Solutions<br/>
+        ${object.hr_department_id.mail_server.smtp_user or ''}</p>
+        www.visdom.ca<br/>
+
+        <p>CONFIDENTIALITY: This e-mail message (including attachments, if any) is confidential and is intended only for the addressee.
+            Any unauthorized use or disclosure is strictly prohibited. Disclosure of this e-mail to anyone other than the intended addressee does not constitute waiver of privilege.
+            If you have received this communication in error, please notify us immediately and delete this. Thank you for your cooperation.  This message has not been encrypted.
+            Special arrangements can be made for encryption upon request. If you no longer wish to receive e-mail messages from Visdom Mortgage Solutions , please contact the sender.</p>
+
+           <p>Visit our website at www.visdom.ca  for information about our company and the services we provide.
+           You can subscribe to Visdom Mortgage Solutions free electronic communications, or unsubscribe at any time</p>
+
+
+         ]]>
+            </field>
+        </record>
+
+
+       <record id="email_template_referral_proposal_notify" model="email.template">
+            <field name="name">Referral Proposal Notification</field>
+            <field name="email_from">${object.hr_department_id.mail_server.smtp_user or ''}</field>
+            <!--<field name="subject">Mortgage Proposal for ${object.app_rec_ids[0].applicant_name and ${object.app_rec_ids[1].applicant_name</field>-->
+            <field name="email_to">${object.referred_source.email_from or ''}</field>
+	    <field name="subject"><![CDATA[
+            Mortgage Proposal provided to
+            
+            %for each  in object.app_rec_ids:
+
+              %if loop.index == 1:
+                 ${each.applicant_name or ''} ${each.applicant_last_name or ''}
+                %else:
+                 and ${each.applicant_name or ''} ${each.applicant_last_name or ''}
+              %endif
+
+             %endfor
+             ]]>
+            </field>
+            <field name="email_recipients">${object.user_id.id or ''}</field>
+            <field name="model_id" ref="model_crm_lead"/>
+            <!--<field name="auto_delete" eval="True"/>-->
+            <field name="body_html"><![CDATA[
+        <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: rgb(255, 255, 255); ">
+        <p>
+        Good Day  ${object.referred_source.name or ''}, </p>
+       <p>We have sent ${object.app_rec_ids[0].applicant_name}
+        %for each  in object.app_rec_ids:
+
+              % if loop.index == 2:
+                 and ${object.app_rec_ids[1].applicant_name or ''}
+              % endif
+
+             %endfor
+	a customized
+        mortgage proposal.  One of our brokers will be contacting
+        ${object.app_rec_ids[0].applicant_name or ''} within the next 3 hours to review
+        this proposal and select the option which best fits ${object.app_rec_ids[0].applicant_name or ''}’s
+        goals.  Following this, we will be forwarding everything to the selected lender.
+        If you do have any questions, please feel free to contact our office at ${object.hr_department_id.mail_server.smtp_user or ''}.
+        Thank you again for the referral and have a great day!</p>
+        Best Regards,<br/>
+        <br/>
+        <p>Visdom Mortgage Solutions<br/></p>
+        ${object.hr_department_id.mail_server.smtp_user or ''}<br/>
+        www.visdom.ca<br/>
+<p>CONFIDENTIALITY: This e-mail message (including attachments, if any) is confidential and is intended only for the addressee.
+ Any unauthorized use or disclosure is strictly prohibited. Disclosure of this e-mail to anyone other than the intended addressee does not constitute waiver of privilege. If you have received this communication in error, please notify us immediately and delete this.
+ Thank you for your cooperation.  This message has not been encrypted.  Special arrangements can be made for encryption upon request. If you no longer wish to receive e-mail messages from Visdom Mortgage Solutions , please contact the sender.
+
+Visit our website at www.visdom.ca  for information about our company and the services we provide.
+You can subscribe to Visdom Mortgage Solutions free electronic communications, or unsubscribe at any time.</p>
+         ]]>
+            </field>
+        </record>
+
+
+       <record id="email_template_client_proposal_notify" model="email.template">
+            <field name="name">Client Proposal Notification</field>
+            <field name="email_from">${object.hr_department_id.mail_server.smtp_user or ''}</field>
+            <field name="subject">Your Mortgage Proposal</field>
+            <field name="email_to">${object.app_rec_ids[0].email_personal}</field>
+            <field name="email_recipients"></field>
+            <field name="email_cc">%for each  in object.app_rec_ids:
+
+              % if loop.index == 2:
+                  ${object.app_rec_ids[1].email_personal or ''},
+              % endif
+
+             %endfor</field>
+            <field name="model_id" ref="model_crm_lead"/>
+            <!--<field name="auto_delete" eval="True"/>-->
+            <field name="body_html"><![CDATA[
+        <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: rgb(255, 255, 255); ">
+        <p>
+        Good Day
+        %for each  in object.app_rec_ids:
+
+              % if loop.index == 1:
+                 ${object.app_rec_ids[0].applicant_name or ''}
+              %else:
+                  and ${each.applicant_name or ''}
+              % endif
+
+          % endfor
+
+        ,</p>
+        
+        <p>We have reviewed your financing goals and lenders to create for you
+        a proposal of the best mortgage options available in Canada for which you qualify.</p>
+      
+        <p>
+        One of our brokers will be calling you within the next 3 hours to review this proposal
+        (please reply to this email with an alternative time if this does not work for you).
+        If you would prefer to discuss your proposal immediately, you can contact our broker
+        team toll free (see below for contact information).</p>
+
+        <p><b>In order to view your secure custom mortgage proposal, please click on the
+        link below.  It will take you directly to your secure, protected proposal.
+        For your protection, please do not share this email with others.</b></p>
+
+        <a style="display:block; width: 150px; height:20px; margin-left: 50px; color: #FFF; font-family: 'Lucida Grande', Helvetica, Arial, sans-serif; font-size: 13px; font-weight: bold; text-align: center; text-decoration: none !important; line-height: 1; padding: 5px 0px 0px 0px; background-color: #0000FF; border-radius: 5px 5px; background-repeat: repeat no-repeat;"
+           href="https://webserv.visdom.ca/index.php?option=com_mortgageapplication&view=mortgageapplicationedit&crm_lead=${object.id}">Mortgage Proposal</a>
+        <p >Your proposal will be accessible for 72 hours.</p>
+        <p>If for some reason you are unable to access this proposal within this
+        timeframe please call our broker team.</p>
+        <p>Touch Dial:  1-855-699-2400; ${object.hr_department_id.extension or ''}</p>
+        <p>Manual Dial:  1-855-699-2400  extension: ${object.hr_department_id.extension or ''}</p>
+        <p>We look forward to helping you achieve your financial goals.  Thank you
+        for choosing Visdom Mortgage Solutions!</p>
+        <p>Have a great day!</p>
+        <p>Best Regards,</p>
+        <p>Visdom Mortgage Solutions</br>
+        ${object.hr_department_id.mail_server.smtp_user or ''}<br/>
+        www.visdom.ca</p>
+
+        <p>CONFIDENTIALITY: This e-mail message (including attachments, if any) is confidential and is intended only for the addressee.
+            Any unauthorized use or disclosure is strictly prohibited. Disclosure of this e-mail to anyone other than the intended addressee does not constitute waiver of privilege.
+            If you have received this communication in error, please notify us immediately and delete this. Thank you for your cooperation.  This message has not been encrypted.
+            Special arrangements can be made for encryption upon request. If you no longer wish to receive e-mail messages from Visdom Mortgage Solutions , please contact the sender.</p>
+
+           <p>Visit our website at www.visdom.ca  for information about our company and the services we provide.
+           You can subscribe to Visdom Mortgage Solutions free electronic communications, or unsubscribe at any time</p>
+
+         ]]>
+            </field>
+        </record>
+
+
+        <record id="email_template_related_docs" model="email.template">
+            <field name="name">Realtor Docs</field>
+            <field name="email_from">${object.hr_department_id.mail_server.smtp_user or ''}</field>
+            <field name="subject"> Mortgage Documentation</field>
+            <field name="email_to">${object.realtor.email_from or ''}</field>
+            <field name="email_recipients"></field>
+            <!--<field name="email_cc">${object.app_rec_ids[1].email_personal}</field>-->
+            <field name="model_id" ref="model_crm_lead"/>
+            <!--<field name="auto_delete" eval="True"/>-->
+            <field name="body_html"><![CDATA[
+        <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: rgb(255, 255, 255); ">
+        <p>
+        %if object.what_is_your_lending_goal == '2':
+            
+
+        
+
+           <p>Good Day ${object.referred_source.partner_id.name or ''}, </p>
+            <p>It is our understanding
+	    %for each  in object.app_rec_ids:
+
+              % if loop.index == 1:
+                 ${object.app_rec_ids[0].applicant_name or ''}
+              %else:
+                  and ${each.applicant_name or ''}
+              % endif
+
+          % endfor
+            have an accepted offer and require financing to complete their purchase.
+            If you would be able to provide my team with the following:</p>
+            <ul type="disc">
+            <li>Accepted Offer to Purchase including all waivers and addendums</li>
+            <li>MLS Listing</li>
+            </ul><br/>
+
+	    %if object.deal_ids:
+
+            <ul type="disc">
+            %for note in object.deal_ids:
+                %if note.marketing_field=='realtorDocuments1':
+                    <li>${note.name or ''}</li><br/>
+                % endif
+            %endfor
+	    %endif
+            </ul>
+
+            <p>For your information, we have also requested supporting documents from them.
+            As soon as possible if you could please forward this directly to
+           ${object.hr_department_id.mail_server.smtp_user or ''} or fax 1-866-698-1726, it would be greatly appreciated.</p>
+            <p>Many thanks for your time and prompt attention to this matter. Have a great day!</p>
+            Best Regards,<br/>
+            Visdom Mortgage Solutions<br/>
+            ${object.hr_department_id.mail_server.smtp_user or ''}<br/>
+            www.visdom.ca
+
+         %else:
+
+
+            Good Day ${object.referred_source.partner_id.name or ''},</p>
+
+
+
+           <p> For your information, we are working on the mortgage for
+           %for each  in object.app_rec_ids:
+
+              % if loop.index == 1:
+                 ${object.app_rec_ids[0].applicant_name or ''}
+              %else:
+                  and ${each.applicant_name or ''}
+              % endif
+
+          % endfor
+           and we have requested supporting documents from them. Please encourage
+           them to forward the documentation to us as quickly as possible. Many thanks for your
+           time and prompt attention to this matter. Have a great day!</p>
+            <p>Best Regards,</p>
+
+         %endif
+
+        <p>CONFIDENTIALITY: This e-mail message (including attachments, if any) is confidential and is intended only for the addressee.
+            Any unauthorized use or disclosure is strictly prohibited. Disclosure of this e-mail to anyone other than the intended addressee does not constitute waiver of privilege.
+            If you have received this communication in error, please notify us immediately and delete this. Thank you for your cooperation.  This message has not been encrypted.
+            Special arrangements can be made for encryption upon request. If you no longer wish to receive e-mail messages from Visdom Mortgage Solutions , please contact the sender.</p>
+
+           <p>Visit our website at www.visdom.ca  for information about our company and the services we provide.
+           You can subscribe to Visdom Mortgage Solutions free electronic communications, or unsubscribe at any time</p>
+
+         ]]>
+            </field>
+        </record>
+
+    <record id="email_template_document_requirement" model="email.template">
+            <field name="name">Documents Required</field>
+            <field name="email_from">${object.hr_department_id.mail_server.smtp_user or ''}</field>
+            <field name="subject">Documentation Required </field>
+            <field name="email_to">${object.app_rec_ids[0].email_personal or ''}</field>
+            <field name="email_recipients"></field>
+            <field name="email_cc"><![CDATA[
+                %for each  in object.app_rec_ids:
+
+              % if loop.index >= 2:
+                 ${each.email_personal or ''}
+
+              % endif
+
+          % endfor
+          ]]></field>
+            <field name="model_id" ref="model_crm_lead"/>
+            <field name="body_html"><![CDATA[
+        <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: rgb(255, 255, 255); ">
+
+        <p>
+        Good Day
+        %for each  in object.app_rec_ids:
+
+              % if loop.index == 1:
+                 ${object.app_rec_ids[0].applicant_name or ''}
+              %else:
+                  and ${each.applicant_name or ''}
+              % endif
+
+          % endfor
+        
+        ,</p>
+        <p>
+        On behalf of Visdom Mortgage Solutions we have  reviewed  your application and
+        will require the following documentation to support your application for the lenders:</p>
+
+        %if object.deal_ids:
+
+            <ul type="disc">
+            %for note in object.deal_ids:
+                %if note.marketing_field=='clientDocumentationList1':
+                    <li>${note.name or ''}</li><br/>
+                % endif
+            %endfor
+            </ul>
+         % else:
+         <p>At this time, there is no additional documentaion required.
+         In the event this changes, we will be in touch with you in regards to
+         the lenders documentation requirements.</p>
+         % endif
+        <p>
+
+       <b> PLEASE PROVIDE US WITH THE ABOVE DOCUMENTS BY  ${object.template_date or ''}</b></p>
+       <p>As soon as the above documents have been received, we will
+       be  able to verify your application from the eyes of the lenders.
+       Once this is complete, we will be sending you a link to your secure,
+       custom mortgage proposal.  We will be evaluating ${object.prod_count or ''}
+        mortgages and distilled them to the best options which fit your needs and goals.
+       The faster you are able to provide us with the above documents, the faster we are
+       able to assist with your financing goals.</p>
+
+       <p>If you would kindly forward the above documents either by <b>email
+       ${object.hr_department_id.mail_server.smtp_user or ''} or fax 1-866-698-1726  </b>.  Please feel free to contact
+       our team at  ${object.hr_department_id.mail_server.smtp_user or ''} or by phone (see below) if you have any questions.</p>
+       <p>Touch Dial:  <b>1-855-699-2400; ${object.hr_department_id.extension or ''}</b><br/>
+       Manual Dial: </b> 1-855-699-2400 </b>  extension: <b>${object.hr_department_id.extension or ''}</b><br/></p>
+       <p>Best Regards,</p>
+       <p>Visdom Mortgage Solutions<br/>
+       ${object.hr_department_id.mail_server.smtp_user or ''}<br/>
+       www.visdom.ca<br/></p>
+       <p>CONFIDENTIALITY: This e-mail message (including attachments, if any)
+       is confidential and is intended only for the addressee. Any unauthorized
+       use or disclosure is strictly prohibited. Disclosure of this e-mail to
+       anyone other than the intended addressee does not constitute waiver of
+       privilege. If you have received this communication in error, please
+       notify us immediately and delete this. Thank you for your cooperation.
+       This message has not been encrypted.  Special arrangements can be made
+       for encryption upon request. If you no longer wish to receive e-mail
+       messages from Visdom Mortgage Solutions , please contact the sender.</p>
+
+        <p>Visit our website at www.visdom.ca  for information about our company and the
+        services we provide.
+        You can subscribe to Visdom Mortgage Solutions free electronic communications,
+        or unsubscribe at any time.</p>
+
+
+        ]]>
+            </field>
+    </record>
+
+
+        <record id="email_template_review_task" model="email.template">
+            <field name="name">New Opportunity</field>
+            <field name="email_from">${object.hr_department_id.mail_server.smtp_user or ''}</field>
+            <field name="subject">New Opportunity</field>
+            <field name="email_to"></field>
+            <field name="email_recipients"></field>
+            <field name="email_cc"></field>
+            <field name="model_id" ref="model_crm_lead"/>
+            <field name="body_html"><![CDATA[
+        <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: rgb(255, 255, 255); ">
+
+        <p>
+        Please review the new Opportunity ${object.name or ''} and Change stage to credit if all looks fine.</p>
+
+<p>CONFIDENTIALITY: This e-mail message (including attachments, if any) is confidential and is intended only for the addressee.
+ Any unauthorized use or disclosure is strictly prohibited. Disclosure of this e-mail to anyone other than the intended addressee does not constitute waiver of privilege. If you have received this communication in error, please notify us immediately and delete this.
+ Thank you for your cooperation.  This message has not been encrypted.  Special arrangements can be made for encryption upon request. If you no longer wish to receive e-mail messages from Visdom Mortgage Solutions , please contact the sender.
+
+Visit our website at www.visdom.ca  for information about our company and the services we provide.
+You can subscribe to Visdom Mortgage Solutions free electronic communications, or unsubscribe at any time.</p>
+        ]]>
+            </field>
+    </record>
+
+     <record id="email_template_req_lawyer_email" model="email.template">
+            <field name="name">Request Lawyer email</field>
+            <field name="email_from">${object.hr_department_id.mail_server.smtp_user or ''}</field>
+            <field name="subject">Lawyer Confirmation</field>
+            <field name="email_to">${object.app_rec_ids[0].email_personal or ''}</field>
+            <field name="email_recipients"></field>
+            <field name="email_cc">${object.app_rec_ids[1].email_personal or ''}</field>
+            <field name="model_id" ref="model_crm_lead"/>
+            <field name="body_html"><![CDATA[
+        <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: rgb(255, 255, 255); ">
+
+        <p>Hello
+        %for each  in object.app_rec_ids:
+
+              % if loop.index == 1:
+                 ${object.app_rec_ids[0].applicant_name or ''}
+              %else:
+                  and ${each.applicant_name or ''}
+              % endif
+
+          % endfor
+
+        ,
+        </p>
+        <p>When your mortgage funds, the final paperwork is completed with a Lawyer.
+        To ensure this process is smooth, could you please reply to this message with the following:<br/><br/>
+        Lawyer Name:<br/>
+        Law Firm:<br/>
+        Address:<br/>
+        Phone:<br/>
+        Fax:<br/>
+        Email:<br/></p>
+        <p>As soon as we receive the following details, we will be able to provide it
+        to the lender to ensure your final signing documents are sent to the correct location.
+        If you have any questions, please feel free to contact our Broker Team at ${object.hr_department_id.mail_server.smtp_user or ''}.
+        Thank you very much for your time and assistance.  Have a great day!</p>
+        Best Regards,<br/>
+
+        Visdom Mortgage Solutions<br/>
+        ${object.hr_department_id.mail_server.smtp_user or ''}<br/>
+        www.visdom.ca<br/>
+
+        <p>CONFIDENTIALITY: This e-mail message (including attachments, if any) is confidential and is intended only for the addressee.
+            Any unauthorized use or disclosure is strictly prohibited. Disclosure of this e-mail to anyone other than the intended addressee does not constitute waiver of privilege.
+            If you have received this communication in error, please notify us immediately and delete this. Thank you for your cooperation.  This message has not been encrypted.
+            Special arrangements can be made for encryption upon request. If you no longer wish to receive e-mail messages from Visdom Mortgage Solutions , please contact the sender.</p><br/>
+
+           <p>Visit our website at www.visdom.ca  for information about our company and the services we provide.
+           You can subscribe to Visdom Mortgage Solutions free electronic communications, or unsubscribe at any time</p>
+
+
+        ]]>
+       </field>
+    </record>
+
+    <record id="email_template_req_ref_approval_msg" model="email.template">
+            <field name="name">Referral Source Approval Message</field>
+            <field name="email_from">${object.hr_department_id.mail_server.smtp_user or ''}</field>
+            
+            <field name="email_to">${object.referred_source.email_from or ''}</field>
+	     <field name="subject">${object.app_rec_ids[0].applicant_name or ''}
+            %for each  in object.app_rec_ids:
+
+              % if loop.index == 2:
+
+                  and ${object.app_rec_ids[1].applicant_name or ''}
+              % endif
+
+          % endfor
+            has been Approved for their Financing</field>
+            <field name="email_recipients"></field>
+            <field name="email_cc"></field>
+            <field name="model_id" ref="model_crm_lead"/>
+            <field name="body_html"><![CDATA[
+        <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: rgb(255, 255, 255); ">
+
+        <p>Good Day ${object.referred_source.partner_id.name or ''},</p>
+        <p>
+        This message to let you know ${object.app_rec_ids[0].applicant_name} 
+	
+            %for each  in object.app_rec_ids:
+
+              % if loop.index == 2:
+
+                  and ${object.app_rec_ids[1].applicant_name or ''}
+              % endif
+
+          % endfor
+            
+         have been approved for their financing.
+        We are waiting for them to provide us with the final signed documents which will
+        complete their mortgage financing. Once all is received, the lender will submit
+        mortgage instructions directly to their lawyer for final signing.</p>
+
+        <p>If you have any questions, please feel free to contact our Broker Team at ${object.hr_department_id.mail_server.smtp_user or ''}.<br/>
+        Thank you and have a great day.</p>
+
+        <p>Best Regards,</p>
+        <p>Visdom Mortgage Solutions<br/>
+        ${object.hr_department_id.mail_server.smtp_user or ''}<br/>
+        www.visdom.ca </p>
+        <p>CONFIDENTIALITY: This e-mail message (including attachments, if any) 
+        is confidential and is intended only for the addressee. Any unauthorized
+        use or disclosure is strictly prohibited. Disclosure of this e-mail to
+        anyone other than the intended addressee does not constitute waiver of
+        privilege. If you have received this communication in error, please
+        notify us immediately and delete this. Thank you for your cooperation.
+        This message has not been encrypted.  Special arrangements can be made
+        for encryption upon request. If you no longer wish to receive e-mail
+        messages from Visdom Mortgage Solutions , please contact the sender.</p>
+
+<p>Visit our website at www.visdom.ca  for information about our company and the
+services we provide.
+You can subscribe to Visdom Mortgage Solutions free electronic communications,
+or unsubscribe at any time.
+</p>
+
+
+        ]]>
+       </field>
+    </record>
+
+    <record id="email_template_file_complete" model="email.template">
+            <field name="name">File Complete</field>
+            <field name="email_from">${object.hr_department_id.mail_server.smtp_user or ''}</field>
+            <field name="subject"> File Complete</field>
+            <field name="email_to">${object.app_rec_ids[0].email_personal or ''}</field>
+            <field name="email_recipients"></field>
+            <field name="email_cc"><![CDATA[
+
+            %for each  in object.app_rec_ids:
+
+              % if loop.index == 2:
+
+                   ${each.email_personal or ''}
+              % endif
+
+          % endfor
+          ]]>
+</field>
+            <field name="model_id" ref="model_crm_lead"/>
+            <field name="body_html"><![CDATA[
+        <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: rgb(255, 255, 255); ">
+        <p>Good Day ${object.app_rec_ids[0].applicant_name or ''},</p>
+        <p>Congratulations it is official!  All the conditions for your mortgage
+        financing have been met and the file with ${object.final_lender.name or ''}
+        is now complete.</p>
+        <p>Your lawyer ${object.lawyer.name or ''} will be receiving mortgage instructions
+        from the lender for the final signing of your mortgage.  If you do not hear
+        from your lawyer at least ten (10) days prior to ${object.closing_date},
+        please contact them to set up an appointment.  Please note, if anything
+        changes in regards to your closing date, please contact us so we can
+        advise the lender of these changes.</p>
+
+        <p>
+        If you have any questions or require any assistance, please contact our
+        Brokert team at ${object.hr_department_id.mail_server.smtp_user or ''}.  Thank you and
+        have a great day!</p>
+
+        <p>Best Regards,</p>
+        <p>Visdom Mortgage Solutions<br/>
+        ${object.hr_department_id.mail_server.smtp_user or ''}<br/>
+        www.visdom.ca</p>
+        
+        <p>CONFIDENTIALITY: This e-mail message (including attachments, if any) is confidential and is intended only for the addressee.
+     Any unauthorized use or disclosure is strictly prohibited. Disclosure of this e-mail to anyone other than the intended addressee does not constitute waiver of privilege.
+     If you have received this communication in error, please notify us immediately and delete this. Thank you for your cooperation.  This message has not been encrypted.
+     Special arrangements can be made for encryption upon request. If you no longer wish to receive e-mail messages from Visdom Mortgage Solutions , please contact the sender.</p>
+
+     <p>Visit our website at www.visdom.ca  for information about our company and the services we provide.
+     You can subscribe to Visdom Mortgage Solutions free electronic communications, or unsubscribe at any time</p>
+
+    ]]>
+       </field>
+    </record>
+
+    <record id="email_template_file_complete_referral" model="email.template">
+            <field name="name">File Complete Referral</field>
+            <field name="email_from">${object.hr_department_id.mail_server.smtp_user or ''}</field>
+            <field name="email_to">${object.referred_source.email_from or ''}</field>
+            <field name="subject">File Complete for
+            %for each  in object.app_rec_ids:
+
+              % if loop.index == 1:
+                 ${object.app_rec_ids[0].applicant_name or ''}
+              %else:
+                  and ${each.applicant_name or ''}
+              % endif
+
+          % endfor
+            </field>
+            
+            <field name="email_recipients"></field>
+            <field name="email_cc"></field>
+            <field name="model_id" ref="model_crm_lead"/>
+            <field name="body_html"><![CDATA[
+        <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: rgb(255, 255, 255); ">
+        <p>Good Day ${object.referred_source.partner_id.name or ''},</p>
+        <p>Congratulations it is official!  All the conditions for
+        
+        %for each  in object.app_rec_ids:
+
+              % if loop.index == 1:
+                 ${object.app_rec_ids[0].applicant_name or ''}
+              %else:
+                  and ${each.applicant_name or ''}
+              % endif
+
+          % endfor
+          ’s
+        mortgage financing have been met and the file is now complete.</p>
+
+        <p>Their  lawyer ${object.lawyer.name or ''} will be receiving mortgage instructions
+        from the lender for the final signing of this mortgage.  If they do not hear
+        from their lawyer at least ten (10) days prior to ${object.closing_date},
+        we have asked them to contact their lawyer directly to set up an appointment.
+        <b>Please note</b>, if anything changes in regards to the closing date (e.g. addendums),
+        please contact us so we can advise the lender of these changes.</p>
+
+        <p>If you have any questions or require any assistance, please contact our
+        Broker team at ${object.hr_department_id.mail_server.smtp_user or ''}.  Thank you and have a great day!</p>
+
+        <p>Best Regards,</p>
+        <p>Visdom Mortgage Solutions<br/>
+        ${object.hr_department_id.mail_server.smtp_user or ''}<br/>
+        www.visdom.ca
+
+        <p>CONFIDENTIALITY: This e-mail message (including attachments, if any) is confidential and is intended only for the addressee.
+     Any unauthorized use or disclosure is strictly prohibited. Disclosure of this e-mail to anyone other than the intended addressee does not constitute waiver of privilege.
+     If you have received this communication in error, please notify us immediately and delete this. Thank you for your cooperation.  This message has not been encrypted.
+     Special arrangements can be made for encryption upon request. If you no longer wish to receive e-mail messages from Visdom Mortgage Solutions , please contact the sender.</p>
+
+     <p>Visit our website at www.visdom.ca  for information about our company and the services we provide.
+     You can subscribe to Visdom Mortgage Solutions free electronic communications, or unsubscribe at any time</p>
+
+        ]]>
+       </field>
+    </record>
+
+
+    <record id="email_template_lawyer_msg" model="email.template">
+            <field name="name">Lawyer Message</field>
+            <field name="email_from">${object.hr_department_id.mail_server.smtp_user or ''}</field>
+            <field name="email_to">${object.lawyer.email or ''}</field>
+            <field name="subject">Mortgage Details for ${object.app_rec_ids[0].applicant_name or ''}  ${object.app_rec_ids[0].applicant_last_name or ''}
+
+            %for each  in object.app_rec_ids:
+
+              % if loop.index == 2:
+
+                  and ${object.app_rec_ids[1].applicant_name or ''} ${object.app_rec_ids[1].applicant_last_name or ''}
+              % endif
+
+          % endfor
+
+            </field>
+            
+            <field name="email_recipients"></field>
+            <field name="email_cc"></field>
+            <field name="model_id" ref="model_crm_lead"/>
+            <field name="body_html"><![CDATA[
+            <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: rgb(255, 255, 255); ">
+            <p>Good Day ${object.lawyer.name or ''}:</p>
+
+            <p>On behalf of  Visdom Mortgage Solutions, we have successfully
+            arranged financing for the below noted clients and you should be
+            receiving mortgages instructions directly from the lender.
+            This mortgage is scheduled to close on ${object.closing_date or ''}.<br/></p>
+
+            <p><b>Client Information:</b><br/>
+            ${object.app_rec_ids[0].applicant_name or ''}  ${object.app_rec_ids[0].applicant_last_name or ''}
+            %for each  in object.app_rec_ids:
+
+              % if loop.index == 2:
+                  and ${object.app_rec_ids[1].applicant_name or ''} ${object.app_rec_ids[1].applicant_last_name or ''}
+              % endif
+
+             %endfor
+            <br/>
+            Phone #: &nbsp; &nbsp;&nbsp;${object.app_rec_ids[0].home or ''}<br/>
+            Cell #:&nbsp; &nbsp;&nbsp;${object.app_rec_ids[0].cell or '< >'}<br/>
+            Work #:&nbsp;&nbsp;&nbsp;${object.app_rec_ids[0].work or ''}<br/>
+            Email Address:&nbsp;&nbsp;&nbsp;&nbsp;${object.app_rec_ids[0].email_personal or ''}<br/></p>
+            <p><b>Property Information:</b><br/>
+            Subject Property:&nbsp;&nbsp;&nbsp;${object.address or ''},  ${object.city or ''} , ${object.province or ''} ,${object.postal_code or ''} <br/>
+            Legal Description: &nbsp;&nbsp;&nbsp; Township - &nbsp;&nbsp; ${object.Township_PID or ''},&nbsp;&nbsp; Plan - &nbsp;&nbsp;${object.plan or ''}, &nbsp;&nbsp;Block -&nbsp;&nbsp; ${object.block or ''} , &nbsp;&nbsp; Lot- &nbsp;&nbsp;${object.lot or ''} <br/>
+            Lender: &nbsp;&nbsp;&nbsp;${object.final_lender.name or ''} <br/>
+            Lender Ref#: &nbsp;&nbsp;&nbsp;${object.lender_ref or ''}<br/>
+            Lender Phone#:&nbsp;&nbsp;&nbsp;&nbsp;${object.final_lender.work_phone or ''}<br/>
+            Lender Fax#:&nbsp;&nbsp;&nbsp;&nbsp;${object.final_lender.fax or ''}<br/></p>
+
+
+            <p><b>Mortgage Information:</b><br/>
+            Mortgage Type:&nbsp;&nbsp;&nbsp;${object.open_closed or ''}<br/>
+	    %if object.mortgage_type == '1':
+
+                Rate Type: &nbsp;&nbsp; &nbsp; LOC <br/>
+            %elif object.mortgage_type == '2' :
+                Rate Type:&nbsp;&nbsp; &nbsp; Variable <br/>
+            %elif object.mortgage_type == '3' :
+                Rate Type:&nbsp;&nbsp; &nbsp;  Fixed <br/>
+            %elif object.mortgage_type == '4' :
+                Rate Type: &nbsp;&nbsp; &nbsp; Cashback <br/>
+            %elif object.mortgage_type == '5' :
+               Rate Type: &nbsp;&nbsp; &nbsp; Combined<br/>
+            %else:
+               Rate Type: ''<br/>
+
+            %endif
+
+           
+            Loan Amount:&nbsp;&nbsp;&nbsp;${object.total_mortgage_amount or ''}<br/>
+            Interest Rate:&nbsp;&nbsp;&nbsp;${object.rate or ''}<br/>
+            Payments:&nbsp;&nbsp;&nbsp;${object.monthly_payment or ''}<br/>
+	    %if object.frequency == '1':
+
+                Frequency:&nbsp;&nbsp;&nbsp;Monthly<br/>
+            %elif object.frequency == '2' :
+                Frequency:&nbsp;&nbsp;&nbsp;Semi-Monthly<br/>
+            %elif object.frequency == '3' :
+                Frequency:&nbsp;&nbsp;&nbsp;Bi-Weekly<br/>
+            %elif object.frequency == '4' :
+                Frequency:&nbsp;&nbsp;&nbsp;Weekly<br/>
+            %elif object.frequency == '5' :
+               Frequency:&nbsp;&nbsp;&nbsp;Quarterly<br/>
+            %elif object.frequency == '6' :
+               Frequency:&nbsp;&nbsp;&nbsp;Annual<br/>
+            %else:
+               Frequency: ''<br/>
+            %endif
+            Term:&nbsp;&nbsp;&nbsp;${object.term or ''}<br/>
+            Amortization:&nbsp;&nbsp;&nbsp;${object.amortization or ''}<br/></p>
+
+            <p>If you do not receive these mortgages instructions at least <b>ten (10)
+            days</b> prior to closing please feel free to contact our Broker Team at
+            ${object.hr_department_id.mail_server.smtp_user or ''} .  Thank you and have a great day!</p>
+
+            <p>Best Regards,</p>
+            <p>Visdom Mortgage Solutions<br/>
+            ${object.hr_department_id.mail_server.smtp_user or ''}</p>
+            www.visdom.ca<br/>
+
+            <p>CONFIDENTIALITY: This e-mail message (including attachments, if any) is confidential and is intended only for the addressee.
+            Any unauthorized use or disclosure is strictly prohibited. Disclosure of this e-mail to anyone other than the intended addressee does not constitute waiver of privilege.
+            If you have received this communication in error, please notify us immediately and delete this. Thank you for your cooperation.  This message has not been encrypted.
+            Special arrangements can be made for encryption upon request. If you no longer wish to receive e-mail messages from Visdom Mortgage Solutions , please contact the sender.</p><br/>
+
+           <p>Visit our website at www.visdom.ca  for information about our company and the services we provide.
+           You can subscribe to Visdom Mortgage Solutions free electronic communications, or unsubscribe at any time</p>
+
+
+            ]]>
+       </field>
+    </record>
+
+
+    <record id="email_template_trailer" model="email.template">
+            <field name="name">Bookkeeping Message -Trailer</field>
+            <field name="email_from">${object.hr_department_id.mail_server.smtp_user or ''}</field>
+            <field name="subject">${object.name}</field>
+            <field name="email_to">${object.company_id.bookeeper_email or ''}</field>
+            <field name="email_recipients"></field>
+            <field name="email_cc"></field>
+            <field name="model_id" ref="model_crm_lead"/>
+            <field name="body_html"><![CDATA[
+            <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: rgb(255, 255, 255); ">
+            <p>Dear${object.company_id.bookeeper_name} </p>
+            <p>Visdom Mortgage Solutions, we have successfully arranged financing
+            for the below noted opportunity. Please create a receivable from the Lender
+            for the amounts listed below.  Additionally, please create a payable to the
+            Referral Source  for the Amount Listed (Referral Fee: ${object.referral_fee}.
+            The expected cashflow dates for both should be 3 weeks after the closing date of
+            ${object.closing_date}.</p>
+
+
+            <p><b>Opportunity Information:</b><br/>
+            Opportunity Name:&nbsp;&nbsp;&nbsp;${object.name}<br/>
+            Mortgage Amount:&nbsp;&nbsp;&nbsp;${object.total_mortgage_amount}<br/>
+            Mortgage Term:&nbsp;&nbsp;&nbsp;${object.term}<br/>
+            Lender:&nbsp;&nbsp;&nbsp;${object.final_lender.name}<br/>
+            Lender Ref#:&nbsp;&nbsp;&nbsp;${object.lender_ref}<br/>
+            Lender Phone#:&nbsp;&nbsp;&nbsp;${object.final_lender.underwriting_office_work_phone}<br/>
+            Lender Fax#:&nbsp;&nbsp;&nbsp;${object.final_lender.underwriting_office_work_fax}<br/>
+            Referral Source:&nbsp;&nbsp;&nbsp;${object.referred_source.partner_id.name or ''} ${object.referred_source.partner_id.last_name or ''}<br/>
+            Referral Source Address:&nbsp;&nbsp;&nbsp;${object.referred_source.candidate_street}, ${object.referred_source.candidate_street2} , ${object.referred_source.candidate_city}, ${object.referred_source.candidate_state_id.name}, ${object.referred_source.candidate_zip}<br/>
+            Referral Source email:&nbsp;&nbsp;&nbsp;${object.referred_source.email_from}<br/></p>
+
+            <p><b>Compensation Information:</b><br/>
+            Base Comp Amount:&nbsp;&nbsp;&nbsp;${object.base_comp_amount} <br/>
+            Volume Bonus Amount:&nbsp;&nbsp;&nbsp;${object.volume_bonus_amount}<br/>
+            Marketing Comp Amount:&nbsp;&nbsp;&nbsp;${object.marketing_comp_amount}<br/>
+            Trailer Comp Amount:&nbsp;&nbsp;&nbsp;${object.marketing_comp_amount}<br/>
+            Total Comp Amount:&nbsp;&nbsp;&nbsp;${object.base_comp_amount}<br/>
+            Referral Fee:&nbsp;&nbsp;&nbsp; ${object.referral_fee}<br/>
+            Please note ... The Amount expected from the lender initially does
+            not include the trailer comp amount.  There will need to be subsequent
+            receivables set up annually on the anniversary of the closing date for
+            the trailer comp amount / term (in years).</p>
+
+            <p>Please let us know if you have any questions. Thank you and have a great day!</p>
+
+
+            <p>Best Regards,</p>
+            <p>Visdom Mortgage Solutions<br/>
+            ${object.hr_department_id.mail_server.smtp_user or ''}<br/>
+            www.visdom.ca
+	<p>CONFIDENTIALITY: This e-mail message (including attachments, if any) is confidential and is intended only for the addressee.
+ Any unauthorized use or disclosure is strictly prohibited. Disclosure of this e-mail to anyone other than the intended addressee does not constitute waiver of privilege. If you have received this communication in error, please notify us immediately and delete this.
+ Thank you for your cooperation.  This message has not been encrypted.  Special arrangements can be made for encryption upon request. If you no longer wish to receive e-mail messages from Visdom Mortgage Solutions , please contact the sender.
+
+Visit our website at www.visdom.ca  for information about our company and the services we provide.
+You can subscribe to Visdom Mortgage Solutions free electronic communications, or unsubscribe at any time.</p>
+
+             ]]>
+       </field>
+    </record>
+
+    <record id="email_template_no_trailer" model="email.template">
+            <field name="name">Bookkeeping Message - No Trailer</field>
+            <field name="email_from">${object.hr_department_id.mail_server.smtp_user or ''}</field>
+            <field name="subject">${object.name} Bookeeping</field>
+            <field name="email_to">${object.company_id.bookeeper_email or ''}</field>
+            <field name="email_recipients"></field>
+            <field name="email_cc"></field>
+            <field name="model_id" ref="model_crm_lead"/>
+            <field name="body_html"><![CDATA[
+            <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: rgb(255, 255, 255); ">
+            <p>Dear ${object.company_id.bookeeper_name}, </p>
+            <p>Visdom Mortgage Solutions, we have successfully arranged financing
+            for the below noted opportunity. Please create a receivable from the Lender
+            for the amounts listed below.  Additionally, please create a payable to the
+            Referral Source  for the Amount Listed (Referral Fee: ${object.referral_fee}.
+            The expected cashflow dates for both should be 3 weeks after the closing date of
+            ${object.closing_date}.</p>
+
+            <p><b>Opportunity Information:</b><br/>
+            Opportunity Name:&nbsp;&nbsp;&nbsp;${object.name}<br/>
+            Mortgage Amount:&nbsp;&nbsp;&nbsp;${object.total_mortgage_amount}<br/>
+            Mortgage Term:&nbsp;&nbsp;&nbsp;${object.term}<br/>
+            Lender:&nbsp;&nbsp;&nbsp;${object.final_lender.name}<br/>
+            Lender Ref#:&nbsp;&nbsp;&nbsp;${object.lender_ref}<br/>
+            Lender Phone#:&nbsp;&nbsp;&nbsp;${object.final_lender.underwriting_office_work_phone}<br/>
+            Lender Fax#:&nbsp;&nbsp;&nbsp;${object.final_lender.underwriting_office_work_fax}<br/>
+            Referral Source:&nbsp;&nbsp;&nbsp;${object.referred_source.partner_id.name or ''} ${object.referred_source.partner_id.last_name or ''}<br/>
+            Referral Source Address:&nbsp;&nbsp;&nbsp;${object.referred_source.candidate_street}, ${object.referred_source.candidate_street2} , ${object.referred_source.candidate_city}, ${object.referred_source.candidate_state_id.name}, ${object.referred_source.candidate_zip}<br/>
+            Referral Source email:&nbsp;&nbsp;&nbsp;${object.referred_source.email_from}<br/></p>
+
+            <p><b>Compensation Information:</b><br/>
+            Base Comp Amount:&nbsp;&nbsp;&nbsp;${object.base_comp_amount} <br/>
+            Volume Bonus Amount:&nbsp;&nbsp;&nbsp;${object.volume_bonus_amount}<br/>
+            Marketing Comp Amount:&nbsp;&nbsp;&nbsp;${object.marketing_comp_amount}<br/>
+            Trailer Comp Amount:&nbsp;&nbsp;&nbsp;${object.marketing_comp_amount}<br/>
+            Total Comp Amount:&nbsp;&nbsp;&nbsp;${object.base_comp_amount}<br/>
+            Referral Fee:&nbsp;&nbsp;&nbsp; ${object.referral_fee}<br/>
+
+            <p>Please let us know if you have any questions. Thank you and have a great day!</p>
+
+            <p>Best Regards,</p>
+            <p>Visdom Mortgage Solutions<br/>
+            ${object.hr_department_id.mail_server.smtp_user or ''}</p>
+            www.visdom.ca
+
+            <p>CONFIDENTIALITY: This e-mail message (including attachments, if any) is confidential and is intended only for the addressee.
+            Any unauthorized use or disclosure is strictly prohibited. Disclosure of this e-mail to anyone other than the intended addressee does not constitute waiver of privilege.
+            If you have received this communication in error, please notify us immediately and delete this. Thank you for your cooperation.  This message has not been encrypted.
+            Special arrangements can be made for encryption upon request. If you no longer wish to receive e-mail messages from Visdom Mortgage Solutions , please contact the sender.</p><br/>
+
+           <p>Visit our website at www.visdom.ca  for information about our company and the services we provide.
+           You can subscribe to Visdom Mortgage Solutions free electronic communications, or unsubscribe at any time</p>
+
+            ]]>
+       </field>
+    </record>
+
+
+    <record id="email_template_congrats_client" model="email.template">
+            <field name="name">Congrats To client</field>
+            <field name="email_from">${object.hr_department_id.mail_server.smtp_user or ''}</field>
+            <field name="subject">Congratulations!!</field>
+            <field name="email_to">${object.app_rec_ids[0].email_personal or ''}</field>
+            <field name="email_recipients"></field>
+            <field name="email_cc">${object.app_rec_ids[1].email_personal or ''}</field>
+            <field name="model_id" ref="model_crm_lead"/>
+            <field name="body_html"><![CDATA[
+            <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: rgb(255, 255, 255); ">
+            <p>Good Day 
+	%for each  in object.app_rec_ids:
+
+              % if loop.index == 1:
+                 ${object.app_rec_ids[0].applicant_name or ''}
+              %else:
+                  and ${each.applicant_name or ''}
+              % endif
+
+         % endfor
+            
+	,</p>
+
+            <p><b>Congratulations on the financing of your property! </b></p>
+
+
+
+            <p>We would like to THANK YOU for allowing us to be a part of the
+            process. It’s been a pleasure to work with you on your mortgage.
+            We trust the experience of working with us has provided the results
+            you hoped for and has exceeded your expectations.</p>
+
+            <p>We very much want to understand how you enjoyed this experience
+            with Visdom.  To help us do so, there is a brief survey we would
+            appreciate your help with.  If you invest just a couple of minutes
+            in completing this survey, we will send you $50 in return for your
+            valuable feedback.</p>
+
+            <p>Additionally, In the event you feel you may know other people
+            who would like to improve their  financing options, we have a
+            referral program which could potentially compensate you for providing
+            those referrals to us.  Please fill out the survey below link for
+            more information.</p>
+            <Insert Survey Link.>
+
+            <p>Thank you and have a great day.</p>
+
+            <p>Best Regards,</p>
+            <p>Visdom Mortgage Solutions<br/>
+            ${object.hr_department_id.mail_server.smtp_user or ''}<br/>
+            www.visdom.ca</p>
+
+            <p>CONFIDENTIALITY: This e-mail message (including attachments,
+            if any) is confidential and is intended only for the addressee.
+            Any unauthorized use or disclosure is strictly prohibited.
+            Disclosure of this e-mail to anyone other than the intended
+            addressee does not constitute waiver of privilege. If you have
+            received this communication in error, please notify us immediately
+            and delete this. Thank you for your cooperation.  This message has
+            not been encrypted.  Special arrangements can be made for encryption
+            upon request. If you no longer wish to receive e-mail messages from
+            Visdom Mortgage Solutions , please contact the sender.</p>
+
+            <p>Visit our website at www.visdom.ca  for information about our company and the services we provide.
+            You can subscribe to Visdom Mortgage Solutions free electronic communications, or unsubscribe at any time.</p>
+
+
+         ]]>
+       </field>
+    </record>
+
+      <record id="email_template_acknowledge_app_receieved" model="email.template">
+            <field name="name">Acknowledge Application Receieved</field>
+            <field name="email_from">${object.hr_department_id.mail_server.smtp_user or ''}</field>
+            <field name="subject">Thank you for your application</field>
+<!--            <field name="email_to">${object.partner_id.email}</field>-->
+            <!--<field name="email_to"> ${object.app_rec_ids[0].email_personal or ''},${object.app_rec_ids[1].email_personal or ''}</field>-->
+            <field name="email_to">${object.app_rec_ids[0].email_personal or ''},
+            %for each  in object.app_rec_ids:
+
+              % if loop.index == 2:
+                  ${object.app_rec_ids[1].email_personal or ''},
+              % endif
+
+             %endfor</field>
+            <field name="email_cc"></field>
+            <field name="email_recipients"></field>
+            <field name="model_id" ref="model_crm_lead"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="body_html"><![CDATA[
+                <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: rgb(255, 255, 255); ">
+                <p>Hello ${object.app_rec_ids[0].applicant_name or ''}
+                %for each  in object.app_rec_ids:
+
+              % if loop.index == 2:
+                 and ${object.app_rec_ids[1].applicant_name or ''}
+              % endif
+
+             %endfor
+               ,</p>
+               <p>On behalf of Visdom Mortgage  Solutions, Thank you very much
+               for your online mortgage application.</p>
+
+               <p>We are reviewing your application and will be in contact by
+               with you by email within one hour. In the event, you completed
+               your application after midnight (EST) we will be in touch with
+               you first thing in the morning.</p>
+               <p>If you have any questions kindly feel free to contact our team
+               at ${object.hr_department_id.mail_server.smtp_user or ''} </p>
+
+               <p>Best Regards,</p>
+
+        <p>Visdom Mortgage Solutions<br/>
+        ${object.hr_department_id.mail_server.smtp_user or ''}<br/>
+         www.visdom.ca</p>
+         <p>CONFIDENTIALITY: This e-mail message (including attachments, if any) is confidential and is intended only for the addressee. Any unauthorized use or disclosure is strictly prohibited. Disclosure of this e-mail to anyone other than the intended addressee does not constitute waiver of privilege. If you have received this communication in error, please notify us immediately and delete this. Thank you for your cooperation.  This message has not been encrypted.  Special arrangements can be made for encryption upon request. If you no longer wish to receive e-mail messages from Visdom Mortgage Solutions , please contact the sender.</p>
+         <p>Visit our website at www.visdom.ca  for information about our company and the services we provide.
+You can subscribe to Visdom Mortgage Solutions free electronic communications, or unsubscribe at any time.</p>
+
+
+            ]]>
+            </field>
+        </record>
+
+
+        <record id="email_template_app_complete" model="email.template">
+            <field name="name">App Complete</field>
+            <field name="email_from">${object.hr_department_id.mail_server.smtp_user or ''}</field>
+            <field name="email_to">${object.referred_source.email_from or ''}</field>
+            <field name="subject"><![CDATA[ Mortgage Application for  ${object.app_rec_ids[0].applicant_name or ''}
+            %for each  in object.app_rec_ids:
+
+              % if loop.index == 2:
+                 and ${object.app_rec_ids[1].applicant_name or ''}
+              % endif
+
+             %endfor  ]]> </field>
+            
+            <field name="email_recipients"></field>
+            <field name="model_id" ref="model_crm_lead"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="body_html"><![CDATA[
+                <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: rgb(255, 255, 255); ">
+
+               <p> Good Day ${object.referred_source.partner_id.name}, </p>
+<p>We are sending this message just to let you know that we have received the
+mortgage application for ${object.app_rec_ids[0].applicant_name or ''}
+            %for each  in object.app_rec_ids:
+
+              % if loop.index == 2:
+
+                  and ${object.app_rec_ids[1].applicant_name or ''}
+              % endif
+
+          % endfor
+.</p>
+<p>We are reviewing their  application and will be in contact by with them
+by email within one hour. In the event, they completed their application after
+midnight (EST) we will be in touch with them first thing in the morning.  </p>
+<p>If you have any questions kindly feel free to contact our team at ${object.hr_department_id.mail_server.smtp_user or ''} </p>
+<p>Best Regards,</p>
+<p>Visdom Mortgage Solutions Inc.<br/>
+ ${object.hr_department_id.mail_server.smtp_user or ''}</p>
+ www.visdom.ca
+
+ <p>CONFIDENTIALITY: This e-mail message (including attachments, if any) is confidential and is intended only for the addressee.
+            Any unauthorized use or disclosure is strictly prohibited. Disclosure of this e-mail to anyone other than the intended addressee does not constitute waiver of privilege.
+            If you have received this communication in error, please notify us immediately and delete this. Thank you for your cooperation.  This message has not been encrypted.
+            Special arrangements can be made for encryption upon request. If you no longer wish to receive e-mail messages from Visdom Mortgage Solutions , please contact the sender.</p>
+
+           <p>Visit our website at www.visdom.ca  for information about our company and the services we provide.
+           You can subscribe to Visdom Mortgage Solutions free electronic communications, or unsubscribe at any time</p>
+            ]]>
+            </field>
+        </record>
+
+
+        <record id="email_template_client_survey_reminder" model="email.template">
+            <field name="name">Client Survey Reminder</field>
+            <field name="email_from">${object.hr_department_id.mail_server.smtp_user or ''}</field>
+            <field name="subject">Your Experience with Visdom</field>
+            <field name="email_to">${object.app_rec_ids[0].email_personal or ''}</field>
+            <field name="email_recipients"></field>
+            <field name="email_cc">${object.app_rec_ids[1].email_personal or ''}</field>
+            <field name="model_id" ref="model_crm_lead"/>
+            <field name="body_html"><![CDATA[
+            <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: rgb(255, 255, 255); ">
+            <p>Good Day, ${object.app_rec_ids[0].applicant_name or ''}
+            %for each  in object.app_rec_ids:
+
+              % if loop.index == 2:
+
+                  and ${object.app_rec_ids[1].applicant_name or ''}
+              % endif
+
+          % endfor
+            !</p>
+
+            <p>Recently we sent you an invitation to complete a survey about your
+            financing experience with Visdom.  We noticed you have not yet
+            provided your feedback. </p>
+
+            <p>We are committed to providing a superior financing experience
+            to each and every one of our clients.  Please take a few minutes
+            to tell us how we met your expectations.  If you are able to do this
+            in the next 72 hours, we will be sending you $50 as a gesture of
+            appreciation for your perspective.  Please click on the below link
+            to begin the process.</p>
+
+            < Insert Survey Link. >
+            <p>If this link does not work for any reason, please copy and paste
+            this entire link into your browser address bar.</p>
+
+            <p>Thank you and have a great day.</p>
+
+            <p>Best Regards,</p>
+            <p>Visdom Mortgage Solutions<br/>
+             ${object.hr_department_id.mail_server.smtp_user or ''}<br/>
+             www.visdom.ca
+
+             <p>CONFIDENTIALITY: This e-mail message (including attachments, if any) is confidential and is intended only for the addressee.
+             Any unauthorized use or disclosure is strictly prohibited. Disclosure of this e-mail to anyone other than the intended addressee does not constitute waiver of privilege. If you have received this communication in error, please notify us immediately and delete this.
+             Thank you for your cooperation.  This message has not been encrypted.  Special arrangements can be made for encryption upon request. If you no longer wish to receive e-mail messages from Visdom Mortgage Solutions , please contact the sender.
+
+            Visit our website at www.visdom.ca  for information about our company and the services we provide.
+            You can subscribe to Visdom Mortgage Solutions free electronic communications, or unsubscribe at any time.</p>
+
+            ]]>
+            </field>
+        </record>
+
+
+
+        <!---Non automated Template-->
+        <record id="email_template_outstanding_doc" model="email.template">
+            <field name="name">Outstanding Documents</field>
+            <field name="email_from">${object.hr_department_id.mail_server.smtp_user or ''}</field>
+            <field name="subject">Remaining Documentation Required</field>
+            <field name="email_to">${object.app_rec_ids[0].email_personal or ''}</field>
+            <field name="email_recipients"></field>
+            <field name="email_cc"><![CDATA[
+                %for each  in object.app_rec_ids:
+
+              % if loop.index >= 2:
+                 ${each.email_personal or ''}
+
+              % endif
+
+          % endfor
+          ]]></field>
+            <field name="model_id" ref="model_crm_lead"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="body_html"><![CDATA[
+                <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: rgb(255, 255, 255); ">
+                <p>Good Day ${object.app_rec_ids[0].applicant_name},</p>
+                <p>On behalf of Visdom Mortgage Solutions, thank you for your
+                supporting documents.  After reviewing the documents you have
+                submitted, we still require the following documentation to
+                support your application: </p>
+                
+                <p>PLEASE PROVIDE US WITH THE ABOVE DOCUMENTS WITHIN 24 HOURS. </p>
+                <p>As soon as the above documents have been received, we will be
+                able to verify your application from the eyes of the lenders.
+                Once this is complete, we will be sending you a link to your secure,
+                custom mortgage proposal.  We will be evaluating ${object.prod_count}
+                mortgages and distilled them to the best options which fit your
+                needs and goals.  The faster you are able to provide us with the
+                above documents, the faster we are able to assist with your
+                financing goals.</p>
+
+                <p>If you would kindly forward the above documents either by
+                <b>email  ${object.hr_department_id.mail_server.smtp_user or ''} or fax 1-866-698-1726 </b>
+                Please feel free to contact our team at
+                ${object.hr_department_id.mail_server.smtp_user or ''} or by phone (see below) if you have any questions. </p>
+                <p>Touch Dial:<b>  1-855-699-2400;</b> ${object.hr_department_id.extension} <br/>
+                Manual Dial:  <b>1-855-699-2400</b>  extension: ${object.hr_department_id.extension} <br/></p>
+                <p>Best Regards,</p>
+            <p>Visdom Mortgage Solutions<br/>
+             ${object.hr_department_id.mail_server.smtp_user or ''}<br/>
+             www.visdom.ca</p>
+             <p>CONFIDENTIALITY: This e-mail message (including attachments,
+             if any) is confidential and is intended only for the addressee.
+             Any unauthorized use or disclosure is strictly prohibited. Disclosure
+             of this e-mail to anyone other than the intended addressee does not
+             constitute waiver of privilege. If you have received this communication
+             in error, please notify us immediately and delete this. Thank you
+             for your cooperation.  This message has not been encrypted.
+             Special arrangements can be made for encryption upon request.
+             If you no longer wish to receive e-mail messages from Visdom Mortgage
+             Solutions , please contact the sender.</p>
+
+        <p>Visit our website at www.visdom.ca  for information about our company
+        and the services we provide.
+        You can subscribe to Visdom Mortgage Solutions free electronic communications,
+        or unsubscribe at any time.</p>
+            ]]>
+            </field>
+        </record>
+
+        <record id="email_template_referral_more_info" model="email.template">
+            <field name="name">Referral More Info Needed</field>
+            <field name="email_from">${object.hr_department_id.mail_server.smtp_user or ''}</field>
+            <field name="subject">Additional Information Required for ${object.name}</field>
+            <field name="email_to">${object.app_rec_ids[0].email_personal or ''}</field>
+            <field name="email_cc">${object.app_rec_ids[1].email_personal or ''}</field>
+            <!--<field name="email_recipients">${object.partner_id.email}</field>-->
+            <field name="model_id" ref="model_crm_lead"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="body_html"><![CDATA[
+                <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: rgb(255, 255, 255); ">
+                <p>Good Day,</p>
+                <p>Thank you very much for your referral.  We are needing a bit more
+                information on your referral.  Please kindly provide us the with
+                the following details.</p>
+                <ul type="disc">
+                <li>home email address</li>
+                </ul>
+                <p>Again, thank you for the referral.  Please feel free to
+                contact our team at  ${object.hr_department_id.mail_server.smtp_user or ''} or by phone (see below)
+                if you have any questions.</p>
+
+                <p>Touch Dial:<b>  1-855-699-2400;</b> ${object.hr_department_id.extension} <br/>
+                Manual Dial:  <b>1-855-699-2400 </b>  extension: ${object.hr_department_id.extension} <br/></p>
+
+
+                <p>Best Regards,</p>
+            <p>Visdom Mortgage Solutions<br/>
+             ${object.hr_department_id.mail_server.smtp_user or ''}<br/>
+             www.visdom.ca</p>
+             <p>CONFIDENTIALITY: This e-mail message (including attachments, if any)
+             is confidential and is intended only for the addressee. Any
+             unauthorized use or disclosure is strictly prohibited. Disclosure
+             of this e-mail to anyone other than the intended addressee does
+             not constitute waiver of privilege. If you have received this
+             communication in error, please notify us immediately and delete
+             this. Thank you for your cooperation.  This message has not been
+             encrypted.  Special arrangements can be made for encryption upon
+             request. If you no longer wish to receive e-mail messages from
+             Visdom Mortgage Solutions , please contact the sender.</p>
+
+            <p>Visit our website at www.visdom.ca  for information about our
+            company and the services we provide.
+            You can subscribe to Visdom Mortgage Solutions free electronic
+            communications, or unsubscribe at any time</p>
+            ]]>
+            </field>
+        </record>
+
+        <record id="email_template_all_doc_recv" model="email.template">
+            <field name="name">All documents received</field>
+            <field name="email_from">${object.hr_department_id.mail_server.smtp_user or ''}</field>
+            <field name="subject">Confirmation of Documents ALL received</field>
+            <!--<field name="email_to">${object.referred_source.email_from or ''}</field>-->
+	    <field name="email_to">${object.app_rec_ids[0].email_personal or ''},
+            %for each  in object.app_rec_ids:
+
+              % if loop.index == 2:
+                  ${object.app_rec_ids[1].email_personal or ''},
+              % endif
+
+             %endfor</field>
+            <field name="email_cc">${object.referred_source.email_from or ''}</field>
+            <!--<field name="email_recipients">${object.partner_id.email}</field>-->
+            <field name="model_id" ref="model_crm_lead"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="body_html"><![CDATA[
+                <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: rgb(255, 255, 255); ">
+                <p>Good Day ${object.app_rec_ids[0].applicant_name},<br/>
+                <p>On behalf of Visdom Mortgage Solutions, we would like to take
+                this opportunity to THANK  YOU for all your supporting documents.
+                We are verifying your mortgage application and are creating your
+                secure, custom Mortgage Proposal which evaluates ${object.prod_count}
+                mortgages, distilling them to the best options which fit the needs
+                and goals you expressed in your original application.  You should
+                be receiving another message from us in the next 3 hours with access
+                instructions to your proposal.</p>
+
+                <p>Please feel free to contact our team at
+                ${object.hr_department_id.mail_server.smtp_user or ''} or by phone (see below)
+                if you have ay questions.</p>
+
+                <p>Touch Dial:<b>  1-855-699-2400;</b> ${object.hr_department_id.extension} <br/>
+                Manual Dial:  <b>1-855-699-2400 </b>  extension: ${object.hr_department_id.extension} <br/></p>
+
+              <p>Best Regards,</p>
+            <p>Visdom Mortgage Solutions<br/>
+             ${object.hr_department_id.mail_server.smtp_user or ''}<br/>
+             www.visdom.ca</p>
+<p>CONFIDENTIALITY: This e-mail message (including attachments, if any) is confidential and is intended only for the addressee.
+ Any unauthorized use or disclosure is strictly prohibited. Disclosure of this e-mail to anyone other than the intended addressee does not constitute waiver of privilege. If you have received this communication in error, please notify us immediately and delete this.
+ Thank you for your cooperation.  This message has not been encrypted.  Special arrangements can be made for encryption upon request. If you no longer wish to receive e-mail messages from Visdom Mortgage Solutions , please contact the sender.
+
+Visit our website at www.visdom.ca  for information about our company and the services we provide.
+You can subscribe to Visdom Mortgage Solutions free electronic communications, or unsubscribe at any time.</p>
+            ]]>
+            </field>
+        </record>
+
+
+        <record id="email_template_ref_client_docs_rec" model="email.template">
+            <field name="name">Referral Client Docs Received</field>
+            <field name="email_from">${object.hr_department_id.mail_server.smtp_user or ''}</field>
+           <!-- <field name="subject">Supporting Documents have been received for ${object.app_rec_ids[0].applicant_name or ''} and ${object.app_rec_ids[1].applicant_name or ''}</field>-->
+            <field name="email_to">${object.referred_source.email_from or ''}</field>
+	    <field name="subject">Supporting Documents have been received for ${object.app_rec_ids[0].applicant_name or ''}
+
+             %for each  in object.app_rec_ids:
+
+              % if loop.index == 2:
+
+                  and ${each.applicant_name or ''}
+              % endif
+
+          % endfor
+
+            </field>
+            <field name="email_cc"></field>
+            <!--<field name="email_recipients">${object.partner_id.email}</field>-->
+            <field name="model_id" ref="model_crm_lead"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="body_html"><![CDATA[
+                <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: rgb(255, 255, 255); ">
+
+
+                <p>Good Day ${object.referred_source.partner_id.name or ''}!</p>
+                <p>We are letting you know we have been provided the supporting
+                documents from  ${object.app_rec_ids[0].applicant_name}
+                %for each  in object.app_rec_ids:
+
+              % if loop.index == 2:
+
+                  and ${object.app_rec_ids[1].applicant_name or ''}
+              % endif
+
+          % endfor
+		.  We are
+                verifying these documents and we will be sending them a proposal
+                specific to their mortgage goals within 3 hours.</p>
+
+                <p>If you do have any questions, please feel free to contact our
+                team at ${object.hr_department_id.mail_server.smtp_user or ''} or by phone (see below).</p>
+
+
+                <p>Touch Dial:<b>  1-855-699-2400;</b> ${object.hr_department_id.extension} <br/>
+                Manual Dial:  <b>1-855-699-2400 </b>  extension: ${object.hr_department_id.extension} <br/></p>
+
+                <p>Best Regards,</p>
+                <p>Visdom Mortgage Solutions<br/>
+                 ${object.hr_department_id.mail_server.smtp_user or ''}<br/>
+                 www.visdom.ca
+
+                  <p>CONFIDENTIALITY: This e-mail message (including attachments, if any) is confidential and is intended only for the addressee.
+            Any unauthorized use or disclosure is strictly prohibited. Disclosure of this e-mail to anyone other than the intended addressee does not constitute waiver of privilege.
+            If you have received this communication in error, please notify us immediately and delete this. Thank you for your cooperation.  This message has not been encrypted.
+            Special arrangements can be made for encryption upon request. If you no longer wish to receive e-mail messages from Visdom Mortgage Solutions , please contact the sender.</p><br/>
+
+           <p>Visit our website at www.visdom.ca  for information about our company and the services we provide.
+           You can subscribe to Visdom Mortgage Solutions free electronic communications, or unsubscribe at any time</p>
+
+            ]]>
+            </field>
+        </record>
+
+
+        <record id="email_template_completed_ref_source" model="email.template">
+            <field name="name">Completed To Refferal Source</field>
+            <field name="email_from">${object.hr_department_id.mail_server.smtp_user or ''}<br/></field>
+            <field name="subject"> Referral Fee for ${object.app_rec_ids[0].applicant_name} and ${object.app_rec_ids[1].applicant_name}</field>
+            <field name="email_to">${object.referred_source.email_from}</field>
+            <field name="email_recipients"></field>
+            <field name="model_id" ref="model_crm_lead"/>
+<!--            <field name="auto_delete" eval="True"/>-->
+            <field name="body_html"><![CDATA[
+                <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: rgb(255, 255, 255); ">
+
+               <p> Good Day ${object.referred_source.partner_id.name},  </p>
+                <p>THANK YOU very much for the referral to ${object.app_rec_ids[0].applicant_name or ''}
+           %for each  in object.app_rec_ids:
+
+             % if loop.index == 2:
+                and ${object.app_rec_ids[1].applicant_name or ''}
+             % endif
+
+            %endfor
+
+                We are expecting compensation from the Lender in 2 - 4 weeks (varies from lender to lender).
+                As soon as we receive the compensation from the lender, we will be sending your referral fee of ${object.referral_fee} to this email address. </br> Once again, thank you and please contact our Broker Team if there is anything we can do for you.
+                Thank you and have a great day.</p>
+
+                <p>Best Regards,</p>
+                <p>Visdom Mortgage Solutions Inc.<br/>
+
+                 ${object.hr_department_id.mail_server.smtp_user or ''}<br/></p>
+
+                 <p>CONFIDENTIALITY: This e-mail message (including attachments, if any) is confidential and is intended only for the addressee.
+            Any unauthorized use or disclosure is strictly prohibited. Disclosure of this e-mail to anyone other than the intended addressee does not constitute waiver of privilege.
+            If you have received this communication in error, please notify us immediately and delete this. Thank you for your cooperation.  This message has not been encrypted.
+            Special arrangements can be made for encryption upon request. If you no longer wish to receive e-mail messages from Visdom Mortgage Solutions , please contact the sender.</p><br/>
+
+           <p>Visit our website at www.visdom.ca  for information about our company and the services we provide.
+           You can subscribe to Visdom Mortgage Solutions free electronic communications, or unsubscribe at any time</p>
+
+            ]]>
+            </field>
+        </record>
+
+
+        <record id="email_template_paid_refferal_message" model="email.template">
+            <field name="name">Paid Referal Message</field>
+            <field name="email_from">${object.hr_department_id.mail_server.smtp_user or ''}<br/></field>
+            <field name="subject">Thank you for being a part of our team</field>
+            <field name="email_to">${object.referred_source.email_from}</field>
+            <field name="email_recipients"></field>
+            <field name="model_id" ref="model_crm_lead"/>
+<!--            <field name="auto_delete" eval="True"/>-->
+            <field name="body_html"><![CDATA[
+            <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: rgb(255, 255, 255); ">
+
+               <p> Good Day ${object.referred_source.partner_id.name},  </p>
+                <p>This message to let you know ${object.app_rec_ids[0].applicant_name}
+                %for each  in object.app_rec_ids:
+
+              % if loop.index == 2:
+
+                  and ${each.applicant_name or ''}
+              % endif
+
+          % endfor
+		 compensation has been
+                received from lender.  In 3 business days, we will be sending the
+                referral amount of ${object.referral_fee} to ${object.referred_source.email_from}.</p>
+                <p>To increase your referral amount by $50 to ${object.referral_fee + 50} $
+                all you need to do is click this link referralsurvey.visdom.com
+                (within 72 hours and complete the survey) so we can improve your
+                experience with Visdom and put more money in your pocket.  The
+                survey only takes an investment of a couple of minutes and it
+                provides us both with the opportunity for more income.</p>
+                <p>Again, THANK YOU very much for the referral to
+                ${object.app_rec_ids[0].applicant_name}
+                %for each  in object.app_rec_ids:
+
+              % if loop.index == 2:
+
+                  and ${each.applicant_name or ''}
+              % endif
+
+              % endfor
+                .Please contact our Broker Team if you have any questions.  </p>
+                <p>Thank you and have a great day.</p>
+
+                <p>Best Regards,</p>
+                <p>Visdom Mortgage Solutions<br/>
+                 ${object.hr_department_id.mail_server.smtp_user or ''}<br/>
+
+                 <p>CONFIDENTIALITY: This e-mail message (including attachments, if any) is confidential and is intended only for the addressee.
+            Any unauthorized use or disclosure is strictly prohibited. Disclosure of this e-mail to anyone other than the intended addressee does not constitute waiver of privilege.
+            If you have received this communication in error, please notify us immediately and delete this. Thank you for your cooperation.  This message has not been encrypted.
+            Special arrangements can be made for encryption upon request. If you no longer wish to receive e-mail messages from Visdom Mortgage Solutions , please contact the sender.</p><br/>
+
+           <p>Visit our website at www.visdom.ca  for information about our company and the services we provide.
+           You can subscribe to Visdom Mortgage Solutions free electronic communications, or unsubscribe at any time</p>
+
+            ]]>
+            </field>
+        </record>
+
+
+
+
+
+        <record id="email_template_paid_refferal_relator" model="email.template">
+            <field name="name">Paid Relator</field>
+            <field name="email_from">${object.hr_department_id.mail_server.smtp_user or ''}</field>
+            <field name="email_to">${object.referred_source.email_from}</field>
+            <field name="subject">Thank you for having us be a part of your team with
+            %for each  in object.app_rec_ids:
+
+              % if loop.index == 1:
+                 ${object.app_rec_ids[0].applicant_name or ''}
+              %else:
+                  and ${each.applicant_name or ''}
+              % endif
+
+          % endfor
+          </field>
+            
+            <field name="email_recipients"></field>
+            <field name="model_id" ref="model_crm_lead"/>
+<!--            <field name="auto_delete" eval="True"/>-->
+            <field name="body_html"><![CDATA[
+            <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: rgb(255, 255, 255); ">
+
+               <p> Good Day   ${object.referred_source.partner_id.name},  </p>
+            <p>This message to let you know
+            %for each  in object.app_rec_ids:
+
+              % if loop.index == 1:
+                 ${object.app_rec_ids[0].applicant_name or ''}
+              %else:
+                  and ${each.applicant_name or ''}
+              % endif
+
+          % endfor
+
+        , compensation has been received from lender.
+            In 3 business days, we will be sending the referral amount of ${object.referral_fee}
+            to ${object.referred_source.email_from}.</p>
+            <p>To increase your referral amount by $50
+            to ${object.referral_fee + 50} $ all you need to do is click this link
+            referralsurvey.visdom.com (within 72 hours and complete the survey)
+            so we can improve your experience with Visdom and put more money in your pocket.
+            The survey only takes an investment of a couple of minutes and it provides us both
+            with the opportunity for more income.</p>
+            <p>Again, THANK YOU very much for the referral to 
+	%for each  in object.app_rec_ids:
+
+              % if loop.index == 1:
+                 ${object.app_rec_ids[0].applicant_name or ''}
+              %else:
+                  and ${each.applicant_name or ''}
+              % endif
+
+         % endfor
+             .Please contact our Broker Team if
+            you have any questions.  </p>
+            <p>Thank you and have a great day.</p>
+
+            <p>Best Regards,</p>
+            <p>Visdom Mortgage Solutions<br/>
+            ${object.hr_department_id.mail_server.smtp_user or ''}<br/>
+
+            <p>CONFIDENTIALITY: This e-mail message (including attachments, if any) is confidential and is intended only for the addressee.
+            Any unauthorized use or disclosure is strictly prohibited. Disclosure of this e-mail to anyone other than the intended addressee does not constitute waiver of privilege.
+            If you have received this communication in error, please notify us immediately and delete this. Thank you for your cooperation.  This message has not been encrypted.
+            Special arrangements can be made for encryption upon request. If you no longer wish to receive e-mail messages from Visdom Mortgage Solutions , please contact the sender.</p><br/>
+
+           <p>Visit our website at www.visdom.ca  for information about our company and the services we provide.
+           You can subscribe to Visdom Mortgage Solutions free electronic communications, or unsubscribe at any time</p>
+
+            ]]>
+            </field>
+        </record>
+
+        <record id="email_template_financing_conditions" model="email.template">
+            <field name="name">Financing Conditions</field>
+            <field name="email_from">${object.hr_department_id.mail_server.smtp_user or ''}<br/></field>
+            <field name="subject">Condition of Financing for ${object.app_rec_ids[0].applicant_name} and ${object.app_rec_ids[1].applicant_name} </field>
+            <field name="email_to">${object.realtor.email_from}</field>
+            <field name="email_recipients"></field>
+            <field name="model_id" ref="model_crm_lead"/>
+<!--            <field name="auto_delete" eval="True"/>-->
+            <field name="body_html"><![CDATA[
+            <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: rgb(255, 255, 255); ">
+
+               <p> Good Day   ${object.referred_source.partner_id.name},</p>
+<p>We are  happy to inform you ${object.app_rec_ids[0].applicant_name} and
+${object.app_rec_ids[1].applicant_name} have been approved for mortgage financing
+for the following property: </p>
+<p>Address: ${object.address}, ${object.city}, ${object.province}, ${object.postal_code}</p>
+<p>There are still some outstanding conditions which must be provided a minimum
+Ten (10) days prior to closing for the lenders/insurers acceptance. Please feel
+free to contact our team at  ${object.hr_department_id.mail_server.smtp_user or ''} or by phone (see below) if you
+have any questions. </p>
+<p>Touch Dial:<b>  1-855-699-2400;</b> ${object.hr_department_id.extension} <br/>
+Manual Dial:  <b>1-855-699-2400 </b>  extension: ${object.hr_department_id.extension} <br/></p>
+
+<p> Thank you very much for your business and have a great day!<br/>
+ 
+</p>
+
+<p>Best Regards,</p>
+<p>Visdom Mortgage Solutions<br/>
+ ${object.hr_department_id.mail_server.smtp_user or ''}<br/>
+ www.visdom.ca</p>
+ <p>CONFIDENTIALITY: This e-mail message (including attachments, if any) is 
+ confidential and is intended only for the addressee. Any unauthorized use or
+ disclosure is strictly prohibited. Disclosure of this e-mail to anyone other
+ than the intended addressee does not constitute waiver of privilege. If you
+ have received this communication in error, please notify us immediately and
+ delete this. Thank you for your cooperation.  This message has not been encrypted.
+ Special arrangements can be made for encryption upon request. If you no longer
+ wish to receive e-mail messages from Visdom Mortgage Solutions , please contact
+ the sender.
+
+Visit our website at www.visdom.ca  for information about our company and the
+services we provide.
+You can subscribe to Visdom Mortgage Solutions free electronic communications,
+or unsubscribe at any time.
+</p>
+
+            ]]>
+            </field>
+        </record>
+
+
+        <record id="email_template_no_financing_mail" model="email.template">
+            <field name="name">No Financing Email</field>
+            <field name="email_from">${object.hr_department_id.mail_server.smtp_user or ''}</field>
+            <field name="subject">Your Mortgage Proposal </field>
+            <field name="email_to">${object.app_rec_ids[0].email_personal}</field>
+            <field name="email_recipients"></field>
+            <field name="email_cc">${object.app_rec_ids[1].email_personal}</field>
+            <field name="model_id" ref="model_crm_lead"/>
+<!--            <field name="auto_delete" eval="True"/>-->
+            <field name="body_html"><![CDATA[
+            <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: rgb(255, 255, 255); ">
+
+               <p> Good Day ${object.app_rec_ids[0].applicant_name},  </p>
+<p>After evaluating your financing goals with the lender requirements for
+${object.prod_count or 0.0} mortgage products, unfortunately, there were no products
+which matched your situation.  It is potentially feasible to strengthen your borrowing power.
+To learn more about these options, please feel free to contact our team at
+${object.hr_department_id.mail_server.smtp_user or ''} or by phone (see below).  </p>
+
+<p>Touch Dial:<b>  1-855-699-2400;</b> ${object.hr_department_id.extension} <br/>
+Manual Dial:  <b>1-855-699-2400 </b>  extension: ${object.hr_department_id.extension} <br/></p>
+
+<p> Thank you very much for your business and have a great day!</p>
+
+<p>Best Regards,</p>
+<p>Visdom Mortgage Solutions<br/>
+${object.hr_department_id.mail_server.smtp_user or ''}
+www.visdom.ca</p>
+
+                 <p>CONFIDENTIALITY: This e-mail message (including attachments,
+                 if any) is confidential and is intended only for the addressee.
+                 Any unauthorized use or disclosure is strictly prohibited.
+                 Disclosure of this e-mail to anyone other than the intended
+                 addressee does not constitute waiver of privilege. If you have
+                 received this communication in error, please notify us
+                 immediately and delete this. Thank you for your cooperation.
+                 This message has not been encrypted.  Special arrangements
+                 can be made for encryption upon request. If you no longer wish
+                 to receive e-mail messages from Visdom Mortgage Solutions ,
+                 please contact the sender.</p>
+
+<p>Visit our website at www.visdom.ca  for information about our company and the services we provide.
+You can subscribe to Visdom Mortgage Solutions free electronic communications,
+or unsubscribe at any time.
+</p>
+
+            ]]>
+            </field>
+        </record>
+
+        <record id="email_template_no_financing_reffered" model="email.template">
+            <field name="name">No Financing Referred</field>
+            <field name="email_from">${object.user_id.email or ''}</field>
+            <field name="subject">Financing for ${object.app_rec_ids[0].applicant_name} and ${object.app_rec_ids[1].applicant_name} </field>
+            <field name="email_to">${object.referred_source.email_from}</field>
+            <field name="email_recipients"></field>
+            <field name="model_id" ref="model_crm_lead"/>
+<!--            <field name="auto_delete" eval="True"/>-->
+            <field name="body_html"><![CDATA[
+            <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: rgb(255, 255, 255); ">
+
+               <p> Good Day ${object.referred_source.partner_id.name},  </p>
+            <p>After evaluating the financing goals of ${object.app_rec_ids[0].applicant_name}
+            and ${object.app_rec_ids[1].applicant_name}  with the lender requirements for
+            ${object.prod_count or 0}  mortgage products, unfortunately, there were no
+            products which matched your situation.  It is potentially feasible
+            to strengthen your borrowing power.  To learn more about these options,
+            please feel free to contact our team at  ${object.hr_department_id.mail_server.smtp_user or ''} or by
+            phone (see below).  </p>
+
+            <p>Touch Dial:<b>  1-855-699-2400;</b> ${object.hr_department_id.extension} <br/>
+            Manual Dial:  <b>1-855-699-2400 </b>  extension: ${object.hr_department_id.extension} <br/></p>
+
+            <p>Best Regards,</p>
+            <p>Visdom Mortgage Solutions Inc.</p>
+             ${object.hr_department_id.mail_server.smtp_user or ''}
+
+             <p>CONFIDENTIALITY: This e-mail message (including attachments, if any) is confidential and is intended only for the addressee.
+            Any unauthorized use or disclosure is strictly prohibited. Disclosure of this e-mail to anyone other than the intended addressee does not constitute waiver of privilege.
+            If you have received this communication in error, please notify us immediately and delete this. Thank you for your cooperation.  This message has not been encrypted.
+            Special arrangements can be made for encryption upon request. If you no longer wish to receive e-mail messages from Visdom Mortgage Solutions , please contact the sender.</p>
+
+           <p>Visit our website at www.visdom.ca  for information about our company and the services we provide.
+           You can subscribe to Visdom Mortgage Solutions free electronic communications, or unsubscribe at any time</p>
+
+            ]]>
+            </field>
+        </record>
+
+
+        <record id="email_template_client_approval_message" model="email.template">
+            <field name="name">Client Approval Message</field>
+            <field name="email_from">${object.hr_department_id.mail_server.smtp_user or ''}</field>
+            <field name="subject">Approved Financing from ${object.lender_name or ''}</field>
+            <field name="email_to">${object.app_rec_ids[0].email_personal or ''}</field>
+            <field name="email_recipients"></field>
+            <field name="email_cc"><![CDATA[
+                %for each  in object.app_rec_ids:
+
+              % if loop.index >= 2:
+                 ${each.email_personal or ''}
+
+              % endif
+
+          % endfor
+          ]]></field>
+            <field name="model_id" ref="model_crm_lead"/>
+<!--            <field name="auto_delete" eval="True"/>-->
+            <field name="body_html"><![CDATA[
+            <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: rgb(255, 255, 255); ">
+
+               <p> Good Day ${object.app_rec_ids[0].applicant_name},  </p>
+<p>On behalf of Visdom Mortgage Solutions, <b>Congratulations!</b>  The financing for
+your home is almost complete.  ${object.lender_name} has provided their
+commitment to your Mortgage and it simply requires your approval.  You will be
+receiving a call from our broker team to review the following attached documents:   </p>
+            <p><ul type="disc">
+               <li>Lender Commitment</li>
+               <li>Lender Pre-Authorized Debit Form (for the account your Mortgage Payment will come from)</li>
+               <li>Visdom Disclosure Statement</li>
+               <li>Mortgage Insurance Disclosure</li>
+             </ul></p>
+
+               <p>** Please print these in preparation for review.
+               The underlined areas require your signature and each page needs
+               initialing at the bottom corner**</p>
+
+              <p> All other documentation has been provided to the lender
+              for their acceptance/review and further documentation/clarification
+              may be required/requested.  Property taxes will be your responsibility
+              and we suggest you sign up with the City of ${object.city or ''},
+               ${object.province or ''} with their monthly TIPPS program.</p>
+
+                <p>Our Broker Team will be contacting you to review and answer any questions you
+                may have.  Again, Congratulations  and have a great day!</p>
+                <p>Best Regards,</p>
+                <p>Visdom Mortgage Solutions<br/>
+                ${object.hr_department_id.mail_server.smtp_user or ''}<br/>
+                www.visdom.ca <br/>
+                <p>
+                CONFIDENTIALITY: This e-mail message (including attachments, 
+                if any) is confidential and is intended only for the addressee.
+                Any unauthorized use or disclosure is strictly prohibited.
+                Disclosure of this e-mail to anyone other than the intended
+                addressee does not constitute waiver of privilege. If you have
+                received this communication in error, please notify us
+                immediately and delete this. Thank you for your cooperation.
+                This message has not been encrypted.  Special arrangements can
+                be made for encryption upon request. If you no longer wish to
+                receive e-mail messages from Visdom Mortgage Solutions , please
+                contact the sender.</p>
+
+                <p>Visit our website at www.visdom.ca  for information about our
+                company and the services we provide.
+                You can subscribe to Visdom Mortgage Solutions free electronic
+                communications, or unsubscribe at any time.</p>
+</p>
+
+
+            ]]>
+            </field>
+        </record>
+
+
+        <record id="email_template_email_lender_docs" model="email.template">
+            <field name="name">Email Lender Docs</field>
+            <field name="email_from">${object.hr_department_id.mail_server.smtp_user or ''}</field>
+            <field name="subject">Please find the attached  documentation for ${object.lender_ref or ''} and ${object.app_rec_ids[0].applicant_last_name} Supporting Documents</field>
+            <field name="email_to">${object.selected_product.lender.email or ''}</field>
+            <field name="email_cc"></field>
+            <!--<field name="email_recipients">${object.partner_id.email}</field>-->
+            <field name="model_id" ref="model_crm_lead"/>
+            <field name="auto_delete" eval="True"/>
+            
+            <field name="body_html"><![CDATA[
+                <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: rgb(255, 255, 255); ">
+
+                <p>Good Day,</p>
+                <p>Please  find attached the following:
+                %for each in object.document_ids:
+		    %if each.doc_send == True:
+                        <ul>
+                            <li>${each.document_name}</li>
+                        </ul>
+                    %endif
+  		
+                %endfor
+		</p>
+                <p>Please let me know if you need anything else. Have a great day!</p>
+
+
+                 <p>Best Regards,</p>
+                <p>Visdom Mortgage Solutions<br/>
+                 ${object.hr_department_id.mail_server.smtp_user or ''}<br/>
+                 www.visdom.ca</p>
+
+                 <p>CONFIDENTIALITY: This e-mail message (including attachments,
+                 if any) is confidential and is intended only for the addressee.
+                 Any unauthorized use or disclosure is strictly prohibited.
+                 Disclosure of this e-mail to anyone other than the intended
+                 addressee does not constitute waiver of privilege. If you have
+                 received this communication in error, please notify us
+                 immediately and delete this. Thank you for your cooperation.
+                 This message has not been encrypted.  Special arrangements
+                 can be made for encryption upon request. If you no longer wish
+                 to receive e-mail messages from Visdom Mortgage Solutions ,
+                 please contact the sender.</p>
+
+<p>Visit our website at www.visdom.ca  for information about our company and the services we provide.
+You can subscribe to Visdom Mortgage Solutions free electronic communications,
+or unsubscribe at any time.
+</p>
+            ]]>
+            </field>
+        </record>
+
+
+	<record id="email_template_fax_lender_docs" model="email.template">
+            <field name="name">Fax Lender Docs</field>
+            <field name="email_from">fax@visdom.ca</field>
+            <field name="subject">Please find the attached  documentation for ${object.name or ''} </field>
+            <field name="email_to">${object.selected_product.lender.fax or ''}@rcfax.com</field>
+            <field name="email_cc"></field>
+            <!--<field name="email_recipients">${object.partner_id.email}</field>-->
+            <field name="model_id" ref="model_crm_lead"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="body_html"><![CDATA[
+                <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: rgb(255, 255, 255); ">
+
+                <p>Good  Day,</p>
+                <p>Please  find attached the following:
+                %for each in object.document_ids:
+		%if each.doc_send == True:
+                <ul>
+                    <li>${each.document_name}</li>
+                </ul></p>
+		%endif
+                %endfor
+                <p>Please let me know if you need anything else. Have a great day!</p>
+
+
+                 <p>Best Regards,</p>
+                <p>Visdom Mortgage Solutions<br/>
+                 ${object.hr_department_id.mail_server.smtp_user or ''}<br/>
+                 www.visdom.ca</p>
+
+                 <p>CONFIDENTIALITY: This e-mail message (including attachments,
+                 if any) is confidential and is intended only for the addressee.
+                 Any unauthorized use or disclosure is strictly prohibited.
+                 Disclosure of this e-mail to anyone other than the intended
+                 addressee does not constitute waiver of privilege. If you have
+                 received this communication in error, please notify us
+                 immediately and delete this. Thank you for your cooperation.
+                 This message has not been encrypted.  Special arrangements
+                 can be made for encryption upon request. If you no longer wish
+                 to receive e-mail messages from Visdom Mortgage Solutions ,
+                 please contact the sender.</p>
+
+<p>Visit our website at www.visdom.ca  for information about our company and the services we provide.
+You can subscribe to Visdom Mortgage Solutions free electronic communications,
+or unsubscribe at any time.
+</p>
+            ]]>
+            </field>
+        </record>
+
+
+        <record id="email_template_financing_letter_referral" model="email.template">
+            <field name="name">Financing Letter Referal1</field>
+            <field name="email_from">${object.user_id.email or ''}</field>
+            <field name="subject">File Complete for ${object.app_rec_ids[0].applicant_name} and ${object.app_rec_ids[1].applicant_name} ></field>
+            <field name="email_to">${object.referred_source.email_from}</field>
+            <field name="email_recipients"></field>
+            <field name="model_id" ref="model_crm_lead"/>
+<!--            <field name="auto_delete" eval="True"/>-->
+            <field name="body_html"><![CDATA[
+            <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: rgb(255, 255, 255); ">
+
+               <p> Good Day ${object.referred_source.partner_id.name},  </p>
+<p>Congratulations it is official!  All the conditions for  ${object.app_rec_ids[0].applicant_name} and ${object.app_rec_ids[1].applicant_name}’s mortgage financing have been met and the file is now complete.</p>
+<p>If you have any questions or require any assistance, please contact our Brokert team at <department.email>.  Thank you and have a great day!</p>
+<p>Best Regards,</p>
+<p>Visdom Mortgage Solutions<br/>
+ <department.email>
+
+    <p>CONFIDENTIALITY: This e-mail message (including attachments, if any) is confidential and is intended only for the addressee.
+     Any unauthorized use or disclosure is strictly prohibited. Disclosure of this e-mail to anyone other than the intended addressee does not constitute waiver of privilege.
+     If you have received this communication in error, please notify us immediately and delete this. Thank you for your cooperation.  This message has not been encrypted.
+     Special arrangements can be made for encryption upon request. If you no longer wish to receive e-mail messages from Visdom Mortgage Solutions , please contact the sender.</p>
+
+     <p>Visit our website at www.visdom.ca  for information about our company and the services we provide.
+     You can subscribe to Visdom Mortgage Solutions free electronic communications, or unsubscribe at any time</p>
+
+            ]]>
+            </field>
+            </record>
+
+
+            <record id="email_template_no_financing_generic" model="email.template">
+            <field name="name">No Financing Generic</field>
+            <field name="email_from">${object.user_id.email or ''}</field>
+            <field name="subject">Financing for ${object.app_rec_ids[0].applicant_name} and ${object.app_rec_ids[1].applicant_name} ></field>
+            <field name="email_to">${object.referred_source.email_from}</field>
+            <field name="email_recipients"></field>
+            <field name="model_id" ref="model_crm_lead"/>
+<!--            <field name="auto_delete" eval="True"/>-->
+            <field name="body_html"><![CDATA[
+            <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: rgb(255, 255, 255); ">
+
+               <p> Good Day ${object.referred_source.partner_id.name},  </p>
+<p>We appreciate the referral to  ${object.app_rec_ids[0].applicant_name} and ${object.app_rec_ids[1].applicant_name}. Unfortunately, after evaluating the financing goals of with the lender requirements for ${object.prod_count or ''} mortgage products there were no products which matched their situation. </p>
+<p>Best Regards,</p>
+<p>Visdom Mortgage Solutions Inc.</p>
+ ${object.hr_department_id.mail_server.smtp_user or ''}
+
+ <p>CONFIDENTIALITY: This e-mail message (including attachments, if any) is confidential and is intended only for the addressee.
+            Any unauthorized use or disclosure is strictly prohibited. Disclosure of this e-mail to anyone other than the intended addressee does not constitute waiver of privilege.
+            If you have received this communication in error, please notify us immediately and delete this. Thank you for your cooperation.  This message has not been encrypted.
+            Special arrangements can be made for encryption upon request. If you no longer wish to receive e-mail messages from Visdom Mortgage Solutions , please contact the sender.</p>
+
+           <p>Visit our website at www.visdom.ca  for information about our company and the services we provide.
+           You can subscribe to Visdom Mortgage Solutions free electronic communications, or unsubscribe at any time</p>
+
+            ]]>
+            </field>
+            </record>
+
+
+            <record id="email_template_approval_client_taxes" model="email.template">
+            <field name="name">Approval Client Taxes</field>
+            <field name="email_from">${object.user_id.email or ''}</field>
+            <field name="subject">Approved Financing from ${object.selected_product.lender.name or ''}</field>
+            <field name="email_to">${object.app_rec_ids[0].email_personal or ""}</field>
+            <field name="email_recipients"></field>
+            <field name="email_cc"><![CDATA[
+                %for each  in object.app_rec_ids:
+
+              % if loop.index >= 2:
+                 ${each.email_personal or ''}
+
+              % endif
+
+          % endfor
+          ]]></field>
+            <field name="model_id" ref="model_crm_lead"/>
+<!--            <field name="auto_delete" eval="True"/>-->
+            <field name="body_html"><![CDATA[
+            <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: rgb(255, 255, 255); ">
+
+               <p> Good Day ${object.app_rec_ids[0].applicant_name or ''},  </p>
+<p>On behalf of Visdom Mortgage Solutions, Congratulations!  The financing for your home is almost complete.  ${object.selected_product.lender.name} has provided their commitment to your Mortgage and it simply requires your approval.  You will be receiving a call from our broker team to review the following attached documents:   </p>
+            <ul type="disc">
+               <li>Lender Commitment</li>
+               
+
+               <li>Pre-Authorized Debit Form (for the account you want your Mortgage Payments to come from)</li>
+               
+               <li>Mortgage Insurance Disclosure</li>
+               </ul>
+
+               <p>** Please print these in preparation for review.
+               The underlined areas require your signature and each page needs initialing at the bottom corner**</p>
+
+              <p> All other documentation has been provided to the lender for their acceptance/review and further documentation/clarification may be required/requested.  Property Taxes will be your responsibility and we suggest you sign up with the City of ${object.city}, ${object.province}  with their monthly TIPPS program. </p>
+
+<p>Our Broker Team will be contacting you to review and answer any questions you may have.  Again, Congratulations  and have a great day!</p>
+<p>Best Regards,</p>
+<p>Visdom Mortgage Solutions<br/>
+${object.hr_department_id.mail_server.smtp_user or ''}<br/>
+www.visdom.ca</p>
+
+                 <p>CONFIDENTIALITY: This e-mail message (including attachments,
+                 if any) is confidential and is intended only for the addressee.
+                 Any unauthorized use or disclosure is strictly prohibited.
+                 Disclosure of this e-mail to anyone other than the intended
+                 addressee does not constitute waiver of privilege. If you have
+                 received this communication in error, please notify us
+                 immediately and delete this. Thank you for your cooperation.
+                 This message has not been encrypted.  Special arrangements
+                 can be made for encryption upon request. If you no longer wish
+                 to receive e-mail messages from Visdom Mortgage Solutions ,
+                 please contact the sender.</p>
+
+<p>Visit our website at www.visdom.ca  for information about our company and the services we provide.
+You can subscribe to Visdom Mortgage Solutions free electronic communications,
+or unsubscribe at any time.
+</p>
+
+            ]]>
+            </field>
+        </record>
+
+       <!--<record id="email_template_fax_lender_docs" model="email.template">
+            <field name="name">Fax Lender Docs</field>
+            <field name="email_from">fax@visdom.ca</field>
+            <field name="subject">Please find attached the documentation for ${object.app_rec_ids[0].applicant_name} ></field>
+            <field name="email_to">${object.selected_product.lender.fax>}@rcfax.com</field>
+            <field name="email_recipients"></field>
+            <field name="model_id" ref="model_crm_lead"/>            
+	      <field name="auto_delete" eval="True"/>
+            <field name="body_html"><![CDATA[
+            <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: rgb(255, 255, 255); ">
+
+               <p> Good Day </p>
+<p>Please find attached the following: </p>
+<ul type="disc">
+               <li><Insert Document names from list in Opportunity.Documents></li>
+               </ul>
+<p>Please let me know if you need anything else. Have a great day!</p><br/>
+
+<p>Best Regards,</p>
+<p>Visdom Mortgage Solutions<br/>
+ ${object.hr_department_id.mail_server.smtp_user or ''}<br/>
+www.visdom.ca</p>
+
+                 <p>CONFIDENTIALITY: This e-mail message (including attachments,
+                 if any) is confidential and is intended only for the addressee.
+                 Any unauthorized use or disclosure is strictly prohibited.
+                 Disclosure of this e-mail to anyone other than the intended
+                 addressee does not constitute waiver of privilege. If you have
+                 received this communication in error, please notify us
+                 immediately and delete this. Thank you for your cooperation.
+                 This message has not been encrypted.  Special arrangements
+                 can be made for encryption upon request. If you no longer wish
+                 to receive e-mail messages from Visdom Mortgage Solutions ,
+                 please contact the sender.</p>
+
+<p>Visit our website at www.visdom.ca  for information about our company and the services we provide.
+You can subscribe to Visdom Mortgage Solutions free electronic communications,
+or unsubscribe at any time.
+</p>
+
+            ]]>
+            </field>
+            </record>-->
+
+
+            <record id="email_template_renewal_letter" model="email.template">
+            <field name="name">Renewal Letter</field>
+            <field name="email_from">${object.user_id.email or ''}</field>
+            <field name="subject">Mortgage Renewal</field>
+            <field name="email_to">${object.app_rec_ids[0].email_personal or ''}</field>
+            <field name="email_recipients"></field>
+            <field name="email_cc">${object.app_rec_ids[1].email_personal or ''}</field>
+            <field name="model_id" ref="model_crm_lead"/>
+<!--            <field name="auto_delete" eval="True"/>-->
+            <field name="body_html"><![CDATA[
+            <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: rgb(255, 255, 255); ">
+
+               <p> Dear ${object.app_rec_ids[0].applicant_name or ''},  </p>
+<p>It was our great pleasure to provide the financing for your property at ${object.address or ''}, ${object.city or ''}, ${object.province or ''}, ${object.postal_code or ''}. Once again THANK YOU for providing us with the opportunity of looking after the financing of your mortgage. </p>
+<p>According to our records, your mortgage is maturing on ${object.current_renewal_date} and it’s time to renew your mortgage. We would like to help you secure the best rate possible so that you can pay off your mortgage as quickly as possible!</p>
+<p>As when you first worked with Visdom Mortgage Solutions, our no-cost service still includes analyzing your financial situation, evaluating ${object.prod_count or ''} mortgage options from across Canada, aggressive rate negotiation on your behalf, and if necessary debt consolidation. Together, we’ll make sure you have the rate advantages and flexibility to achieve your financial goals much sooner.</p>
+<p>We will be in contact very soon to book your mortgage renewal appointment. </p>
+<p>Best Regards,</p>
+<p>Visdom Mortgage Solutions<br/>
+${object.hr_department_id.mail_server.smtp_user or ''}<br/>
+www.visdom.ca</p>
+
+                 <p>CONFIDENTIALITY: This e-mail message (including attachments,
+                 if any) is confidential and is intended only for the addressee.
+                 Any unauthorized use or disclosure is strictly prohibited.
+                 Disclosure of this e-mail to anyone other than the intended
+                 addressee does not constitute waiver of privilege. If you have
+                 received this communication in error, please notify us
+                 immediately and delete this. Thank you for your cooperation.
+                 This message has not been encrypted.  Special arrangements
+                 can be made for encryption upon request. If you no longer wish
+                 to receive e-mail messages from Visdom Mortgage Solutions ,
+                 please contact the sender.</p>
+
+<p>Visit our website at www.visdom.ca  for information about our company and the services we provide.
+You can subscribe to Visdom Mortgage Solutions free electronic communications,
+or unsubscribe at any time.
+</p>
+
+            ]]>
+            </field>
+           </record>
+
+
+    <!--record id="email_template_referral_agreement" model="email.template">
+            <field name="name">Referral Agreement</field>
+            <field name="email_from">${object.bdo_associate.hr_department_id.mail_server.smtp_user or ''}</field>
+            <field name="subject">Referral Agreement with Visdom Mortgage Solutions</field>
+            <field name="email_to">${object.email_from}</field>
+            <field name="email_recipients"></field>
+            <field name="model_id" ref="model_hr_applicant"/-->
+<!--            <field name="auto_delete" eval="True"/>-->
+            <!--field name="body_html"><![CDATA[
+            <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: rgb(255, 255, 255); ">
+            <p>Good Day ${object.partner_id.name or ''},</p>
+            <p>Welcome to the Referral Program with Visdom Mortgage Solutions.
+            Please find below your copy of the Referral Agreement you completed
+            in our website.  In the event you feel you have receive this email
+            in error, please reply and we will remove you from our referral
+            program.</p>
+
+            <p>Best Regards,</p>
+            <p>${object.bdo_associate.name or ''}<br/>
+            ${object.bdo_associate or ''}<br/>
+            Visdom Mortgage Solutions<br/>
+            ${object.bdo_associate.email or ''}<br/>
+            www.visdom.ca</p>
+
+            <pre><b>                      Mortgage Referral Agreement</b></pre>
+            <ol>
+                <li><p>&nbsp;&nbsp;&nbsp;&nbsp;Visdom Mortgage Solutions Inc. ("Visdom") hereby agrees to
+                pay to the Referring Party a referral fee (the "Referral Fee")
+                for each mortgage that is funded through Visdom where the borrower
+                was referred to Visdom by the Referring Party.</p></li>
+                <li><p>&nbsp;&nbsp;&nbsp;&nbsp;The Referral Fee shall be calculated and paid according to the following table:<br/>
+                <table border="1">
+                    <tr>
+                        <td>Minimum Mortgage Value</td>
+                        <td>Maximum Mortgage Value</td>
+                        <td>Referral Fee</td>
+                    </tr>
+                    <tr>
+                        <td>$50,000</td>
+                        <td>$200,000</td>
+                        <td>$50</td>
+                    </tr>
+                    <tr>
+                        <td>$200,001</td>
+                        <td>$350,000</td>
+                        <td>$200</td>
+                    </tr>
+                    <tr>
+                        <td>$350,001</td>
+                        <td>$600,000</td>
+                        <td>$450</td>
+                    </tr>
+                    <tr>
+                        <td>$600,001</td>
+                        <td>$900,000</td>
+                        <td>$700</td>
+                    </tr>
+                    <tr>
+                        <td>$900,001</td>
+                        <td>$3,000,000</td>
+                        <td>$1000</td>
+                    </tr>
+
+                </table></p>
+                </li>
+                <li><p>&nbsp;&nbsp;&nbsp;&nbsp;Visdom shall pay the Referral Fee to the Referring Party
+                within 30 days of the funding of the mortgage.  No Referral
+                Fee is payable unless and until a mortgage loan is funded.
+                The Referring Fee shall be inclusive of GST, and the Referring
+                Party is responsible for payment of all taxes that may be
+                applicable to receipt of the Referral Fee.</p></li>
+
+                <li><p>&nbsp;&nbsp;&nbsp;&nbsp;When the Referring Party refers a borrower to Visdom, and
+                each time the Referring Party refers a borrower to Visdom,
+                the Referring Party represents to Visdom that the Referring Party
+                has acted honestly, in good faith and in the best interests of
+                the borrower in her/ his business relationship with the borrower.</p></li>
+
+                <li><p>&nbsp;&nbsp;&nbsp;&nbsp;The Referring Party is responsible for ensuring that s/he is
+                compliant with all laws and regulations applicable to her/ his
+                actions connected to the referral of the borrower to Visdom.</p></li>
+
+                <li><p>&nbsp;&nbsp;&nbsp;&nbsp;The execution, delivery and performance of this Agreement by
+                the Referring Party will not result in the breach or violation of,
+                or constitute a default under, any obligation of the Referring Party.</p></li>
+
+                <li><p>&nbsp;&nbsp;&nbsp;&nbsp;The Referring Party consents to the receipt of general
+                communications from Visdom, subject to the Referring Party’s
+                election to not receive such communications from Visdom.</p></li>
+
+                <li><p>&nbsp;&nbsp;&nbsp;&nbsp;This Agreement is governed by the laws in the jurisdiction
+                where the Referring Party is resident.</p></li>
+
+                <li><p>&nbsp;&nbsp;&nbsp;&nbsp;This Agreement is the entire agreement between Visdom and the
+                Referring Party and supersedes all prior agreements, understandings,
+                negotiations and discussions.  There are no conditions, covenants,
+                agreements, representations or warranties, express or implied,
+                except as stated in this Agreement.</p></li>
+
+                <li><p>&nbsp;&nbsp;&nbsp;&nbsp;This Agreement may be transmitted by electronic means and the
+                reproduction of signatures by electronic means will be treated as
+                binding as if originals.  This Agreement may be signed in counterpart
+                with the same effect as if the signatures thereto were upon the
+                same instrument.</p></li>
+                </ol>
+
+                <p>Signed on ${object.agreement_date} by:</p>
+                <pre>Kendall Raessler            ReferralSource ${object.signature or ''}</pre>
+                <p>President,<br/>
+                Visdom Mortgage Solutions Inc.<br/></p>
+
+                <p>CONFIDENTIALITY: This e-mail message (including attachments,
+                if any) is confidential and is intended only for the addressee.
+                Any unauthorized use or disclosure is strictly prohibited.
+                Disclosure of this e-mail to anyone other than the intended
+                addressee does not constitute waiver of privilege. If you have
+                received this communication in error, please notify us immediately
+                and delete this. Thank you for your cooperation.  This message
+                has not been encrypted.  Special arrangements can be made for
+                encryption upon request. If you no longer wish to receive e-mail
+                messages from Visdom Mortgage Solutions , please contact the sender.</p>
+
+                <p>Visit our website at www.visdom.ca  for information about our
+                company and the services we provide.
+                You can subscribe to Visdom Mortgage Solutions free electronic
+                communications, or unsubscribe at any time.</p>
+             ]]>
+            </field>
+           </record-->
+
+
+	<record id="email_template_referral_agreement" model="email.template">
+            <field name="name">Referral Agreement</field>
+            <field name="email_from">${object.bdo_associate.hr_department_id.mail_server.smtp_user or ''}</field>
+            <field name="subject">Referral Agreement with Visdom Mortgage Solutions</field>
+            <field name="email_to">${object.email_from}</field>
+            <field name="email_recipients"></field>
+            <field name="model_id" ref="model_hr_applicant"/>
+<!--            <field name="auto_delete" eval="True"/>-->
+            <field name="body_html"><![CDATA[
+            <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: rgb(255, 255, 255); ">
+            <p>Good Day ${object.partner_id.name or ''},</p>
+            <p>Welcome to the Referral Program with Visdom Mortgage Solutions.
+            Please find below your copy of the Referral Agreement you completed
+            in our website.  In the event you feel you have receive this email
+            in error, please reply and we will remove you from our referral
+            program.</p>
+
+            <p>Best Regards,</p>
+            <p>Kendall Raessler<br/>
+            President,<br/>
+            Visdom Mortgage Solutions<br/>
+            administrator@visdom.ca<br/>
+            www.visdom.ca</p>
+
+            <pre><b><font size="5"> Mortgage Referral Agreement </font></b></pre>
+            <ol>
+                <li><p>&nbsp;&nbsp;&nbsp;&nbsp;Visdom Mortgage Solutions Inc. ("Visdom") hereby agrees to
+                pay to the Referring Party a referral fee (the "Referral Fee")
+                for each mortgage that is funded through Visdom where the borrower
+                was referred to Visdom by the Referring Party.</p></li>
+                <li><p>&nbsp;&nbsp;&nbsp;&nbsp;The Referral Fee shall be calculated and paid according to the following table:<br/>
+                <table border="1">
+                    <tr>
+                        <td>Minimum Mortgage Value</td>
+                        <td>Maximum Mortgage Value</td>
+                        <td>Referral Fee</td>
+                        <td>Renewal Fee</td>
+                    </tr>
+                    <tr>
+                        <td>$50,000</td>
+                        <td>$200,000</td>
+                        <td>$100</td>
+                        <td>$50</td>
+                    </tr>
+                    <tr>
+                        <td>$200,001</td>
+                        <td>$350,000</td>
+                        <td>$200</td>
+                        <td>$100</td>
+                    </tr>
+                    <tr>
+                        <td>$350,001</td>
+                        <td>$600,000</td>
+                        <td>$450</td>
+                        <td>$225</td>
+                    </tr>
+                    <tr>
+                        <td>$600,001</td>
+                        <td>$900,000</td>
+                        <td>$700</td>
+                        <td>$350</td>
+                    </tr>
+                    <tr>
+                        <td>$900,001</td>
+                        <td>$3,000,000</td>
+                        <td>$1000</td>
+                        <td>$500</td>
+                    </tr>
+
+                </table></p>
+                </li>
+                <li><p>&nbsp;&nbsp;&nbsp;&nbsp;Visdom shall pay the Referral Fee to the Referring Party
+                within 30 days of the funding of the mortgage.  No Referral
+                Fee is payable unless and until a mortgage loan is funded.
+                The Referring Fee shall be inclusive of GST, and the Referring
+                Party is responsible for payment of all taxes that may be
+                applicable to receipt of the Referral Fee.</p></li>
+
+                <li><p>&nbsp;&nbsp;&nbsp;&nbsp;When the Referring Party refers a borrower to Visdom, and
+                each time the Referring Party refers a borrower to Visdom,
+                the Referring Party represents to Visdom that the Referring Party
+                has acted honestly, in good faith and in the best interests of
+                the borrower in her/ his business relationship with the borrower.</p></li>
+
+                <li><p>&nbsp;&nbsp;&nbsp;&nbsp;The Referring Party is responsible for ensuring that s/he is
+                compliant with all laws and regulations applicable to her/ his
+                actions connected to the referral of the borrower to Visdom.</p></li>
+
+                <li><p>&nbsp;&nbsp;&nbsp;&nbsp;The execution, delivery and performance of this Agreement by
+                the Referring Party will not result in the breach or violation of,
+                or constitute a default under, any obligation of the Referring Party.</p></li>
+
+                <li><p>&nbsp;&nbsp;&nbsp;&nbsp;The Referring Party consents to the receipt of general
+                communications from Visdom, subject to the Referring Partys
+                election to not receive such communications from Visdom.</p></li>
+
+                <li><p>&nbsp;&nbsp;&nbsp;&nbsp;This Agreement is governed by the laws in the jurisdiction
+                where the Referring Party is resident.</p></li>
+
+                <li><p>&nbsp;&nbsp;&nbsp;&nbsp;This Agreement is the entire agreement between Visdom and the
+                Referring Party and supersedes all prior agreements, understandings,
+                negotiations and discussions.  There are no conditions, covenants,
+                agreements, representations or warranties, express or implied,
+                except as stated in this Agreement.</p></li>
+
+                <li><p>&nbsp;&nbsp;&nbsp;&nbsp;Either party may terminate this Agreement at any time at its sole discretion,
+                upon providing 90 calendar days advance written notice of its intention to do so.</p></li>
+
+                <li><p>&nbsp;&nbsp;&nbsp;&nbsp;This Agreement may be transmitted by electronic means and the
+                reproduction of signatures by electronic means will be treated as
+                binding as if originals.  This Agreement may be signed in counterpart
+                with the same effect as if the signatures thereto were upon the
+                same instrument.</p></li>
+                </ol>
+
+                <p>Signed on ${object.agreement_date} by:</p>
+                <pre>Kendall Raessler            ReferralSource ${object.signature or ''}</pre>
+                <p>President,<br/>
+                Visdom Mortgage Solutions Inc.<br/></p>
+
+                <p>CONFIDENTIALITY: This e-mail message (including attachments,
+                if any) is confidential and is intended only for the addressee.
+                Any unauthorized use or disclosure is strictly prohibited.
+                Disclosure of this e-mail to anyone other than the intended
+                addressee does not constitute waiver of privilege. If you have
+                received this communication in error, please notify us immediately
+                and delete this. Thank you for your cooperation.  This message
+                has not been encrypted.  Special arrangements can be made for
+                encryption upon request. If you no longer wish to receive e-mail
+                messages from Visdom Mortgage Solutions , please contact the sender.</p>
+
+                <p>Visit our website at www.visdom.ca  for information about our
+                company and the services we provide.
+                You can subscribe to Visdom Mortgage Solutions free electronic
+                communications, or unsubscribe at any time.</p>
+             ]]>
+            </field>
+           </record>
+
+
+           <record id="email_template_referral_to_visdom" model="email.template">
+            <field name="name">Referral To Visdom</field>
+            <field name="email_from">${object.bdo_associate.hr_department_id.mail_server.smtp_user or ''}</field>
+            <field name="subject">Referral to Visdom</field>
+            <field name="email_to">${object.email_from}</field>
+            <field name="email_recipients"></field>
+            <field name="model_id" ref="model_hr_applicant"/>
+<!--            <field name="auto_delete" eval="True"/>-->
+            <field name="body_html"><![CDATA[
+            <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: rgb(255, 255, 255); ">
+
+               Good Day   ${object.partner_id.name or ''},  </p>
+               
+            <p>Welcome to the Visdom Mortgage Solutions Referral Program.
+            Now that we are working as a team, it is our goal to make the process
+            of participating as easy and simple as possible for you. To provide
+            a referral, all you need to do is email the referral’s contact
+            information (including their email address) to referrals@visdom.ca.</p>
+
+            <p>We have attached a Visdom v-card to this message so you can save 
+            that address in your phone or contact manager.If you have an iPhone
+            or Android Phone, simply click on the attachment and continue through
+            the steps to save the contact.  When you provide your first referral,
+            they will receive a welcome message by email which outlines the
+            process of securing their financing quickly and easily through Visdom. </p>
+            
+            <p>We look forward to helping you increase your income.</p>
+
+            <p>Best Regards,</p>
+           <p>Kendall Raessler<br/>
+            President<br/>
+            Visdom Mortgage Solutions<br/>
+            administration@visdom.ca<br/>
+            www.visdom.ca</p>
+             <p>CONFIDENTIALITY: This e-mail message (including attachments, if any) is confidential and is intended only for the addressee.
+                 Any unauthorized use or disclosure is strictly prohibited. Disclosure of this e-mail to anyone other than the intended addressee does not constitute waiver of privilege.
+                 If you have received this communication in error, please notify us immediately and delete this. Thank you for your cooperation.  This message has not been encrypted.
+                 Special arrangements can be made for encryption upon request. If you no longer wish to receive e-mail messages from Visdom Mortgage Solutions , please contact the sender.</p><br/>
+
+                 <p>Visit our website at www.visdom.ca  for information about our company and the services we provide.
+                 You can subscribe to Visdom Mortgage Solutions free electronic communications, or unsubscribe at any time</p>
+
+            ]]>
+            
+            </field>
+           </record>
+
+	<record id="email_assistant_lender_entry_notice_template" model="email.template">
+            <field name="name">Assistant Lender Entry Notice</field>
+            <field name="email_from">administrator@visdom.ca</field>
+            <field name="subject">NOTICE Opportunity Entry to ${object.selected_product.lender.name or ''}</field>
+            <field name="email_to">${object.hr_department_id.mail_server.smtp_user or ''}</field>
+            <field name="email_recipients"></field>
+            <field name="email_cc"></field>
+            <field name="model_id" ref="model_crm_lead"/>
+            <field name="body_html"><![CDATA[
+        <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: rgb(255, 255, 255); ">
+
+        <p>This email is to notifiy you that the client has selected a product in the following opportunity.<br/></p>
+        <p>
+        <insert html link into opportunity></p>
+
+        <p>Please change the stage of the opportunity to post selection, enter the opportunity into Morweb or
+        Filogix (according to the assistant tasks which were created on the post selection stage change).</p>
+
+        <p>Thank you.</p>
+        <p>Visdom Mortgage Solutions<br/>
+       <administrator@visdom.ca><br/>
+        www.visdom.ca </p>
+        <p>CONFIDENTIALITY: This e-mail message (including attachments, if any)
+        is confidential and is intended only for the addressee. Any unauthorized
+        use or disclosure is strictly prohibited. Disclosure of this e-mail to
+        anyone other than the intended addressee does not constitute waiver of
+        privilege. If you have received this communication in error, please
+        notify us immediately and delete this. Thank you for your cooperation.
+        This message has not been encrypted.  Special arrangements can be made
+        for encryption upon request. If you no longer wish to receive e-mail
+        messages from Visdom Mortgage Solutions , please contact the sender.</p>
+
+<p>Visit our website at www.visdom.ca  for information about our company and the
+services we provide.
+You can subscribe to Visdom Mortgage Solutions free electronic communications,
+or unsubscribe at any time.
+</p>
+
+
+        ]]>
+       </field>
+    </record>
+	
+	<record id="event_fax_sending_template" model="email.template">
+<field name="name">Fax to the Interpreter</field>
+<field name="model_id" ref="syml.model_send_fax"/>
+<field name="email_from" >fax@visdom.ca</field>
+<!-- <field name="email_to" > % if object.partner_id.fax:
+${("1" + str(object.partner_id.fax) + "@efaxsend.com")|safe}
+%else:
+${safe}
+%endif
+</field>-->
+ <!--<field name="email_to" >${("1" + str(object.fax) + "@rcfax.com")|safe}</field>-->
+<field name="email_to" >guy@syml.ca</field>
+<field name="subject">${("1" + str(object.fax))|safe}</field>
+<field name="body_html"><![CDATA[
+<div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+
+${object.fax_body}
+
+</div>
+]]>
+</field>
+</record>
+
+    </data>
+</openerp>

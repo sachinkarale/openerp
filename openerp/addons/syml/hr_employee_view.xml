@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>        
+        <record id="view_employee_tree_inherit" model="ir.ui.view">
+            <field name="name">hr.employee.tree.inherit</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='job_id']" position= "replace">
+                </xpath>                                
+                <xpath expr="//field[@name='name']" position= "after">
+                    <field name="job_id"/>
+                </xpath>                
+                <xpath expr="//field[@name='parent_id']" position= "after">
+                    <field name="parent_compensation_id"/>
+                </xpath>                
+            </field>
+        </record>            
+        <record id="view_employee_form" model="ir.ui.view">
+            <field name="name">hr.employee.form</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='parent_id']" position= "after">                     
+                    <field name="parent_compensation_id"/>
+<!--                    <field name="child_compensation_ids"/>-->
+                </xpath> 
+            </field>
+        </record>
+        
+        <record id="view_partner_compensation_tree3" model="ir.ui.view">
+            <field name="name">hr.employee.tree</field>
+            <field name="model">hr.employee</field>
+            <field name="field_parent">child_compensation_ids</field>
+            <field eval="20" name="priority"/>
+            <field name="arch" type="xml">
+                <tree string="Employees">
+                    <field name="name"/>
+                    <field name="job_id"/>
+                    <field name="work_phone"/>
+                    <field name="work_email"/>
+                    <field name="company_id" groups="base.group_multi_company"/>
+                    <field name="department_id"/>                   
+                    <field name="coach_id" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="action101" model="ir.actions.act_window">
+            <field name="name">Compensation Hierarchy</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.employee</field>
+            <field name="domain">[('id','in',active_ids)]</field>
+            <field name="view_type">tree</field>
+            <field name="view_id" ref="view_partner_compensation_tree3"/>
+        </record>
+        
+        <ir_set>
+            <field eval="'action'" name="key"/>
+            <field eval="'client_action_multi'" name="key2"/>
+            <field eval="['hr.employee']" name="models"/>
+            <field name="name">Compensation Hierarchy</field>
+            <field eval="'ir.actions.act_window,'+str(action101)" name="value"/>
+            <field eval="True" name="isobject"/>
+            <field eval="True" name="replace"/>
+        </ir_set>
+
+    
+        <record id="hr.action2" model="ir.actions.act_window">
+            <field name="name">Reporting To Hierarchy</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.employee</field>
+            <field name="domain">[('id','in',active_ids)]</field>
+            <field name="view_type">tree</field>
+            <field name="view_id" ref="hr.view_partner_tree2"/>
+        </record>
+        
+        <record id="view_partner_tree2_inherit" model="ir.ui.view">
+            <field name="name">hr.employee.tree.inherit</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_partner_tree2"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='job_id']" position= "replace">
+
+                </xpath>                
+                <xpath expr="//field[@name='name']" position= "after">
+                    <field name="job_id"/>
+                </xpath>
+<!--                <xpath expr="//field[@name='parent_id']" position= "after">
+                    <field name="parent_compensation_id"/>
+                </xpath>                -->
+            </field>
+        </record>                    
+    </data>
+</openerp>

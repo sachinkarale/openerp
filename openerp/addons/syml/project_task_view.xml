@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="project.view_task_kanban">
+            <field name="name">project.task.kanban</field>
+            <field name="model">project.task</field>
+            <field name="arch" type="xml">
+                <kanban default_group_by="stage_id" >
+                    <field name="color"/>
+                    <field name="priority"/>
+                    <field name="stage_id"/>
+                    <field name="user_id"/>
+                    <field name="user_email"/>
+                    <field name="description"/>
+                    <field name="sequence"/>
+                    <field name="state" groups="base.group_no_one"/>
+                    <field name="kanban_state"/>
+                    <field name="remaining_hours" sum="Remaining Time" groups="project.group_time_work_estimation_tasks"/>
+                    <field name="date_deadline"/>
+                    <field name="message_summary"/>
+                    <field name="categ_ids"/>
+                    <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_color_#{kanban_getcolor(record.color.raw_value)} oe_kanban_card oe_kanban_global_click">
+                            <div class="oe_dropdown_toggle oe_dropdown_kanban" groups="base.group_user">
+                                <span class="oe_e">í</span>
+                                <ul class="oe_dropdown_menu">
+                                    <t t-if="widget.view.is_action_enabled('edit')"><li><a type="edit">Edit...</a></li></t>
+                                    <t t-if="widget.view.is_action_enabled('delete')"><li><a type="delete">Delete</a></li></t>
+                                    <li>
+                                      <ul class="oe_kanban_project_times" groups="project.group_time_work_estimation_tasks">
+                                        <li><a name="set_remaining_time_1" type="object" class="oe_kanban_button">1</a></li>
+                                        <li><a name="set_remaining_time_2" type="object" class="oe_kanban_button">2</a></li>
+                                        <li><a name="set_remaining_time_5" type="object" class="oe_kanban_button">5</a></li>
+                                        <li><a name="set_remaining_time_10" type="object" class="oe_kanban_button">10</a></li>
+                                        <li><a name="do_open" states="draft" string="Validate planned time" type="object" class="oe_kanban_button oe_kanban_button_active">!</a></li>
+                                      </ul>
+                                    </li>
+                                    <li><ul class="oe_kanban_colorpicker" data-field="color"/></li>
+                                </ul>
+                            </div>
+
+                            <div class="oe_kanban_content">
+                                <div><b><field name="name"/></b></div>
+                                <div>
+                                    <field name="project_id"/><br/>
+                                    <t t-if="record.date_deadline.raw_value and record.date_deadline.raw_value lt (new Date())" t-set="red">oe_kanban_text_red</t>
+                                    <span t-attf-class="#{red || ''}"><i><field name="date_deadline"/></i></span>
+                                </div>
+                                <div class="oe_kanban_bottom_right">
+                                    <t groups="base.group_user">
+                                        <a t-if="record.kanban_state.raw_value === 'normal'" type="object" string="In Progress" name="set_kanban_state_done" class="oe_kanban_status"> </a>
+                                        <a t-if="record.kanban_state.raw_value === 'done'" type="object" string="Ready for next stage" name="set_kanban_state_blocked" class="oe_kanban_status oe_kanban_status_green"> </a>
+                                        <a t-if="record.kanban_state.raw_value === 'blocked'" type="object" string="Blocked" name="set_kanban_state_normal" class="oe_kanban_status oe_kanban_status_red"> </a>
+                                        <a t-if="record.priority.raw_value > 0" type="object" string="Normal" name="set_high_priority" class="oe_e oe_star_off">7</a>
+                                        <a t-if="record.priority.raw_value == 0" type="object" string="Very Important" name="set_normal_priority" class="oe_e oe_star_on">7</a>
+                                    </t>
+                                    <img t-att-src="kanban_image('res.users', 'image_small', record.user_id.raw_value)" t-att-title="record.user_id.value" width="24" height="24" class="oe_kanban_avatar"/>
+                                </div>
+                                <div class="oe_kanban_footer_left">
+                                    <span groups="project.group_time_work_estimation_tasks" title="Remaining hours">
+                                        <span class="oe_e">N</span>
+                                        <t t-esc="Math.round(record.remaining_hours.raw_value)"/>
+                                    </span>
+                                </div>
+                                <div class="oe_kanban_footer_left" style="margin-top:5px;">
+                                    <t t-raw="record.message_summary.raw_value"/>
+                                    <field name="categ_ids"/>
+                                </div>
+                            </div>
+                            <div class="oe_clear"></div>
+                        </div>
+                    </t>
+                    </templates>
+                </kanban>
+            </field>
+         </record>
+
+
+         <record id="view_project_view_syml" model="ir.ui.view">
+            <field name="name">project.task.view.syml</field>
+            <field name="model">project.task</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="/form/header/button[@name='project_task_reevaluate']" position="attributes">
+                     <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="/form/header/button[@name='do_cancel']" position="attributes">
+                     <attribute name="invisible">1</attribute>
+                </xpath>
+
+                <xpath expr="/form/header/button[@name='action_close']" position="replace">
+                     <button name="action_close" string="Done" type="object"
+                                 groups="base.group_user"/>
+                </xpath>
+                
+                <xpath expr="//field[@name='stage_id']" position="replace">
+                    <field name="stage_id" widget="statusbar" clickable="True" domain="[('fold','!=',True)]"/>
+                </xpath>
+
+                <xpath expr="/form/sheet/group/group[1]/field[@name='user_id']" position="after">
+                    
+                    <field name="related_to"/>
+                    <field name="hr_department_id"/>
+                    
+                    <field name="create_date"/>
+                </xpath>
+                <xpath expr="/form/sheet/group/group[1]/field[@name='project_id']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="/form/sheet/group/group[2]/field[@name='progress']" position="after">
+                    <field name="related_call"/>
+                </xpath>
+            </field>
+        </record>
+        <record id="view_project_tree_view_syml" model="ir.ui.view">
+            <field name="name">project.task.view.syml</field>
+            <field name="model">project.task</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="project.view_task_tree2"/>
+            <field name="arch" type="xml">
+                <xpath expr="/tree/field[@name='project_id']" position="after">
+                    <field name="related_to"/>
+                </xpath>
+            </field>
+       </record>
+
+       <record id="view_project_search_syml" model="ir.ui.view">
+            <field name="name">project.task.search.syml</field>
+            <field name="model">project.task</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="project.view_task_search_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group/filter[@name='group_project_id']" position="after">
+                    <filter string="Opportunity" name="group_opportunity_id" icon="terp-folder-violet" domain="[]" context="{'group_by':'related_to'}"/>
+                </xpath>
+            </field>
+       </record>
+
+       
+       
+
+
+       <record id="project.action_view_task" model="ir.actions.act_window">
+            <field name="name">My Tasks</field>
+            <field name="res_model">project.task</field>
+            <field name= "view_type">form</field>
+            <field name="view_mode">tree,form,calendar,gantt,graph</field>
+            <field name="search_view_id" ref="project.view_task_search_form"/>
+            <field name="domain">[('user_id','=',uid)]</field>
+            <field name="context">{'search_default_group_opportunity_id': 1}</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a new task.
+              </p><p>
+                OpenERP's project management allows you to manage the pipeline
+                of tasks in order to get things done efficiently. You can
+                track progress, discuss on tasks, attach documents, etc.
+              </p>
+            </field>
+        </record>
+
+        <record id="action_view_team_task_syml" model="ir.actions.act_window">
+            <field name="name">Team Tasks</field>
+            <field name="res_model">project.task</field>
+            <field name="view_mode">kanban,tree,form,calendar,gantt,graph</field> 
+            <field name="search_view_id" ref="project.view_task_search_form"/>
+           
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a new task.
+              </p><p>
+                OpenERP's project management allows you to manage the pipeline
+                of tasks in order to get things done efficiently. You can
+                track progress, discuss on tasks, attach documents, etc.
+              </p>
+            </field>
+        </record>
+        <record id="ir_actions_server_team_task_syml" model="ir.actions.server">
+            <field name="sequence" eval="7"/>
+            <field name="state">code</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="model_project_task"/>
+            <field name="code">action = pool.get('project.task').open_team_task(cr, uid, None, context)</field>
+            <field name="condition">True</field>
+            <field name="name">Team Task</field>
+       </record>
+
+
+
+
+        <record id="project.open_view_task_list_kanban" model="ir.actions.act_window.view">
+           <field name="sequence" eval="2"/>
+           <field name="view_mode">kanban</field>
+           <field name="act_window_id" ref="project.action_view_task"/>
+       </record>
+       <record id="project.open_view_task_list_tree" model="ir.actions.act_window.view">
+           <field name="sequence" eval="0"/>
+           <field name="view_mode">tree</field>
+           <field name="act_window_id" ref="project.action_view_task"/>
+       </record>
+
+       <record id="project.open_view_task_list_form" model="ir.actions.act_window.view">
+            <field name="sequence" eval="1"/>
+            <field name="view_mode">form</field>
+            <field name="act_window_id" ref="project.action_view_task"/>
+        </record>
+
+
+      
+        
+        
+
+        <menuitem action="ir_actions_server_team_task_syml" id="menu_action_view_team_task_syml" parent="project_task_syml" sequence="5" name="Team Task"/>
+  </data>
+</openerp>

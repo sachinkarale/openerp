@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="product_normal_form_view1" model="ir.ui.view">
+            <field name="name">product.normal.form1</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//page[@string='Information']" position="before">
+                    <page string="Details">
+                                <group>
+                                    <group>
+                                        <separator colspan ="2" string="General Info:"/>
+                                        <field name="lender"/>
+                                        <field name="mortgage_type"/>
+                                        <field name="interest_rate"/>
+                                        <field name="qualifying_rate"/>
+                                        <field name="term"/>
+                                        <field name="cash_back"/>
+                                        <field name="maximum_amortization"/>
+                                    </group>
+                                    <group>
+                                        <separator colspan ="2" string="Available Payment Options :"/>
+                                        <field name="weekly_payments"/>
+                                        <field name="bi_weekly_payments"/>
+                                        <field name="semi_monthly_payments"/>
+                                        <field name="monthly_payments"/>
+                                        <field name="increase_payments"/>
+                                        <field name="double_up_payments"/>
+                                        <field name="extra_annual_paydown"/>
+                                        <field name="extra_applied_any_time"/>
+                                        <field name="skip_payment_possible"/>
+                                        <field name="prepay_to_reduce"/>
+                                        <field name="reward_points"/>
+                                    </group>
+                                </group>
+
+                                <group>
+                                    <group>
+                                        <separator colspan ="2" string="Penalty Info:"/>
+                                        <field name="is_penalty_greater"/>
+                                        <field name="months_interest_penalty"/>
+                                        <field name="avg_diff_used"/>
+                                        <field name="diff_length"/>
+                                        <field colspan="2" name="is_diff_length" nolabel="1"/>
+                                        <field name="cost_period"/>
+                                    </group>
+                                    <group>
+                                        <separator colspan ="2" string="Lender Qualities:"/>
+                                        <field name="avg_processing_speed"/>
+                                        <field name="business_ease"/>
+                                        <field name="underwriter_pref"/>
+                                    </group>
+                                </group>
+
+                                <group>
+                                    <group>
+                                        <separator colspan ="2" string="Compensation:"/>
+                                        <field name="base_commission"/>
+                                        <field name="marketing_commission"/>
+                                        <field name="trailer_commission"/>
+                                    </group>
+
+                                    <group>
+                                        <separator colspan ="2"/>
+                                        <field name="vol_bonus_1"/>
+                                        <field name="vol_bonus_1_threshold"/>
+                                        <field name="vol_bonus_2"/>
+                                        <field name="vol_bonus_2_threshold"/>
+                                        <field name="vol_bonus_3"/>
+                                        <field name="vol_bonus_3_threshold"/>
+                                        <field name="vol_bonus_4"/>
+                                        <field name="vol_bonus_4_threshold"/>
+                                        <field name="vol_bonus_5"/>
+                                        <field name="vol_bonus_5_threshold"/>
+                                        
+                                    </group>
+                                </group>
+                           </page>
+
+
+                         <page string="Underwriting">
+                                <group string="Credit Scores:">
+                                    <group>
+                                        <field name="beacon_tds_split"/>
+                                        <field name="beacon_tds_cut_off"/>
+                                       
+                                    </group>
+                                    <group>
+                                        <field name="min_beacon"/>
+                                        <field name="min_beacon_cut_off"/>
+                                    </group>
+                                </group>
+
+                                <group  string="Credit Categorization:">
+                                    <group>
+                                        <field name="whose_beacon_used"/>
+                                        <field name="good_credit_beacon_split"/>
+                                        <field name="good_credit_12_mo_lates"/>
+
+                                    </group>
+                                    <group>
+                                        <field name="maximum_applicants"/>
+                                        <field name="poor_credit_beacon_split"/>
+                                        <field name="poor_credit_12_mo_lates"/>
+                                    </group>
+                                </group>
+
+                                <group string="Bankruptcy">
+                                    <group>
+                                       <field name="mths_from_discharge_allowable"/>
+                                    </group>
+                                    <group>
+                                       <field name="active_credit_trades_required"/>
+                                    </group>
+                                </group>
+
+                                <group string="Maximum Ratios">
+                                    <separator colspan ="2" string="Great Credit:"/>
+                                    <newline/>
+                                    <group>
+                                       <field name="great_tds_greater_equal_split"/>
+                                       <field name="great_tds_less_split"/>
+                                    </group>
+                                    <group>
+                                       <field name="great_gds_greater_equal_split"/>
+                                       <field name="great_gds_less_split"/>
+                                    </group>
+
+                                    <separator colspan ="2" string="Med Credit:"/>
+                                    <newline/>
+                                    <group>
+                                       <field name="med_tds_greater_equal_split"/>
+                                       <field name="med_tds_less_split"/>
+                                    </group>
+                                    <group>
+                                       <field name="med_gds_greater_equal_split"/>
+                                       <field name="med_gds_less_split"/>
+                                    </group>
+
+                                    <separator colspan ="2" string="Poor Credit:"/>
+                                    <newline/>
+                                    <group>
+                                       <field name="poor_tds_greater_equal_split"/>
+                                       <field name="poor_tds_less_split"/>
+                                    </group>
+                                    <group>
+                                       <field name="poor_gds_greater_equal_split"/>
+                                       <field name="poor_gds_less_split"/>
+                                    </group>
+                                </group>
+
+                               <group string="Calculation Methods:">
+                                   
+                                    <newline/>
+                                    <group string="Employed Income Methods">
+                                       <field name="letter_of_employment"/>
+                                       <field name="pay_stub_prorate"/>
+                                       <field name="2_yr_average_noa"/>
+                                       <field name="last_yr_noa"/>
+                                    </group>
+                                    
+                                    <group string="Self-Employed Income Methods">
+                                       <field name="2_yr_avg_noa"/>
+                                       <field name="2_yr_avg_noa_percent"/>
+                                       <field name="se_grossup_percent"/>
+                                       <field name="last_yr_noa"/>
+                                       <field name="t1_general_formula"/>
+                                    </group>
+
+                                    <newline/>
+                                    <group string="Rental Income Methods">
+                                       <field name="rental_income_percent"/>
+                                       <field name="rental_income_treatment"/>
+                                    </group>
+
+                                    <group string="Fluctuating Income Methods">
+                                       <field name="rental_2_yr_avg_noa"/>
+                                       <field name="rental_last_yr_noa"/>
+                                    </group>
+
+                                    <newline/>
+                                    <group string="Liability Calculation Methods">
+                                       <field name="revolving_debt_payments"/>
+                                       <field name="remove_loan_mo_remaining"/>
+                                    </group>
+
+                                    <group string="Other Income Treatment">
+                                       <field name="child_support_treatment"/>
+                                       <field name="child_tax_credit"/>
+                                       <field name="living_allowance"/>
+                                       <field name="vehicle_allowance"/>
+                                    </group>
+
+                                    <newline/>
+                                    <separator colspan ="2" string="Allowed Charge on Title"/>
+                                    <group>
+                                       <field name="allowed_on_1st"/>
+                                       <field name="allowed_on_2nd"/>
+                                       <field name="charges_allowed_behind"/>
+
+                                    </group>
+                                    <group>
+                                       <field name="allowed_on_3rd"/>
+                                       <field name="allowed_on_bridge"/>
+                                       <field name="specific_lenders_on_1st"/>
+                                    </group>
+
+                                    <separator colspan ="2" string="Vendor Take Back"/>
+                                    <group>
+                                       <field name="min_allowed_charge"/>
+                                    </group>
+                                    <group>
+                                       <field name="max_loan_to_value"/>
+                                    </group>
+
+                                    <separator colspan ="2" string="Allowed Properties"/>
+                                    <group>
+                                       <field name="residential"/>
+                                       <field name="condo"/>
+                                       <field name="agricultural"/>
+                                       <field name="commercial"/>
+                                       <field name="fractional_interests"/>
+                                       <field name="co_operative_housing"/>
+                                       <field name="grow_ops"/>
+                                       <field name="rental_pools"/>
+                                       <field name="allow_2nd_homes"/>
+                                       <field name="high_ratio_2nd_home"/>
+                                       <field name="uninsured_conv_2nd_home"/>
+                                       <field name="min_sq_allow_condo"/>
+                                       <field name="min_sq_cutoff_condo"/>
+                                       <field name="min_sq_allow_house"/>
+                                       <field name="min_sq_cutoff_house"/>
+                                       <field name="cottage_insure_ltv"/>
+                                       <field name="cottage_max_ltv"/>
+                                    </group>
+                                    <group>
+                                        <field name="age_restricted"/>
+                                       <field name="life_leased_property"/>
+                                       <field name="leased_land"/>
+                                       <field name="mobile_homes"/>
+                                       <field name="modular_homes"/>
+                                       <field name="floating_homes"/>
+                                       <field name="boarding_houses"/>
+                                       <field name="rooming_houses"/>
+                                       <field name="non_conv_construction"/>
+                                       <field name="cottage_rec_property"/>
+                                       <field name="rental_property"/>
+                                       <field name="outbuilding_included"/>
+                                       <field name="age_restricted_ltv"/>
+                                       <field name="max_acreage_allowed"/>
+                                       <field name="max_acreage_cutoff"/>
+                                       <field name="max_mortgage_allowed"/>
+                                       <field name="min_mortgage_allowed"/>
+                                       <field name="cottage_min_beacon"/>
+                                    </group>
+
+                                    <newline/>
+                                    <separator colspan ="2" string="Locations"/>
+                                    <group>
+                                       <field name="requir_distance_to_city"/>
+                                       <field name="allow_provinces"/>
+
+                                    </group>
+                                    <group>
+                                       <field name="excl_or_incl_city"/>
+                                       <field name="cities"/>
+                                    </group>
+
+                                    <newline/>
+                                    <separator colspan ="2" string="Fees"/>
+                                    <group>
+                                       <field name="res_con_cutoff"/>
+                                       <field name="res_ltv_cutOff_grt"/>
+                                       <field name="res_ltv_cutoff_les"/>
+                                       <field name="rental_con_cutOff"/>
+                                       <field name="rental_ltv_cutOff_grt"/>
+                                       <field name="rental_ltv_cutOff_les"/>
+                                       <field name="is_product_insured"/>
+
+                                    </group>
+                                    <group>
+                                       <field name="sm_center_con_cutOff"/>
+                                       <field name="sm_center_ltv_cutOff_grt"/>
+                                       <field name="sm_center_ltv_cutOff_les"/>
+                                       <field name="lender_fees_percent"/>
+                                       <field name="lender_fees_flat"/>
+                                       <field name="broker_fees_percent"/>
+                                       <field name="broker_fees_flat"/>
+                                    </group>
+
+                                    <newline/>
+                                    <separator colspan ="2" string="Miscellaneous"/>
+                                    <group>
+                                       <field name="allow_self_emp_income"/>
+                                       <field name="stated_income_max_ltv"/>
+                                       <field name="stated_income_min_beacon"/>
+                                       <field name="short_avg_fund_day"/>
+                                       <field name="canadian_military_allow"/>
+                                       <field name="branch_signing"/>
+                                       <field name="non_resident_allow"/>
+                                       <field name="line_of_credit"/>
+                                       <field name="capped_variable"/>
+                                       <field name="max_gift_allow"/>
+                                       <field name="min_gift_allow"/>
+                                       <field name="max_borrow_allow"/>
+                                       <field name="min_borrow_allow"/>
+                                    </group>
+                                    <group>
+                                       <field name="allow_power_of_attorney"/>
+                                       <field name="max_allow_property"/>
+                                       <field name="allow_title_ins"/>
+                                       <field name="immigrant_min_emp_mo"/>
+                                       <field name="immigrant_max_mo"/>
+                                       <field name="immigrant_max_ltv"/>
+                                       <field name="min_heat_cost"/>
+                                       <field name="max_property_age"/>
+                                    </group>
+
+                                </group>
+                     </page>
+                </xpath>
+
+                <xpath expr="//page[@string='Information']" position="attributes">
+                     <attribute name="invisible">"1"</attribute>
+                 </xpath>
+
+                 <xpath expr="//page[@string='Procurements']" position="attributes">
+                     <attribute name="invisible">"1"</attribute>
+                 </xpath>
+
+                 <xpath expr="//page[@string='Inventory']" position="attributes">
+                     <attribute name="invisible">"1"</attribute>
+                 </xpath>
+
+                 <xpath expr="//page[@string='Sales']" position="attributes">
+                     <attribute name="invisible">"1"</attribute>
+                 </xpath>
+
+                 <xpath expr="//page[@string='Accounting']" position="attributes">
+                     <attribute name="invisible">"1"</attribute>
+                 </xpath>
+
+                <field name="image_medium"  position="attributes">
+                    <attribute name="invisible">"1"</attribute>
+                </field>
+
+                <label for="categ_id" position="replace">
+                </label>
+
+                <field name="categ_id" position="replace">
+                </field>
+
+                <div name="buttons" position="attributes">
+                        <attribute name="invisible">"1"</attribute>
+                </div>
+
+                <div name="options" position="attributes">
+                        <attribute name="invisible">"1"</attribute>
+                </div>
+
+                <xpath expr="//field[@name='ean13']" position="replace">
+                </xpath>
+               
+            </field>
+        </record>
+
+
+     <!--<record id="open_view_product_form1" model="ir.actions.act_window.view">
+            <field name="sequence" eval="1"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="product_normal_form_view1"/>
+            <field name="act_window_id" ref="product_normal_action_sell"/>
+        </record>-->
+        
+    </data>
+</openerp>
